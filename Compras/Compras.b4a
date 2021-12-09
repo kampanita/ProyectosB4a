@@ -1,0 +1,682 @@
+﻿Build1=Default,iNKuBo.Compras
+File1=Compras.bal
+File2=Layout.bal
+File3=pastebin.txt
+File4=pastebin2.txt
+File5=test.txt
+FileGroup1=Default Group
+FileGroup2=Default Group
+FileGroup3=Default Group
+FileGroup4=Default Group
+FileGroup5=Default Group
+Group=Default Group
+Library1=core
+Library2=dropboxv2j
+Library3=okhttp
+Library4=okhttputils2
+Library5=xml2map
+Library6=xui
+Library7=json
+ManifestCode='This code will be applied to the manifest file during compilation.~\n~'You do not need to modify it in most cases.~\n~'See this link for for more information: https://www.b4x.com/forum/showthread.php?p=78136~\n~AddManifestText(~\n~<uses-sdk android:minSdkVersion="14" android:targetSdkVersion="29"/>~\n~<supports-screens android:largeScreens="true" ~\n~    android:normalScreens="true" ~\n~    android:smallScreens="true" ~\n~    android:anyDensity="true"/>)~\n~SetApplicationAttribute(android:icon, "@drawable/icon")~\n~SetApplicationAttribute(android:label, "$LABEL$")~\n~CreateResourceFromFile(Macro, Themes.LightTheme)~\n~'End of default text.~\n~SetApplicationAttribute(android:label, "@string/app_name") ' NEW in v3.0!!!~\n~AddApplicationText(~\n~<activity android:name="com.dropbox.sync.android.DbxAuthActivity" />~\n~<activity~\n~  android:name="com.dropbox.client2.android.AuthActivity"~\n~  android:launchMode="singleTask" >~\n~  <intent-filter>~\n~    <data android:scheme="db-YOURAPPKEY" /> <!-- NEED TO UPDATE -->~\n~    <action android:name="android.intent.action.VIEW" />~\n~    <category android:name="android.intent.category.BROWSABLE" />~\n~    <category android:name="android.intent.category.DEFAULT" />~\n~  </intent-filter>~\n~</activity>~\n~<service~\n~  android:name="com.dropbox.sync.android.DbxSyncService"~\n~  android:enabled="true"~\n~  android:exported="false"~\n~  android:label="Dropbox Sync" />~\n~  )
+Module1=Starter
+NumberOfFiles=5
+NumberOfLibraries=7
+NumberOfModules=1
+Version=11.16
+@EndOfDesignText@
+#Region  Project Attributes 
+	#ApplicationLabel: Compras
+	#VersionCode: 1
+	#VersionName: 1.1
+	'SupportedOrientations possible values: unspecified, landscape or portrait.
+	#SupportedOrientations: unspecified
+	#CanInstallToExternalStorage: False
+#End Region
+
+'DROPBOX
+'App key
+'lj61utogy2w47zb
+'App secret
+'vn2zt5kxxfcd4f0
+' Tutorial http://kio4.com/b4a/42Bdropboxmovil.htm
+
+#Region  Activity Attributes 
+	#FullScreen: False
+	#IncludeTitle: True
+#End Region
+
+Sub Process_Globals
+	'These global variables will be declared once when the application starts.
+	'These variables can be accessed from all modules.
+'	Private manager As DbxAccountManager
+
+    'CLAVES DE DROPBOX
+	Private key As String = "lj61utogy2w47zb"
+	Private secret As String = "vn2zt5kxxfcd4f0"
+	Private access_token="dOCrtawc6EQAAAAAAAAAAWMAgy428MUF7MMlTUUJN-wvwT8M5DtsrR3i-Enqr8Il"
+	
+	
+
+	'Private MainForm As Form
+	Dim Dropbox As DropboxV2
+	Dim token As String
+	Dim client As DbxClientV2
+	Dim config As DbxRequestConfig
+	Dim dbxFiles As DbxUserFilesRequests
+	Dim dbxSharing As DbxUserSharingRequests
+	Dim dbxUsers As DbxUserUsersRequests
+	Dim clientId As String =key
+	Dim token As String = access_token
+	
+	Private xui As XUI
+	Dim api_dev_key As String
+	Dim api_paste_code As String
+	Dim api_user_key As String
+	Dim url As String
+	Dim data As String
+	Dim ParsedData As Map
+	Dim user As String
+	Dim pass As String
+	Dim fichero As String
+	Dim lisss As List
+	Dim Borrado As Boolean
+End Sub
+
+Sub Globals
+	'These global variables will be redeclared each time the activity is created.
+	Private Button1 As Button
+	Private EditText1 As EditText
+	Private ListView1 As ListView
+	'
+	'Private fichero_datos As String="Lista_JaviR.txt"
+	Private fichero_datos As String="test.txt"
+	'Private fichero_datos As String="Lista_churri_J.txt"
+	
+End Sub
+
+
+
+Sub Activity_Create(FirstTime As Boolean)
+	
+	'CLAVES de Pastebin
+	'api_dev_key="9a2671bc31c64d698cd908b024576239"
+	'user="kampanita"
+	'pass="TristanBreaker1973"
+	api_dev_key="vgweVFVugGl14JEiE3_rGy8KjWaz5UwQ"
+	user ="ionkepa"
+	pass="230173230173"
+	'''''''''''''''''''''''''''''''''''''''''''''''''
+	
+	Activity.LoadLayout("Compras")
+	lisss.Initialize
+	
+	If FirstTime Then
+		Leer_de_Dropbox
+		''''Leer_de_pastebin
+	Else
+		Leer_de_disco
+	End If
+	
+End Sub
+
+
+
+
+Sub Activity_Resume
+	
+End Sub
+
+Sub Activity_Pause (UserClosed As Boolean)
+	Log("en pausa")
+	If UserClosed Then
+		Wait for(Guardar_en_internet_Dropbox) Complete (Result As Boolean)
+		'ExitApplication
+	Else
+		Guardar_en_disco
+	End If
+End Sub
+
+Sub Button1_Click
+	If EditText1.Text<>"" Then
+		Dim trimstring As String
+		Dim a As String
+		a = EditText1.Text
+		trimstring = a.SubString2(0,1).ToUpperCase & a.SubString(1).ToLowerCase
+		 ListView1.AddSingleLine (trimstring)
+		 ListView1.SingleLineLayout.Label.Color=Colors.DarkGray
+		 EditText1.Text=""
+		 'Guardar_en_disco
+		 'Guardar_en_internet_Dropbox
+		guardar_en_memoria	 
+	End If
+End Sub
+
+Private Sub ListView1_ItemLongClick (Position As Int, Value As Object)
+	ListView1.removeAt(Position)
+	'Guardar_en_internet_Dropbox
+	guardar_en_memoria
+	
+End Sub
+
+Sub Leer_de_Dropbox
+	' loggeo
+	Log ("leer de iternet Dropbox")
+'	Dim authURL As String
+'	
+'	Dim jgen As JSONGenerator
+'	jgen.Initialize(CreateMap("key": key, "secret": secret))
+'	File.WriteString(File.DirInternal,"credentials.json",jgen.ToString)
+'	authURL = auth.Initialize(key,access_token,File.Combine(File.DirInternal,"credentials.json"))
+
+	config.Initialize("",access_token,key,"de-de",5)
+	Dim dbxhost As DbxHost
+	dbxhost.Initialize
+	client.Initialize("Dropbox",config,access_token,dbxhost)
+	dbxFiles = client.files
+	dbxFiles.setEventname("dbxFiles")
+	'Log(dbxFiles)
+	'dbxSharing = client.sharing
+	'dbxSharing.setEventname("dbxSharing")
+	'dbxUsers = client.users
+	'dbxUsers.setEventname("dbxUsers")
+	Dropbox.Initialize("")
+	'dbxFiles.listFolder("",False,True,False,False,True)
+	ToastMessageShow("internet >>> lista ...espera...",False)
+	dbxFiles.download("/"&fichero_datos,File.DirInternal,fichero_datos)
+	wait for dbxFiles_DownloadFinished(success As Boolean, meta As FileMetadata, sessionId As String)
+	If success Then
+		ToastMessageShow(">Lista:OK",False)
+		ListView1.SingleLineLayout.Label.Color=Colors.Green
+	Else
+		ToastMessageShow(">Lista:KO",False)
+		ListView1.SingleLineLayout.Label.Color=Colors.Red
+	End If
+	Leer_de_disco
+	
+	'Leer_de_disco
+	
+	
+End Sub
+
+Sub Guardar_en_internet_Dropbox As ResumableSub
+	Log ("Guardar en iternet Dropbox")
+	
+	Guardar_en_disco
+	dbxFiles.listFolder("",False,True,False,False,True)
+	Dim encontrado As Boolean
+	encontrado=False
+	wait for dbxFiles_listFolder(success As Boolean, content As List, error As String)
+	If content.Size > 0 Then
+		For i = 0 To content.Size-1
+			Dim meta As Metadata = content.Get(i)
+			Log(meta.toString)
+			If meta.Name=fichero_datos Then
+				encontrado = True
+				dbxFiles.delete("/"&fichero_datos)
+				'ToastMessageShow("Borrando Lista Internet",True)
+				wait for dbxFiles_Delete(success As Boolean, metaObj As Object, sessionId As String)
+				Log($"dbxFiles_UploadFinished(${success}, ${metaObj}, ${sessionId})"$)
+				If success Then
+				'	ToastMessageShow("Borrar Lista-->Internet:OK",False)
+					Borrado=True
+				Else
+				'	ToastMessageShow("Borrar Lista-->Internet:OK",True)
+				End If
+				
+				dbxFiles.upload(File.DirInternal,fichero_datos,"/"&fichero_datos,False,True)
+				ToastMessageShow("Subiendo Lista a Internet",False)
+				wait for dbxFiles_UploadFinished(success As Boolean, metaObj As Object, sessionId As String)
+				Log($"dbxFiles_UploadFinished(${success}, ${metaObj}, ${sessionId})"$)
+				If success Then
+					ToastMessageShow("Lista>:OK",False)
+					ListView1.SingleLineLayout.Label.Color=Colors.DarkGray
+				Else
+					ToastMessageShow("Lista>:KO",True)
+					ListView1.SingleLineLayout.Label.Color=Colors.Red
+				End If
+		
+			End If	
+		Next
+		If encontrado=False Then
+			dbxFiles.upload(File.DirInternal,fichero_datos,"/"&fichero_datos,False,True)
+			ToastMessageShow("Subiendo Lista a Internet",False)
+			wait for dbxFiles_UploadFinished(success As Boolean, metaObj As Object, sessionId As String)
+			Log($"dbxFiles_UploadFinished(${success}, ${metaObj}, ${sessionId})"$)
+			If success Then
+				ToastMessageShow("Lista>:OK",False)
+				ListView1.SingleLineLayout.Label.Color=Colors.Green
+			Else
+				ToastMessageShow("Lista>:KO",True)
+				ListView1.SingleLineLayout.Label.Color=Colors.Red
+			End If
+		End If
+	Else
+		Borrado=True
+		dbxFiles.upload(File.DirInternal,fichero_datos,"/"&fichero_datos,False,True)
+		ToastMessageShow("Subiendo Lista a Internet",False)
+		wait for dbxFiles_UploadFinished(success As Boolean, metaObj As Object, sessionId As String)
+		Log($"dbxFiles_UploadFinished(${success}, ${metaObj}, ${sessionId})"$)
+		If success Then
+			ToastMessageShow("Lista>:OK",False)
+			ListView1.SingleLineLayout.Label.Color=Colors.Green
+		Else
+			ToastMessageShow("Lista>:KO",True)
+			ListView1.SingleLineLayout.Label.Color=Colors.Red
+		End If
+		
+	End If
+	
+	Return success
+End Sub
+
+Sub guardar_en_memoria
+	Log("Guardar en memoria" )
+	lisss.Initialize
+	Dim i As Int
+	For i=0 To ListView1.Size-1
+		lisss.Add(ListView1.GetItem(i))
+	Next
+End Sub
+
+Sub Guardar_en_internet_paste
+	
+	Log("Login para guardar")
+	Dim j As HttpJob
+	j.Initialize("", Me)
+	
+	url="https://pastebin.com/api/api_login.php"
+
+' Primero me loggeo	
+	data="api_dev_key="&api_dev_key&"&api_user_name="&user&"&api_user_password="&pass
+	j.PostString(url, data)
+	'
+	Wait For (j) JobDone(j As HttpJob)
+	If j.Success Then
+		Log("User_KEY:" & j.GetString)
+		api_user_key=j.GetString
+	Else
+		api_user_key=""
+		Log("No conectado a internet")
+	End If
+	j.Release
+
+    If api_user_key<>"" Then
+	'Borro fichero anterior
+		url="https://pastebin.com/api/api_post.php"
+		data="api_dev_key="&api_dev_key &"&api_user_key=" & api_user_key &"&api_paste_key="&fichero&"&api_option=delete"
+		Log("data "&data)
+		j.PostString(url, data)
+
+		Wait For (j) JobDone(j As HttpJob)
+		If j.Success Then
+			Log("Borrado anterior fichero")
+		Else
+			Log("Error borrando anterior fichero en internet "&fichero)
+		End If
+		j.Release
+
+	'Subo nuevo fichero	
+		Log("Guardar en internet " & api_user_key)
+		Dim i As Int
+		Dim lista As List
+		lista.Initialize
+	    api_paste_code=""
+		For i=0 To ListView1.Size-1
+				If i=0 Then
+				api_paste_code=ListView1.getItem(i)
+			Else
+				api_paste_code=api_paste_code & "," & ListView1.getItem(i)
+			End If
+		Next
+		'POST request
+		Dim j As HttpJob
+		j.Initialize("", Me)
+
+		url="https://pastebin.com/api/api_post.php"
+		data="api_user_key="&api_user_key &"&api_dev_key="&api_dev_key&"&api_option=paste&api_paste_code="&api_paste_code&"&api_paste_name=lista.txt"
+		
+		j.PostString(url, data)
+
+		Wait For (j) JobDone(j As HttpJob)
+		If j.Success Then
+			Log("Subido:" & j.GetString)
+			fichero=Regex.Split("/",j.GetString)(3)
+			Log("Guardado en internet " & api_user_key & "nuevo fichero: "&fichero)
+			
+			'Si he guardado en internet, borrar_lista_local
+			Dim nada As List
+			nada.Initialize
+			File.WriteList(File.DirInternal, fichero_datos, nada)
+		Else
+			Log("Error escribiendo")
+		End If
+		j.Release
+	Else
+		Log("Como no puede guardar en internet, guardo en disco ")
+		Guardar_en_disco
+	End If
+End Sub
+
+Sub Guardar_en_disco
+     	Log("Guardar en disco" )
+		Dim i As Int
+		Dim lista As List
+		lista.Initialize
+		For i=0 To ListView1.Size-1
+			lista.Add(ListView1.GetItem(i))
+		Next
+		File.WriteList(File.DirInternal, fichero_datos, lista)
+End Sub
+
+Sub Leer_de_pastebin
+	ToastMessageShow("internet =======> lista",False)
+	Log("Leer de internet")
+' Me loggeo	
+	Log("Login")
+	Dim j As HttpJob
+	j.Initialize("", Me)
+	
+	url="https://pastebin.com/api/api_login.php"
+	data="api_dev_key="&api_dev_key&"&api_user_name="&user&"&api_user_password="&pass
+	
+	j.PostString(url, data)
+
+	Wait For (j) JobDone(j As HttpJob)
+	If j.Success Then
+		
+		Log("User_KEY:" & j.GetString)
+		api_user_key=j.GetString
+		
+	Else
+		api_user_key=""
+		Log("No Loggeado")
+	End If
+  	
+	j.Release
+    If api_user_key<>"" Then
+		Log("Leida " & api_user_key)
+	    data=""
+		url="https://pastebin.com/api/api_post.php"
+		
+		data="api_dev_key="&api_dev_key&"&api_option=list&api_user_key="&api_user_key&"&api_results_limit=120"
+		
+		Dim j As HttpJob
+		j.Initialize("", Me)
+		j.PostString(url, data)
+
+		Wait For (j) JobDone(j As HttpJob)
+		If j.Success And j.GetString <>"No pastes found." Then
+
+			data=j.GetString			
+			j.Release
+		
+			Dim xm As Xml2Map
+			xm.Initialize
+		     
+			Dim xml As String
+			xml="<root>"&data&"</root>"
+	
+			Log(xml)
+			ParsedData = xm.Parse(xml)
+		    url=""
+			Dim root As Map = ParsedData.Get("root")
+			Dim a As Int 
+			a=0
+			For Each book As Map In GetElements(root, "paste")
+				Dim title As String = book.Get("paste_title")
+				Log("Titulo:" & title)
+				If title="lista.txt" Then
+					url=book.Get("paste_url")
+					Log("Encontrada url "&url)
+					Exit	
+				End If
+				a=a+1
+			Next
+			'url="https://pastebin.com/4nfT0TZ1"
+			'url="https://pastebin.com/raw/4nfT0TZ1"
+	
+			If url<>"" Then
+				fichero=Regex.Split("/",url)(3)
+				Log("fichero "&fichero)
+				url="https://pastebin.com/raw/"&fichero
+				If url<>"" Then
+					j.Initialize("", Me)
+					j.Download(url)
+					Wait For (j) JobDone(j As HttpJob)
+					If j.Success Then
+						Log(j.GetString)
+						'aqui lleno de datos la lista
+						lisss=Regex.Split(",",j.GetString)
+						ToastMessageShow("Lista de internet leida",False)
+					Else
+						Log("Error leyendo el fichero "&url)
+					End If
+					j.Release
+				End If
+			End If	
+	    Else
+			Log("No habia ficheros de listas en pastebin")		
+		End If
+	End If	
+	' aqui añado los datos de la lista local si no he cogido nada de internet
+	If lisss.Size=0 Then
+		Log("No conectado a internet, leo de disco")
+		lisss.AddAll(File.ReadList(File.DirInternal, fichero_datos))
+	End If
+	
+	cargar_lista(lisss)
+	ToastMessageShow("Lista cargada",False)
+	Log("Leído todo" )
+	
+End Sub
+
+Sub cargar_lista(lista As List)
+	Log("Cargo la lista" & lista)
+	ListView1.Clear
+	Dim i As Int
+	For i=0 To lista.Size-1
+		ListView1.AddSingleLine(lista.Get(i))	
+	Next
+	ListView1.SingleLineLayout.Label.Color=Colors.Gray
+End Sub
+
+Sub Leer_de_disco
+	Log("Leer de disco")
+	ListView1.SingleLineLayout.Label.Color=Colors.Red
+	cargar_lista(File.ReadList(File.DirInternal, fichero_datos))
+	Log("Leido de disco")
+
+End Sub
+
+Sub GetElements (m As Map, keyL As String) As List
+	Dim res As List
+	If m.ContainsKey(keyL) = False Then
+		res.Initialize
+		Return res
+	Else
+		Dim value As Object = m.Get(keyL)
+		If value Is List Then Return value
+		res.Initialize
+		res.Add(value)
+		Return res
+	End If
+End Sub
+
+
+' DROPBOX
+
+Sub dbxFiles_DownloadFinished(success As Boolean, meta As FileMetadata, sessionId As String)
+	Log($"dbxFiles_DownloadFinished(${success}, ${meta}, ${sessionId})"$)
+
+End Sub
+
+Sub dbxFiles_UploadFinished(success As Boolean, metaObj As Object, sessionId As String)
+	Log($"dbxFiles_UploadFinished(${success}, ${metaObj}, ${sessionId})"$)
+	
+End Sub
+
+Sub dbxFiles_Delete(success As Boolean, metaObj As Object, sessionId As String)
+	Log($"dbxFiles_UploadFinished(${success}, ${metaObj}, ${sessionId})"$)
+
+End Sub
+
+Sub dbxFiles_listFolder(success As Boolean, content As List, error As String)
+	Log($"dbxFiles_listFolders(${success}, ${content.Size}, ${error})"$)
+
+  
+End Sub
+
+
+
+Sub dbxFiles_UploadProgress(sessionId As String, path As String, filename As String, uploaded As Long, size As Long)
+	Log($"${filename} -> ${NumberFormat(uploaded / 1024, 0, 0)} KB /${NumberFormat(size / 1024, 0, 0)} kb -> ${NumberFormat(100 * (uploaded / size), 0, 2) } - Session ${sessionId}"$)
+End Sub
+
+
+Sub dbxSharing_listFolders(success As Boolean, folders As List, error As String)
+	Log($"dbxSharing_listFolders(${success}, ${folders.Size}, ${error})"$)
+	Borrado=False
+	If folders.Size > 0 Then
+		For i = 0 To folders.Size-1
+			Dim meta As SharedFolderMetadata = folders.Get(i)
+			Log(meta.PathLower&" -> "& meta.Name)
+			
+		Next	
+	End If
+	
+End Sub
+
+Sub dbxSharing_AddFileMember(success As Boolean, members As List, error As String)
+	Log($"dbxSharing_listFolders(${success}, ${members.Size}, ${error})"$)
+End Sub
+
+Sub dbxSharing_listMountableFolders(success As Boolean, folders As List, error As String)
+	Log($"dbxSharing_listFolders(${success}, ${folders.Size}, ${error})"$)
+End Sub
+
+Sub dbxSharing_listReceivedFiles(success As Boolean, receivedFiles As List, error As String)
+	Log($"dbxSharing_listFolders(${success}, ${receivedFiles.Size}, ${error})"$)
+  
+End Sub
+
+Sub dbxSharing_listSharedLinks(success As Boolean, sharedLinks As List, error As String)
+	Log($"dbxSharing_listFolders(${success}, ${sharedLinks.Size}, ${error})"$)
+End Sub
+
+Sub dbxSharing_SharedFolderMetadata(success As Boolean, meta As SharedFolderMetadata, error As String)
+	Log($"dbxSharing_listFolders(${success}, ${meta.toString}, ${error})"$)
+
+End Sub
+
+
+Sub dbxFiles_CopyBatch(success As Boolean, meta As Map, error As String)
+  
+End Sub
+Sub dbxFiles_CopyBatchCheck(success As Boolean, meta As Map, error As String)
+  
+End Sub
+Sub dbxFiles_CopyReference(metainfo As Map)
+  
+End Sub
+Sub dbxFiles_CreateFolder(success As Boolean, meta As FolderMetadata, error As String)
+  
+End Sub
+Sub dbxFiles_ListRevisions(success As Boolean, meta As Map, error As String)
+  
+End Sub
+Sub dbxFiles_MoveBatch(success As Boolean, meta As Map, error As String)
+  
+End Sub
+Sub dbxFiles_MoveBatchCheck(success As Boolean, meta As Map, error As String)
+  
+End Sub
+Sub dbxFiles_Restore(success As Boolean, meta As FileMetadata, error As String)
+  
+End Sub
+
+Sub dbxUsers_getAccount(account As BasicAccount)
+	Log($"dbxUsers_getAccount(${account})"$)
+End Sub
+Sub dbxUsers_getAccountBatch(batch As List)
+  
+End Sub
+Sub dbxUsers_getCurrentAccount(account As FullAccount)
+	Log($"dbxUsers_getCurrentAccount(${account})"$)
+  
+End Sub
+
+Private Sub Button3_Click
+	Guardar_en_internet_Dropbox
+End Sub
+
+Private Sub Button2_Click
+	Leer_de_Dropbox
+End Sub
+
+'DROPBOX OLD STUFF
+'Sub login_db_old
+'		manager.Initialize(key, secret, "manager")
+'		manager.LinkAccount
+'End Sub
+'Sub Manager_AccountReady (Success As Boolean)
+'	Log("Account Ready: " & Success)
+'	If Success Then
+'		For Each FileInfo As DbxFileInfo In manager.ListFiles("/")
+'			Log(FileInfo.Name & ", " & FileInfo.IsFolder)
+'		Next
+'		manager.DownloadFile("/", "lista.txt", File.DirRootExternal, "test.txt")
+'	End If
+'   
+'End Sub
+'
+'Sub Manager_DownloadCompleted (Success As Boolean, LocalDir As String, LocalFileName As String)
+'	Log("DownloadCompleted: " & Success)
+'End Sub
+
+
+'GDRVIE OLD STUFF
+'Sub TestConnect
+'	Log("oAuth TestConnect")
+'   
+'	ti.Valid=False
+'   
+'	Dim h_tc As HttpJob
+'	h_tc.Initialize("", Me)
+'	h_tc.Download2("https://www.googleapis.com/drive/v3/files", _
+'         Array As String("access_token", ti.AccessToken, _
+'                         "corpora", "user", _
+'                         "q","mimeType!='application/vnd.google-apps.folder' and trashed=false"))
+'	Wait For (h_tc) JobDone(h_tc As HttpJob)
+'   
+'	If h_tc.Success Then
+'		Log(h_tc.GetString)
+'		ti.Valid=True
+'	Else
+'		Log("OAuth, Getting access token from refresh token in TestConnect")
+'		Dim j_rt As HttpJob
+'		j_rt.Initialize("", Me)
+'		j_rt.PostString("https://www.googleapis.com/oauth2/v4/token", _
+'        $"refresh_token=${ti.RefreshToken}&client_id=${mClientId}&grant_type=refresh_token&redirect_uri=${packageName & ":/oath"}"$)
+'
+'		Wait For (j_rt) JobDone(j_rt As HttpJob)
+'
+'		If j_rt.Success Then
+'			Log("OAuth TestConnect, Refresh access token Success")
+'           
+'			Dim jp As JSONParser
+'			jp.Initialize(j_rt.GetString)
+'			Dim m As Map = jp.NextObject
+'			ti.AccessExpiry = DateTime.Now + m.Get("expires_in")
+'			ti.AccessToken = m.Get("access_token")
+'			If m.ContainsKey("refresh_token") Then ti.RefreshToken = m.Get("refresh_token")
+'			ti.Valid = True
+'			SaveToken
+'		Else
+'			Log("OAuth TestConnect, Refresh Token Error")
+'		End If
+'		j_rt.Release
+'	End If
+'   
+'	h_tc.Release
+'	CallSubDelayed3(mTarget, mEventName & "_TestFinish", ti.Valid, ti)
+'End Sub
