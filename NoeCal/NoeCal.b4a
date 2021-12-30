@@ -70,10 +70,11 @@ Sub Activity_Create(FirstTime As Boolean)
 	Dialog2.BackgroundColor=xui.Color_LightGray
 	
 	DateTemplate2.Initialize
-	DateTemplate2.MinYear = 2021
-	DateTemplate2.MaxYear = 2050
+	DateTemplate2.MinYear = 1973
+	DateTemplate2.MaxYear = 2100
 	'Dialog2.TitleBar.Enabled=False
 	Dialog2.Title = ""
+	'SetLightTheme2
 	
 End Sub
 
@@ -114,5 +115,29 @@ Private Sub Calendario_Click
 	End If
 End Sub
 
-
+'Sub SetLightTheme2
+'	Dialog2.TitleBarColor = xui.Color_Blue
+'	Dialog2.TitleBarHeight = 80dip
+'	Dim TextColor As Int = 0xFF5B5B5B
+'	Dialog2.BackgroundColor = xui.Color_black
+'	Dialog2.ButtonsColor = xui.Color_White
+'	Dialog2.ButtonsTextColor = Dialog2.TitleBarColor
+'	Dialog2.BorderColor = xui.Color_Transparent
+'	DateTemplate2.DaysInWeekColor = xui.Color_Black
+'	DateTemplate2.SelectedColor = 0xFF39D7CE
+'	DateTemplate2.HighlightedColor = 0xFF00CEFF
+'	DateTemplate2.DaysInMonthColor = TextColor
+'	DateTemplate2.lblMonth.TextColor = TextColor
+'	DateTemplate2.lblYear.TextColor = TextColor
+'	DateTemplate2.SelectedColor = 0xFFFFA761
+'	
+'	For Each b As B4XView In Array(DateTemplate2.btnMonthLeft, DateTemplate2.btnMonthRight, DateTemplate2.btnYearLeft, DateTemplate2.btnYearRight)
+'		b.Color = xui.Color_Transparent
+'		b.TextColor = TextColor
+'        #if B4i
+'        Dim no As NativeObject = b
+'        no.RunMethod("setTitleColor:forState:", Array(no.ColorToUIColor(TextColor), 0))
+'        #End If
+'	Next
+'End Sub
 

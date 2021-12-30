@@ -56,8 +56,8 @@ Sub Activity_Create(FirstTime As Boolean)
 	Dialog.BackgroundColor=xui.Color_Gray
 	
 	DateTemplate.Initialize
-	DateTemplate.MinYear = 2021
-	DateTemplate.MaxYear = 2050
+	DateTemplate.MinYear = 1973
+	DateTemplate.MaxYear = 2100
 	Dialog.Title = "Escoge la fecha"
 	SetLightTheme
 	
