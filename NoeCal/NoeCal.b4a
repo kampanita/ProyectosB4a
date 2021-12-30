@@ -50,7 +50,7 @@ Sub Process_Globals
 	'These global variables will be declared once when the application starts.
 	'These variables can be accessed from all modules.
 	Private xui As XUI
-
+	Dim llamador As String
 	
 End Sub
 
@@ -65,13 +65,19 @@ End Sub
 
 Sub Activity_Create(FirstTime As Boolean)
 	Activity.LoadLayout("Layout")
+	Dim TextColor As Int = 0xFF5B5B5B
 	Dialog2.Initialize(Activity)
 	Dialog2.TitleBarColor=xui.Color_Transparent
 	Dialog2.BackgroundColor=xui.Color_LightGray
-	
+	Dialog2.ButtonsColor = xui.Color_Black
+	If FirstTime=True Then
+		llamador="ini"
+	End If
 	DateTemplate2.Initialize
 	DateTemplate2.MinYear = 1973
 	DateTemplate2.MaxYear = 2100
+	DateTemplate2.lblMonth.TextColor = TextColor
+	DateTemplate2.lblYear.TextColor = TextColor
 	'Dialog2.TitleBar.Enabled=False
 	Dialog2.Title = ""
 	'SetLightTheme2
@@ -79,7 +85,9 @@ Sub Activity_Create(FirstTime As Boolean)
 End Sub
 
 Sub Activity_Resume
-
+	If llamador="Cal" Then
+		Calendario_Click
+	End If
 End Sub
 
 Sub Activity_Pause (UserClosed As Boolean)
@@ -87,12 +95,15 @@ Sub Activity_Pause (UserClosed As Boolean)
 End Sub
 
 Private Sub Introducir_Click
+	llamador="Int"
 	StartActivity("modulo1")
+	
 End Sub
 
 Private Sub Ver_Click
 	'CallSubDelayed2(Activity,"verRegistros","verRegistros")
 	'CallSubDelayed2(StartActivity("modulo2"),"verRegistros")
+	llamador="Ver"
 	StartActivity("modulo2")
 	
 End Sub
@@ -103,6 +114,7 @@ Sub datatotexT(datos As Long) As String
 	Return DateTime.Date(datos)
 	
 End Sub
+
 Private Sub Calendario_Click
 	'CallSubDelayed2(Activity,"verRegistros","verRegistros")
 	'CallSubDelayed2(StartActivity("modulo2"),"verRegistros")
@@ -110,6 +122,7 @@ Private Sub Calendario_Click
 	Wait For (Dialog2.ShowTemplate(DateTemplate2, "", "", "Cancel")) Complete (Result As Int)
 	
 	If Result = xui.DialogResponse_Positive Then
+		llamador="Cal"
 		CallSubDelayed2("modulo1","ver_registro",datatotexT(DateTemplate2.Date))
 		'modulo1.ver_reg(modulo1.datatotexT(DateTemplate2.Date))
 	End If

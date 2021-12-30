@@ -44,7 +44,7 @@ End Sub
 Public Sub Initialize
 	sql.Initialize(File.DirInternal, "NoeCal.db", False)
 	pnlDialog = xui.CreatePanel("")
-	pnlDialog.SetLayoutAnimated(0, 0, 0, 320dip,300dip)
+	pnlDialog.SetLayoutAnimated(0, 0, 0, 320dip,400dip)
 	pnlDialog.LoadLayout("DateTemplate2")
 	pnlDialog.Tag = Me
 	month = DateTime.GetMonth(DateTime.Now)
@@ -208,10 +208,11 @@ Private Sub HandleMouse(x As Double, y As Double, move As Boolean)
 			SelectDay(newSelectedDay)
 			If CloseOnSelection Then
 				Hide
-			Else
-				DrawDays
+			'Else
+			'	DrawDays
 			End If
 		End If
+		DrawDays
 	End If
 	
 	cvsBackground.Invalidate

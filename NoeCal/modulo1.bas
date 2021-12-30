@@ -58,7 +58,8 @@ Sub Activity_Create(FirstTime As Boolean)
 	DateTemplate.Initialize
 	DateTemplate.MinYear = 1973
 	DateTemplate.MaxYear = 2100
-	Dialog.Title = "Escoge la fecha"
+	'Dialog.Title = "Escoge la fecha"
+	Dialog.Title = ""
 	SetLightTheme
 	
 	
@@ -91,7 +92,7 @@ Private Sub FechaPicker_Click
 	'---------------------------------------------------------------------------------------
 	
 	
-	Wait For (Dialog.ShowTemplate(DateTemplate, "", "", "Cancel")) Complete (Result As Int)
+	Wait For (Dialog.ShowTemplate(DateTemplate, "", "", "Cancelar")) Complete (Result As Int)
 	
 	If Result = xui.DialogResponse_Positive Then		
 		Fecha.Text=datatotexT(DateTemplate.Date)
@@ -194,7 +195,8 @@ Sub SetLightTheme
 	Dialog.TitleBarColor = xui.Color_Blue
 	Dialog.TitleBarHeight = 80dip
 	Dim TextColor As Int = 0xFF5B5B5B
-	Dialog.BackgroundColor = xui.Color_White
+	'Dialog.BackgroundColor = xui.Color_White
+	Dialog.BackgroundColor = xui.Color_LightGray
 	Dialog.ButtonsColor = xui.Color_White
 	Dialog.ButtonsTextColor = Dialog.TitleBarColor
 	Dialog.BorderColor = xui.Color_Transparent
