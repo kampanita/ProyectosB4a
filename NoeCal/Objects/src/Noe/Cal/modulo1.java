@@ -396,7 +396,7 @@ _sql.ExecNonQuery2(_query,anywheresoftware.b4a.keywords.Common.ArrayToList(new O
  } 
        catch (Exception e13) {
 			processBA.setLastException(e13); //BA.debugLineNum = 154;BA.debugLine="Log(LastException)";
-anywheresoftware.b4a.keywords.Common.LogImpl("61572880",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("21572880",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
  };
  //BA.debugLineNum = 156;BA.debugLine="rs=sql.ExecQuery(\"commit\")";
 _rs = (anywheresoftware.b4a.sql.SQL.ResultSetWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.sql.SQL.ResultSetWrapper(), (android.database.Cursor)(_sql.ExecQuery("commit")));
@@ -427,7 +427,7 @@ _sql.ExecNonQuery2(_query,anywheresoftware.b4a.keywords.Common.ArrayToList(new O
  } 
        catch (Exception e30) {
 			processBA.setLastException(e30); //BA.debugLineNum = 173;BA.debugLine="Log(LastException)";
-anywheresoftware.b4a.keywords.Common.LogImpl("61572899",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("21572899",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
  };
  //BA.debugLineNum = 175;BA.debugLine="rs=sql.ExecQuery(\"commit\")";
 _rs = (anywheresoftware.b4a.sql.SQL.ResultSetWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.sql.SQL.ResultSetWrapper(), (android.database.Cursor)(_sql.ExecQuery("commit")));
@@ -513,7 +513,7 @@ return;
 case 0:
 //C
 this.state = 1;
- //BA.debugLineNum = 264;BA.debugLine="If Fecha.Text<>\"\" Then";
+ //BA.debugLineNum = 268;BA.debugLine="If Fecha.Text<>\"\" Then";
 if (true) break;
 
 case 1:
@@ -528,23 +528,23 @@ this.state = 9;
 case 3:
 //C
 this.state = 4;
- //BA.debugLineNum = 265;BA.debugLine="Dim d As B4XDialog";
+ //BA.debugLineNum = 269;BA.debugLine="Dim d As B4XDialog";
 _d = new Noe.Cal.b4xdialog();
- //BA.debugLineNum = 266;BA.debugLine="d.initialize(Activity)";
+ //BA.debugLineNum = 270;BA.debugLine="d.initialize(Activity)";
 _d._initialize /*String*/ (mostCurrent.activityBA,(anywheresoftware.b4a.objects.B4XViewWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.B4XViewWrapper(), (java.lang.Object)(parent.mostCurrent._activity.getObject())));
- //BA.debugLineNum = 267;BA.debugLine="d.Title=\"Borrar registro\"";
+ //BA.debugLineNum = 271;BA.debugLine="d.Title=\"Borrar registro\"";
 _d._title /*Object*/  = (Object)("Borrar registro");
- //BA.debugLineNum = 268;BA.debugLine="d.BackgroundColor=Colors.White";
+ //BA.debugLineNum = 272;BA.debugLine="d.BackgroundColor=Colors.White";
 _d._backgroundcolor /*int*/  = anywheresoftware.b4a.keywords.Common.Colors.White;
- //BA.debugLineNum = 269;BA.debugLine="d.BodyTextColor=Colors.Blue";
+ //BA.debugLineNum = 273;BA.debugLine="d.BodyTextColor=Colors.Blue";
 _d._bodytextcolor /*int*/  = anywheresoftware.b4a.keywords.Common.Colors.Blue;
- //BA.debugLineNum = 270;BA.debugLine="d.VisibleAnimationDuration=300";
+ //BA.debugLineNum = 274;BA.debugLine="d.VisibleAnimationDuration=300";
 _d._visibleanimationduration /*int*/  = (int) (300);
- //BA.debugLineNum = 271;BA.debugLine="Dim rs As Object";
+ //BA.debugLineNum = 275;BA.debugLine="Dim rs As Object";
 _rs = new Object();
- //BA.debugLineNum = 272;BA.debugLine="rs=d.Show(\"¿Quieres borrar el registro?\",\"Si\",\"N";
+ //BA.debugLineNum = 276;BA.debugLine="rs=d.Show(\"¿Quieres borrar el registro?\",\"Si\",\"N";
 _rs = _d._show /*anywheresoftware.b4a.keywords.Common.ResumableSubWrapper*/ ((Object)("¿Quieres borrar el registro?"),(Object)("Si"),(Object)("No"),(Object)(""));
- //BA.debugLineNum = 273;BA.debugLine="Wait For(rs) complete (Result As Int)";
+ //BA.debugLineNum = 277;BA.debugLine="Wait For(rs) complete (Result As Int)";
 anywheresoftware.b4a.keywords.Common.WaitFor("complete", processBA, this, _rs);
 this.state = 11;
 return;
@@ -553,7 +553,7 @@ case 11:
 this.state = 4;
 _result = (Integer) result[0];
 ;
- //BA.debugLineNum = 274;BA.debugLine="If Result = xui.DialogResponse_Positive Then";
+ //BA.debugLineNum = 278;BA.debugLine="If Result = xui.DialogResponse_Positive Then";
 if (true) break;
 
 case 4:
@@ -566,19 +566,19 @@ this.state = 6;
 case 6:
 //C
 this.state = 7;
- //BA.debugLineNum = 275;BA.debugLine="sql.ExecNonQuery(\"delete from Dias where dia='\"";
+ //BA.debugLineNum = 279;BA.debugLine="sql.ExecNonQuery(\"delete from Dias where dia='\"";
 parent._sql.ExecNonQuery("delete from Dias where dia='"+parent.mostCurrent._fecha.getText()+"'");
- //BA.debugLineNum = 276;BA.debugLine="ToastMessageShow(\"Borrado el parte del dia \"&Fe";
+ //BA.debugLineNum = 280;BA.debugLine="ToastMessageShow(\"Borrado el parte del dia \"&Fe";
 anywheresoftware.b4a.keywords.Common.ToastMessageShow(BA.ObjectToCharSequence("Borrado el parte del dia "+parent.mostCurrent._fecha.getText()),anywheresoftware.b4a.keywords.Common.True);
- //BA.debugLineNum = 277;BA.debugLine="Fecha.Text=\"\"";
+ //BA.debugLineNum = 281;BA.debugLine="Fecha.Text=\"\"";
 parent.mostCurrent._fecha.setText(BA.ObjectToCharSequence(""));
- //BA.debugLineNum = 278;BA.debugLine="Spinner1.SelectedIndex=0";
+ //BA.debugLineNum = 282;BA.debugLine="Spinner1.SelectedIndex=0";
 parent.mostCurrent._spinner1.setSelectedIndex((int) (0));
- //BA.debugLineNum = 279;BA.debugLine="Spinner2.SelectedIndex=0";
+ //BA.debugLineNum = 283;BA.debugLine="Spinner2.SelectedIndex=0";
 parent.mostCurrent._spinner2.setSelectedIndex((int) (0));
- //BA.debugLineNum = 280;BA.debugLine="Horas.Text=\"\"";
+ //BA.debugLineNum = 284;BA.debugLine="Horas.Text=\"\"";
 parent.mostCurrent._horas.setText(BA.ObjectToCharSequence(""));
- //BA.debugLineNum = 281;BA.debugLine="Incidencia.Text=\"\"";
+ //BA.debugLineNum = 285;BA.debugLine="Incidencia.Text=\"\"";
 parent.mostCurrent._incidencia.setText(BA.ObjectToCharSequence(""));
  if (true) break;
 
@@ -591,7 +591,7 @@ this.state = 10;
 case 9:
 //C
 this.state = 10;
- //BA.debugLineNum = 284;BA.debugLine="ToastMessageShow(\"Nada que borrar\",False )";
+ //BA.debugLineNum = 288;BA.debugLine="ToastMessageShow(\"Nada que borrar\",False )";
 anywheresoftware.b4a.keywords.Common.ToastMessageShow(BA.ObjectToCharSequence("Nada que borrar"),anywheresoftware.b4a.keywords.Common.False);
  if (true) break;
 
@@ -599,7 +599,7 @@ case 10:
 //C
 this.state = -1;
 ;
- //BA.debugLineNum = 286;BA.debugLine="End Sub";
+ //BA.debugLineNum = 290;BA.debugLine="End Sub";
 if (true) break;
 
             }
@@ -838,8 +838,8 @@ mostCurrent._spinner2.setSelectedIndex(mostCurrent._spinner2.IndexOf(_cual));
  //BA.debugLineNum = 118;BA.debugLine="Incidencia.text=rs.getString(\"Incidencia\")";
 mostCurrent._incidencia.setText(BA.ObjectToCharSequence(_rs.GetString("Incidencia")));
  }else {
- //BA.debugLineNum = 120;BA.debugLine="Horas.Text=\"\"";
-mostCurrent._horas.setText(BA.ObjectToCharSequence(""));
+ //BA.debugLineNum = 120;BA.debugLine="Fecha.Text=laFecha";
+mostCurrent._fecha.setText(BA.ObjectToCharSequence(_lafecha));
  //BA.debugLineNum = 121;BA.debugLine="Spinner1.SelectedIndex=0";
 mostCurrent._spinner1.setSelectedIndex((int) (0));
  //BA.debugLineNum = 122;BA.debugLine="Spinner2.SelectedIndex=0";
@@ -887,8 +887,15 @@ mostCurrent._spinner1.setSelectedIndex(mostCurrent._spinner1.IndexOf(_cual));
 _cual = _rs.GetString("Tipo2");
  //BA.debugLineNum = 256;BA.debugLine="Spinner2.SelectedIndex=Spinner2.IndexOf(cual)";
 mostCurrent._spinner2.setSelectedIndex(mostCurrent._spinner2.IndexOf(_cual));
+ }else {
+ //BA.debugLineNum = 258;BA.debugLine="Fecha.Text=lafecha";
+mostCurrent._fecha.setText(BA.ObjectToCharSequence(_lafecha));
+ //BA.debugLineNum = 259;BA.debugLine="Spinner1.SelectedIndex=0";
+mostCurrent._spinner1.setSelectedIndex((int) (0));
+ //BA.debugLineNum = 260;BA.debugLine="Spinner2.SelectedIndex=0";
+mostCurrent._spinner2.setSelectedIndex((int) (0));
  };
- //BA.debugLineNum = 260;BA.debugLine="End Sub";
+ //BA.debugLineNum = 264;BA.debugLine="End Sub";
 return "";
 }
 }

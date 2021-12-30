@@ -123,7 +123,7 @@ Sub ver_reg(laFecha As String)
 		
 		Incidencia.text=rs.getString("Incidencia")
 	Else
-		Horas.Text=""
+		Fecha.Text=laFecha
 		Spinner1.SelectedIndex=0
 		Spinner2.SelectedIndex=0
 	End If
@@ -260,9 +260,13 @@ Sub ver_registro(lafecha As String)
 		Spinner1.SelectedIndex=Spinner1.IndexOf(cual)
 		cual =rs.GetString("Tipo2")
 		Spinner2.SelectedIndex=Spinner2.IndexOf(cual)
-		
+	Else
+		Fecha.Text=lafecha
+		Spinner1.SelectedIndex=0
+		Spinner2.SelectedIndex=0
 	End If
-
+		
+	
 End Sub
 
 Private Sub Borrar_Click
