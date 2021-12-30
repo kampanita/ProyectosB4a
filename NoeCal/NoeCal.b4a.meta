@@ -13,6 +13,6 @@ ModuleClosedNodes1=
 ModuleClosedNodes2=8
 ModuleClosedNodes3=
 ModuleClosedNodes4=
-NavigationStack=Main,Activity_Create,39,5,Diseñador Visual,Layout.bal,-100,6,Diseñador Visual,introducir.bal,-100,5,B4XDateTemplate2,Class_Globals,0,0,modulo1,SetLightTheme,192,0,modulo1,FechaPicker_Click,95,0,modulo2,verRegistros,64,0,modulo1,ver_reg,109,2,Main,Calendario_Click,88,0,modulo1,ver_registro,232,1
+NavigationStack=Diseñador Visual,Layout.bal,-100,6,Diseñador Visual,introducir.bal,-100,5,B4XDateTemplate2,Class_Globals,0,0,modulo1,SetLightTheme,192,0,modulo1,FechaPicker_Click,95,0,modulo2,verRegistros,64,0,modulo1,ver_reg,109,2,Main,Calendario_Click,88,0,Diseñador Visual,datetemplate2.bal,-100,1,modulo1,ver_registro,232,1
 SelectedBuild=0
 VisibleModules=4,2,3,1
