@@ -1,14 +1,16 @@
 ﻿Build1=Default,Noe.Cal
-File1=herramientas.png
-File2=introducir.bal
-File3=Layout.bal
-File4=NoeCal.db
-File5=ver.bal
-File6=ver_cal_row.bal
-File7=ver_rows.bal
-File8=ver_rows2.bal
-File9=ver2.bal
+File1=datetemplate2.bal
+File10=ver2.bal
+File2=herramientas.png
+File3=introducir.bal
+File4=Layout.bal
+File5=NoeCal.db
+File6=ver.bal
+File7=ver_cal_row.bal
+File8=ver_rows.bal
+File9=ver_rows2.bal
 FileGroup1=Default Group
+FileGroup10=Default Group
 FileGroup2=Default Group
 FileGroup3=Default Group
 FileGroup4=Default Group
@@ -25,14 +27,15 @@ Library4=xcustomlistview
 Library5=xui
 Library6=xui views
 ManifestCode='This code will be applied to the manifest file during compilation.~\n~'You do not need to modify it in most cases.~\n~'See this link for for more information: https://www.b4x.com/forum/showthread.php?p=78136~\n~AddManifestText(~\n~<uses-sdk android:minSdkVersion="14" android:targetSdkVersion="29"/>~\n~<supports-screens android:largeScreens="true" ~\n~    android:normalScreens="true" ~\n~    android:smallScreens="true" ~\n~    android:anyDensity="true"/>)~\n~SetApplicationAttribute(android:icon, "@drawable/icon")~\n~SetApplicationAttribute(android:label, "$LABEL$")~\n~CreateResourceFromFile(Macro, Themes.LightTheme)~\n~'End of default text.~\n~
-Module1=|relative|..\modulo1
-Module2=|relative|..\modulo2
-Module3=|relative|..\modulo3
-Module4=Starter
-NumberOfFiles=9
+Module1=B4XDateTemplate2
+Module2=modulo1
+Module3=modulo2
+Module4=modulo3
+Module5=Starter
+NumberOfFiles=10
 NumberOfLibraries=6
-NumberOfModules=4
-Version=11.16
+NumberOfModules=5
+Version=11.2
 @EndOfDesignText@
 #Region  Project Attributes 
 	#ApplicationLabel: NoeCal
@@ -61,10 +64,21 @@ Sub Globals
 	Private Introducir As Button
 	Private ver As Button
 	Private Calendario As Button
+	Private Dialog2 As B4XDialog
+	Dim DateTemplate2 As B4XDateTemplate2
 End Sub
 
 Sub Activity_Create(FirstTime As Boolean)
 	Activity.LoadLayout("Layout")
+	Dialog2.Initialize(Activity)
+	Dialog2.TitleBarColor=xui.Color_Transparent
+	Dialog2.BackgroundColor=xui.Color_LightGray
+	
+	DateTemplate2.Initialize
+	DateTemplate2.MinYear = 2021
+	DateTemplate2.MaxYear = 2050
+	Dialog2.Title = "Escoge la fecha"
+	
 End Sub
 
 Sub Activity_Resume
@@ -86,12 +100,22 @@ Private Sub Ver_Click
 	
 End Sub
 
-
+Sub datatotexT(datos As Long) As String
+	DateTime.DateFormat = "dd MMMM yyyy"
+	'Log(DateTime.Date(datos))
+	Return DateTime.Date(datos)
+	
+End Sub
 Private Sub Calendario_Click
 	'CallSubDelayed2(Activity,"verRegistros","verRegistros")
 	'CallSubDelayed2(StartActivity("modulo2"),"verRegistros")
-	StartActivity("modulo3")
+	'StartActivity("modulo3")
+	Wait For (Dialog2.ShowTemplate(DateTemplate2, "", "", "Cancel")) Complete (Result As Int)
 	
+	If Result = xui.DialogResponse_Positive Then
+		CallSubDelayed2("modulo1","ver_registro",datatotexT(DateTemplate2.Date))
+		'modulo1.ver_reg(modulo1.datatotexT(DateTemplate2.Date))
+	End If
 End Sub
 
 

@@ -340,6 +340,8 @@ public static anywheresoftware.b4a.objects.B4XViewWrapper.XUI _xui = null;
 public anywheresoftware.b4a.objects.ButtonWrapper _introducir = null;
 public anywheresoftware.b4a.objects.ButtonWrapper _ver = null;
 public anywheresoftware.b4a.objects.ButtonWrapper _calendario = null;
+public Noe.Cal.b4xdialog _dialog2 = null;
+public Noe.Cal.b4xdatetemplate2 _datetemplate2 = null;
 public b4a.example.dateutils _dateutils = null;
 public Noe.Cal.starter _starter = null;
 public Noe.Cal.modulo1 _modulo1 = null;
@@ -355,27 +357,104 @@ vis = vis | (modulo2.mostCurrent != null);
 vis = vis | (modulo3.mostCurrent != null);
 return vis;}
 public static String  _activity_create(boolean _firsttime) throws Exception{
- //BA.debugLineNum = 30;BA.debugLine="Sub Activity_Create(FirstTime As Boolean)";
- //BA.debugLineNum = 31;BA.debugLine="Activity.LoadLayout(\"Layout\")";
+ //BA.debugLineNum = 32;BA.debugLine="Sub Activity_Create(FirstTime As Boolean)";
+ //BA.debugLineNum = 33;BA.debugLine="Activity.LoadLayout(\"Layout\")";
 mostCurrent._activity.LoadLayout("Layout",mostCurrent.activityBA);
- //BA.debugLineNum = 32;BA.debugLine="End Sub";
+ //BA.debugLineNum = 34;BA.debugLine="Dialog2.Initialize(Activity)";
+mostCurrent._dialog2._initialize /*String*/ (mostCurrent.activityBA,(anywheresoftware.b4a.objects.B4XViewWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.B4XViewWrapper(), (java.lang.Object)(mostCurrent._activity.getObject())));
+ //BA.debugLineNum = 35;BA.debugLine="Dialog2.TitleBarColor=xui.Color_Transparent";
+mostCurrent._dialog2._titlebarcolor /*int*/  = _xui.Color_Transparent;
+ //BA.debugLineNum = 36;BA.debugLine="Dialog2.BackgroundColor=xui.Color_LightGray";
+mostCurrent._dialog2._backgroundcolor /*int*/  = _xui.Color_LightGray;
+ //BA.debugLineNum = 38;BA.debugLine="DateTemplate2.Initialize";
+mostCurrent._datetemplate2._initialize /*String*/ (mostCurrent.activityBA);
+ //BA.debugLineNum = 39;BA.debugLine="DateTemplate2.MinYear = 2021";
+mostCurrent._datetemplate2._minyear /*int*/  = (int) (2021);
+ //BA.debugLineNum = 40;BA.debugLine="DateTemplate2.MaxYear = 2050";
+mostCurrent._datetemplate2._maxyear /*int*/  = (int) (2050);
+ //BA.debugLineNum = 41;BA.debugLine="Dialog2.Title = \"Escoge la fecha\"";
+mostCurrent._dialog2._title /*Object*/  = (Object)("Escoge la fecha");
+ //BA.debugLineNum = 43;BA.debugLine="End Sub";
 return "";
 }
 public static String  _activity_pause(boolean _userclosed) throws Exception{
- //BA.debugLineNum = 38;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
- //BA.debugLineNum = 40;BA.debugLine="End Sub";
+ //BA.debugLineNum = 49;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
+ //BA.debugLineNum = 51;BA.debugLine="End Sub";
 return "";
 }
 public static String  _activity_resume() throws Exception{
- //BA.debugLineNum = 34;BA.debugLine="Sub Activity_Resume";
- //BA.debugLineNum = 36;BA.debugLine="End Sub";
+ //BA.debugLineNum = 45;BA.debugLine="Sub Activity_Resume";
+ //BA.debugLineNum = 47;BA.debugLine="End Sub";
 return "";
 }
-public static String  _calendario_click() throws Exception{
- //BA.debugLineNum = 54;BA.debugLine="Private Sub Calendario_Click";
- //BA.debugLineNum = 57;BA.debugLine="StartActivity(\"modulo3\")";
-anywheresoftware.b4a.keywords.Common.StartActivity(processBA,(Object)("modulo3"));
- //BA.debugLineNum = 59;BA.debugLine="End Sub";
+public static void  _calendario_click() throws Exception{
+ResumableSub_Calendario_Click rsub = new ResumableSub_Calendario_Click(null);
+rsub.resume(processBA, null);
+}
+public static class ResumableSub_Calendario_Click extends BA.ResumableSub {
+public ResumableSub_Calendario_Click(Noe.Cal.main parent) {
+this.parent = parent;
+}
+Noe.Cal.main parent;
+int _result = 0;
+
+@Override
+public void resume(BA ba, Object[] result) throws Exception{
+
+    while (true) {
+        switch (state) {
+            case -1:
+return;
+
+case 0:
+//C
+this.state = 1;
+ //BA.debugLineNum = 74;BA.debugLine="Wait For (Dialog2.ShowTemplate(DateTemplate2, \"\",";
+anywheresoftware.b4a.keywords.Common.WaitFor("complete", processBA, this, parent.mostCurrent._dialog2._showtemplate /*anywheresoftware.b4a.keywords.Common.ResumableSubWrapper*/ ((Object)(parent.mostCurrent._datetemplate2),(Object)(""),(Object)(""),(Object)("Cancel")));
+this.state = 5;
+return;
+case 5:
+//C
+this.state = 1;
+_result = (Integer) result[0];
+;
+ //BA.debugLineNum = 76;BA.debugLine="If Result = xui.DialogResponse_Positive Then";
+if (true) break;
+
+case 1:
+//if
+this.state = 4;
+if (_result==parent._xui.DialogResponse_Positive) { 
+this.state = 3;
+}if (true) break;
+
+case 3:
+//C
+this.state = 4;
+ //BA.debugLineNum = 77;BA.debugLine="CallSubDelayed2(\"modulo1\",\"ver_registro\",datatot";
+anywheresoftware.b4a.keywords.Common.CallSubDelayed2(processBA,(Object)("modulo1"),"ver_registro",(Object)(_datatotext(parent.mostCurrent._datetemplate2._getdate /*long*/ ())));
+ if (true) break;
+
+case 4:
+//C
+this.state = -1;
+;
+ //BA.debugLineNum = 80;BA.debugLine="End Sub";
+if (true) break;
+
+            }
+        }
+    }
+}
+public static void  _complete(int _result) throws Exception{
+}
+public static String  _datatotext(long _datos) throws Exception{
+ //BA.debugLineNum = 64;BA.debugLine="Sub datatotexT(datos As Long) As String";
+ //BA.debugLineNum = 65;BA.debugLine="DateTime.DateFormat = \"dd MMMM yyyy\"";
+anywheresoftware.b4a.keywords.Common.DateTime.setDateFormat("dd MMMM yyyy");
+ //BA.debugLineNum = 67;BA.debugLine="Return DateTime.Date(datos)";
+if (true) return anywheresoftware.b4a.keywords.Common.DateTime.Date(_datos);
+ //BA.debugLineNum = 69;BA.debugLine="End Sub";
 return "";
 }
 public static String  _globals() throws Exception{
@@ -386,14 +465,18 @@ mostCurrent._introducir = new anywheresoftware.b4a.objects.ButtonWrapper();
 mostCurrent._ver = new anywheresoftware.b4a.objects.ButtonWrapper();
  //BA.debugLineNum = 27;BA.debugLine="Private Calendario As Button";
 mostCurrent._calendario = new anywheresoftware.b4a.objects.ButtonWrapper();
- //BA.debugLineNum = 28;BA.debugLine="End Sub";
+ //BA.debugLineNum = 28;BA.debugLine="Private Dialog2 As B4XDialog";
+mostCurrent._dialog2 = new Noe.Cal.b4xdialog();
+ //BA.debugLineNum = 29;BA.debugLine="Dim DateTemplate2 As B4XDateTemplate2";
+mostCurrent._datetemplate2 = new Noe.Cal.b4xdatetemplate2();
+ //BA.debugLineNum = 30;BA.debugLine="End Sub";
 return "";
 }
 public static String  _introducir_click() throws Exception{
- //BA.debugLineNum = 42;BA.debugLine="Private Sub Introducir_Click";
- //BA.debugLineNum = 43;BA.debugLine="StartActivity(\"modulo1\")";
+ //BA.debugLineNum = 53;BA.debugLine="Private Sub Introducir_Click";
+ //BA.debugLineNum = 54;BA.debugLine="StartActivity(\"modulo1\")";
 anywheresoftware.b4a.keywords.Common.StartActivity(processBA,(Object)("modulo1"));
- //BA.debugLineNum = 44;BA.debugLine="End Sub";
+ //BA.debugLineNum = 55;BA.debugLine="End Sub";
 return "";
 }
 
@@ -422,10 +505,10 @@ _xui = new anywheresoftware.b4a.objects.B4XViewWrapper.XUI();
 return "";
 }
 public static String  _ver_click() throws Exception{
- //BA.debugLineNum = 46;BA.debugLine="Private Sub Ver_Click";
- //BA.debugLineNum = 49;BA.debugLine="StartActivity(\"modulo2\")";
+ //BA.debugLineNum = 57;BA.debugLine="Private Sub Ver_Click";
+ //BA.debugLineNum = 60;BA.debugLine="StartActivity(\"modulo2\")";
 anywheresoftware.b4a.keywords.Common.StartActivity(processBA,(Object)("modulo2"));
- //BA.debugLineNum = 51;BA.debugLine="End Sub";
+ //BA.debugLineNum = 62;BA.debugLine="End Sub";
 return "";
 }
 }

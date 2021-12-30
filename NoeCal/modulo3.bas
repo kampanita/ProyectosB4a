@@ -44,15 +44,35 @@ Sub Activity_Create(FirstTime As Boolean)
 	'Do not forget to load the layout file created with the visual designer. For example:
 	'Activity.LoadLayout("Layout1")
 	Activity.LoadLayout("ver2")
+	sql.Initialize(File.DirInternal, "NoeCal.db", False)
+	Dim años As List
+	Dim meses As List
+	años.Initialize
+	meses.Initialize
+
+	DateTime.DateFormat="yyyy"
+	For a=DateTime.GetYear(DateTime.Now)-5 To DateTime.GetYear(DateTime.Now)+5
+		años.Add(a)
+	Next
+	SpinnerAno2.AddAll(años)
+	DateTime.DateFormat="MMM"
+	meses=DateUtils.GetMonthsNames
+	SpinnerMEs2.AddAll(meses)
+	SpinnerAno2.SelectedIndex=5 '<< este año
+	SpinnerMEs2.SelectedIndex=DateTime.GetMonth(DateTime.Now)-1 '<< este mes
+
 End Sub
 
 Sub Activity_Resume
-	DateTime.DateFormat="m"
+	DateTime.DateFormat="MM"
 	Log(DateTime.Now)
 	Log(DateTime.Date(DateTime.Now))
 	Dim mes As String =DateTime.Date(DateTime.Now)
+	Log(mes)
+	
 	DateTime.DateFormat="yyyy"
 	Dim año As String =DateTime.Date(DateTime.Now)
+	Log(año)
 	VerCalendario(mes, año)
 	
 End Sub
@@ -72,35 +92,36 @@ Sub VerCalendario(mes As Int, año As Int)
 	
 	Dim lista_dias As List
 	lista_dias.initialize
-	For i=1 To 7
+	For i=1 To dias_mes
 		lista_dias.Add(i) 	
+		Grid2.Add(crea_dia(lista_dias),1)
 	Next
-	Grid2.Add(crea_dia(lista_dias),1)
 	
-	lista_dias.initialize
-	For i=8 To 14
-		lista_dias.Add(i)
-	Next
-	Grid2.Add(crea_dia(lista_dias),2)
 	
-	lista_dias.Initialize
-	For i=15 To 21
-		lista_dias.Add(i)
-	Next
-	Grid2.Add(crea_dia(lista_dias),3)
-
-	lista_dias.Initialize	
-	For i=22 To 28
-			lista_dias.Add(i)
-	Next
-	Grid2.Add(crea_dia(lista_dias),4)
-
-	If dias_mes >= 29 Then
-		For i=29 To dias_mes
-			lista_dias.Add(i)
-		Next
-		Grid2.Add(crea_dia(lista_dias),5)
-	End If
+'	lista_dias.initialize
+'	For i=8 To 14
+'		lista_dias.Add(i)
+'	Next
+'	Grid2.Add(crea_dia(lista_dias),2)
+'	
+'	lista_dias.Initialize
+'	For i=15 To 21
+'		lista_dias.Add(i)
+'	Next
+'	Grid2.Add(crea_dia(lista_dias),3)
+'
+'	lista_dias.Initialize	
+'	For i=22 To 28
+'			lista_dias.Add(i)
+'	Next
+'	Grid2.Add(crea_dia(lista_dias),4)
+'
+'	If dias_mes >= 29 Then
+'		For i=29 To dias_mes
+'			lista_dias.Add(i)
+'		Next
+'		Grid2.Add(crea_dia(lista_dias),5)
+'	End If
 	
 
 
@@ -114,23 +135,28 @@ Sub crea_dia(lista As List) As B4XView
 	Dim rs As ResultSet
 	Dim lista_tipos As List
 	lista_tipos.Initialize
+	
 	For Each ddd In lista		
 		where = ddd & " " & SpinnerMEs2.SelectedItem&" "&SpinnerAno2.Selecteditem
 		rs=sql.ExecQuery2("select tipo2 from Dias where Dia=?",Array As String(where))
 		If rs.RowCount>1 Then
-			lista_tipos.add(rs.GetString("Tipo"))
+			lista_tipos.add(rs.GetString("Tipo2"))
+		Else	
+			lista_tipos.Add("")
 		End If
 	Next
 	cal_dia1.Text=lista.Get(0)
 	cal_tipo1.Text=lista_tipos.Get(0)
-	Select cal_tipo1.Text.SubString(1)
+	If cal_tipo1.text<>"" Then
+	 Select cal_tipo1.Text.SubString(1)
 		Case "M"
 			cal_tipo1.Color=xui.Color_Red
 		Case "N"
 			cal_tipo1.Color=xui.Color_Magenta
 		Case "R"
 			cal_tipo1.Color=xui.Color_Green			
-	End Select
+	 End Select
+	End If
 	cal_dia2.Text=lista.Get(1)
 	cal_tipo2.Text=lista_tipos.Get(1)
 	cal_dia3.Text=lista.Get(2)

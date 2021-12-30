@@ -29,8 +29,9 @@ Sub Globals
 	Private Label1 As Label
 	Private Label2 As Label
 	Private Label3 As Label
-	Private Dialog As B4XDialog
+	
 	Private Panel1 As Panel
+	Private Dialog As B4XDialog
 	Dim DateTemplate As B4XDateTemplate
 	Private Spinner2 As Spinner
 	Private Incidencia As EditText
@@ -96,10 +97,15 @@ Private Sub FechaPicker_Click
 		Fecha.Text=datatotexT(DateTemplate.Date)
 	End If
 
+	ver_reg(Fecha.Text)
+	
+	
+End Sub
 
+Sub ver_reg(laFecha As String)
 	Dim rs As ResultSet
 	Dim respuesta As Int
-	respuesta=sql.ExecQuerySingleResult($"select count(*) from dias where dia='"$&Fecha.Text&$"'"$ )
+	respuesta=sql.ExecQuerySingleResult($"select count(*) from dias where dia='"$&laFecha&$"'"$ )
 	'Log(respuesta)
 	
 	If respuesta=1 Then
@@ -117,11 +123,10 @@ Private Sub FechaPicker_Click
 		
 		Incidencia.text=rs.getString("Incidencia")
 	Else
-		Horas.Text=""			
+		Horas.Text=""
 		Spinner1.SelectedIndex=0
 		Spinner2.SelectedIndex=0
 	End If
-	
 End Sub
 
 Sub datatotexT(datos As Long) As String
