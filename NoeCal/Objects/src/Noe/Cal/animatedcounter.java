@@ -43,7 +43,6 @@ public Noe.Cal.main _main = null;
 public Noe.Cal.starter _starter = null;
 public Noe.Cal.modulo1 _modulo1 = null;
 public Noe.Cal.modulo2 _modulo2 = null;
-public Noe.Cal.modulo3 _modulo3 = null;
 public Noe.Cal.xuiviewsutils _xuiviewsutils = null;
 public String  _base_resize(double _width,double _height) throws Exception{
 int _columns = 0;

@@ -129,7 +129,6 @@ public b4a.example.dateutils _dateutils = null;
 public Noe.Cal.main _main = null;
 public Noe.Cal.modulo1 _modulo1 = null;
 public Noe.Cal.modulo2 _modulo2 = null;
-public Noe.Cal.modulo3 _modulo3 = null;
 public Noe.Cal.xuiviewsutils _xuiviewsutils = null;
 public static boolean  _application_error(anywheresoftware.b4a.objects.B4AException _error,String _stacktrace) throws Exception{
  //BA.debugLineNum = 35;BA.debugLine="Sub Application_Error (Error As Exception, StackTr";

@@ -47,7 +47,6 @@ public Noe.Cal.main _main = null;
 public Noe.Cal.starter _starter = null;
 public Noe.Cal.modulo1 _modulo1 = null;
 public Noe.Cal.modulo2 _modulo2 = null;
-public Noe.Cal.modulo3 _modulo3 = null;
 public Noe.Cal.xuiviewsutils _xuiviewsutils = null;
 public String  _additemstolist(anywheresoftware.b4a.objects.collections.List _li,String _full) throws Exception{
 int _i = 0;
@@ -383,7 +382,7 @@ _count = (int) (_count+1);
  }
 };
  //BA.debugLineNum = 227;BA.debugLine="Log(\"Index time: \" & (DateTime.Now - startTime) &";
-__c.LogImpl("919529759","Index time: "+BA.NumberToString((__c.DateTime.getNow()-_starttime))+" ms ("+BA.NumberToString(_items.getSize())+" Items)",0);
+__c.LogImpl("919136543","Index time: "+BA.NumberToString((__c.DateTime.getNow()-_starttime))+" ms ("+BA.NumberToString(_items.getSize())+" Items)",0);
  //BA.debugLineNum = 228;BA.debugLine="AllItems = Items";
 _allitems = _items;
  //BA.debugLineNum = 229;BA.debugLine="Return Array(prefixList, substringList, AllItems)";

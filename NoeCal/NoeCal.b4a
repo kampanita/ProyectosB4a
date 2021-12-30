@@ -1,16 +1,13 @@
 ﻿Build1=Default,Noe.Cal
-File1=datetemplate2.bal
-File10=ver2.bal
-File2=herramientas.png
+File1=anciandos.png
+File2=datetemplate2.bal
 File3=introducir.bal
 File4=Layout.bal
 File5=NoeCal.db
 File6=ver.bal
-File7=ver_cal_row.bal
-File8=ver_rows.bal
-File9=ver_rows2.bal
+File7=ver_rows.bal
+File8=ver_rows2.bal
 FileGroup1=Default Group
-FileGroup10=Default Group
 FileGroup2=Default Group
 FileGroup3=Default Group
 FileGroup4=Default Group
@@ -18,7 +15,6 @@ FileGroup5=Default Group
 FileGroup6=Default Group
 FileGroup7=Default Group
 FileGroup8=Default Group
-FileGroup9=Default Group
 Group=Default Group
 Library1=core
 Library2=dateutils
@@ -30,11 +26,10 @@ ManifestCode='This code will be applied to the manifest file during compilation.
 Module1=B4XDateTemplate2
 Module2=modulo1
 Module3=modulo2
-Module4=modulo3
-Module5=Starter
-NumberOfFiles=10
+Module4=Starter
+NumberOfFiles=8
 NumberOfLibraries=6
-NumberOfModules=5
+NumberOfModules=4
 Version=11.2
 @EndOfDesignText@
 #Region  Project Attributes 
@@ -77,7 +72,8 @@ Sub Activity_Create(FirstTime As Boolean)
 	DateTemplate2.Initialize
 	DateTemplate2.MinYear = 2021
 	DateTemplate2.MaxYear = 2050
-	Dialog2.Title = "Escoge la fecha"
+	'Dialog2.TitleBar.Enabled=False
+	Dialog2.Title = ""
 	
 End Sub
 
@@ -109,7 +105,7 @@ End Sub
 Private Sub Calendario_Click
 	'CallSubDelayed2(Activity,"verRegistros","verRegistros")
 	'CallSubDelayed2(StartActivity("modulo2"),"verRegistros")
-	'StartActivity("modulo3")
+	
 	Wait For (Dialog2.ShowTemplate(DateTemplate2, "", "", "Cancel")) Complete (Result As Int)
 	
 	If Result = xui.DialogResponse_Positive Then

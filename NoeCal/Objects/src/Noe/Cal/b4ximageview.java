@@ -40,7 +40,6 @@ public Noe.Cal.main _main = null;
 public Noe.Cal.starter _starter = null;
 public Noe.Cal.modulo1 _modulo1 = null;
 public Noe.Cal.modulo2 _modulo2 = null;
-public Noe.Cal.modulo3 _modulo3 = null;
 public Noe.Cal.xuiviewsutils _xuiviewsutils = null;
 public String  _base_resize(double _width,double _height) throws Exception{
  //BA.debugLineNum = 40;BA.debugLine="Private Sub Base_Resize (Width As Double, Height A";
@@ -264,7 +263,7 @@ _imageviewheight = (float) (_mbitmap.getHeight());
  break; }
 default: {
  //BA.debugLineNum = 104;BA.debugLine="Log(\"Invalid resize mode: \"  & mResizeMode)";
-__c.LogImpl("913762587","Invalid resize mode: "+_mresizemode,0);
+__c.LogImpl("913369371","Invalid resize mode: "+_mresizemode,0);
  break; }
 }
 ;

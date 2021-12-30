@@ -122,7 +122,7 @@ Private Sub DrawDays
 			y=(row + 0.3)* boxH + vCorrection
 			y2 = (row + 0.7)* boxH + vCorrection
 			
-			'Pinto el dia que tiene datos
+			'Pinto el dia que tie
 			cvs.DrawText(day, x, y, daysFont, xui.color_white , "CENTER")
 			
 			'Pinto el tipo

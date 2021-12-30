@@ -354,7 +354,6 @@ public b4a.example.dateutils _dateutils = null;
 public Noe.Cal.main _main = null;
 public Noe.Cal.starter _starter = null;
 public Noe.Cal.modulo1 _modulo1 = null;
-public Noe.Cal.modulo3 _modulo3 = null;
 public Noe.Cal.xuiviewsutils _xuiviewsutils = null;
 
 public static void initializeProcessGlobals() {

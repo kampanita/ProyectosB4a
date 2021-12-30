@@ -18,7 +18,6 @@ public Noe.Cal.main _main = null;
 public Noe.Cal.starter _starter = null;
 public Noe.Cal.modulo1 _modulo1 = null;
 public Noe.Cal.modulo2 _modulo2 = null;
-public Noe.Cal.modulo3 _modulo3 = null;
 public static String  _addstubtoclvifneeded(anywheresoftware.b4a.BA _ba,b4a.example3.customlistview _customlistview1,int _color) throws Exception{
 b4a.example3.customlistview._clvitem _lastitem = null;
 anywheresoftware.b4a.objects.B4XViewWrapper _p = null;
