@@ -496,7 +496,7 @@ _where = "";
  //BA.debugLineNum = 76;BA.debugLine="where=\"%\" & SpinnerMEs.SelectedItem & \"%\" & Spinn";
 _where = "%"+mostCurrent._spinnermes.getSelectedItem()+"%"+mostCurrent._spinnerano.getSelectedItem()+"%";
  //BA.debugLineNum = 80;BA.debugLine="rs=sql.ExecQuery2(\"select Dia,Horas,Tipo,Tipo2,in";
-_rs = (anywheresoftware.b4a.sql.SQL.ResultSetWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.sql.SQL.ResultSetWrapper(), (android.database.Cursor)(_sql.ExecQuery2("select Dia,Horas,Tipo,Tipo2,incidencia from dias where dia like ? order by Dia asc",new String[]{_where})));
+_rs = (anywheresoftware.b4a.sql.SQL.ResultSetWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.sql.SQL.ResultSetWrapper(), (android.database.Cursor)(_sql.ExecQuery2("select Dia,Horas,Tipo,Tipo2,incidencia from dias where dia like ? and tipo2<>'LIB' order by Dia asc",new String[]{_where})));
  //BA.debugLineNum = 82;BA.debugLine="Grid.Clear";
 mostCurrent._grid._clear();
  //BA.debugLineNum = 83;BA.debugLine="Do While rs.NextRow";

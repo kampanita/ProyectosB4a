@@ -427,7 +427,9 @@ return;
 case 0:
 //C
 this.state = 1;
- //BA.debugLineNum = 88;BA.debugLine="Wait For (Dialog2.ShowTemplate(DateTemplate2, \"\",";
+ //BA.debugLineNum = 85;BA.debugLine="llamador=\"\"";
+parent._llamador = "";
+ //BA.debugLineNum = 86;BA.debugLine="Wait For (Dialog2.ShowTemplate(DateTemplate2, \"\",";
 anywheresoftware.b4a.keywords.Common.WaitFor("complete", processBA, this, parent.mostCurrent._dialog2._showtemplate /*anywheresoftware.b4a.keywords.Common.ResumableSubWrapper*/ ((Object)(parent.mostCurrent._datetemplate2),(Object)(""),(Object)(""),(Object)("Cancel")));
 this.state = 5;
 return;
@@ -436,7 +438,7 @@ case 5:
 this.state = 1;
 _result = (Integer) result[0];
 ;
- //BA.debugLineNum = 90;BA.debugLine="If Result = xui.DialogResponse_Positive Then";
+ //BA.debugLineNum = 88;BA.debugLine="If Result = xui.DialogResponse_Positive Then";
 if (true) break;
 
 case 1:
@@ -449,9 +451,9 @@ this.state = 3;
 case 3:
 //C
 this.state = 4;
- //BA.debugLineNum = 91;BA.debugLine="llamador=\"Cal\"";
+ //BA.debugLineNum = 89;BA.debugLine="llamador=\"Cal\"";
 parent._llamador = "Cal";
- //BA.debugLineNum = 92;BA.debugLine="CallSubDelayed2(\"modulo1\",\"ver_registro\",datatot";
+ //BA.debugLineNum = 90;BA.debugLine="CallSubDelayed2(\"modulo1\",\"ver_registro\",datatot";
 anywheresoftware.b4a.keywords.Common.CallSubDelayed2(processBA,(Object)("modulo1"),"ver_registro",(Object)(_datatotext(parent.mostCurrent._datetemplate2._getdate /*long*/ ())));
  if (true) break;
 
@@ -459,7 +461,7 @@ case 4:
 //C
 this.state = -1;
 ;
- //BA.debugLineNum = 95;BA.debugLine="End Sub";
+ //BA.debugLineNum = 92;BA.debugLine="End Sub";
 if (true) break;
 
             }

@@ -44,7 +44,7 @@ Sub Activity_Create(FirstTime As Boolean)
 	'Activity.LoadLayout("Layout1")
 	Activity.LoadLayout("introducir")
 	Spinner1.addall(Array As String("","Dia Normal","Dia Festivo Ordinario","Dia Festivo Extraordinario","Noche Normal","Noche Festivo Ordinario","Noche Festivo Extraordinario"))
-	Spinner2.addall(Array As String("","M31","M32","M33","M34","M41","M42","M43","M51","M52","T31","T32","T33","T34","T41","T42","T43","T5","N3","N4","N5","RT"))
+	Spinner2.addall(Array As String("","M31","M32","M33","M34","M41","M42","M43","M51","M52","T31","T32","T33","T34","T41","T42","T43","T5","N3","N4","N5","RT","LIB"))
 	Horas.Text=""
 	Incidencia.Text=""
 	Fecha.Text=""
@@ -58,8 +58,10 @@ Sub Activity_Create(FirstTime As Boolean)
 	DateTemplate.Initialize
 	DateTemplate.MinYear = 1973
 	DateTemplate.MaxYear = 2100
+	
 	'Dialog.Title = "Escoge la fecha"
 	Dialog.Title = ""
+	
 	SetLightTheme
 	
 	
@@ -197,13 +199,14 @@ Sub SetLightTheme
 	Dim TextColor As Int = 0xFF5B5B5B
 	'Dialog.BackgroundColor = xui.Color_White
 	Dialog.BackgroundColor = xui.Color_LightGray
-	Dialog.ButtonsColor = xui.Color_White
-	Dialog.ButtonsTextColor = Dialog.TitleBarColor
+	'Dialog.ButtonsColor = xui.Color_Black
+	'Dialog.ButtonsTextColor = Dialog.TitleBarColor
 	Dialog.BorderColor = xui.Color_Transparent
 	DateTemplate.DaysInWeekColor = xui.Color_Black
 	DateTemplate.SelectedColor = 0xFF39D7CE
 	DateTemplate.HighlightedColor = 0xFF00CEFF
-	DateTemplate.DaysInMonthColor = TextColor
+	'DateTemplate.DaysInMonthColor = TextColor
+	DateTemplate.DaysInMonthColor = xui.color_white
 	DateTemplate.lblMonth.TextColor = TextColor
 	DateTemplate.lblYear.TextColor = TextColor
 	DateTemplate.SelectedColor = 0xFFFFA761
@@ -235,13 +238,17 @@ Private Sub Spinner2_ItemClick (Position As Int, Value As Object)
 	If valor.StartsWith("RT") Then
 		Horas.Text="2.25"
 	End If
+	If valor.StartsWith("LIB") Then
+		Horas.Text="0"
+		Spinner1.SelectedIndex=1
+	End If
 End Sub
 
 Sub ver_registro(lafecha As String)
 	
 	Activity.LoadLayout("introducir")
 	Spinner1.addall(Array As String("","Dia Normal","Dia Festivo Ordinario","Dia Festivo Extraordinario","Noche Normal","Noche Festivo Ordinario","Noche Festivo Extraordinario"))
-	Spinner2.addall(Array As String("","M31","M32","M33","M34","M41","M42","M43","M51","M52","T31","T32","T33","T34","T41","T42","T43","T5","N3","N4","N5","RT"))
+	Spinner2.addall(Array As String("","M31","M32","M33","M34","M41","M42","M43","M51","M52","T31","T32","T33","T34","T41","T42","T43","T5","N3","N4","N5","RT","LIB"))
 	
 	Dim rs As ResultSet
 	

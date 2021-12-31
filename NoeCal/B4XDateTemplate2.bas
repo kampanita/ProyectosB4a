@@ -65,6 +65,9 @@ Public Sub Initialize
 	#End If
 	DaysOfWeekNames.Initialize
 	DaysOfWeekNames.AddAll(DateUtils.GetDaysNames)
+	'Dim TextColor As Int = 0xFF5B5B5B
+	'lblMonth.TextColor = TextColor
+	'lblYear.TextColor = TextColor
 End Sub
 
 Private Sub DrawDays
@@ -109,13 +112,15 @@ Private Sub DrawDays
 			
 			Select tipo2.SubString2(0,1)
 				Case "M"
-					color=xui.Color_Red
+					color=xui.Color_Green
 				Case "T"
 					color=xui.Color_Magenta
 				Case "N"
-					color=xui.Color_Green
+					color=xui.Color_Red
 				Case "R"
-					color=xui.Color_cyan
+					color=xui.Color_Cyan
+				Case "L"
+					color=xui.Color_DarkGray
 			End Select
 			
 			x=(((dayOfWeekOffset + day - 1) Mod 7) + 0.5) * boxW

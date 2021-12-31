@@ -116,15 +116,12 @@ Sub datatotexT(datos As Long) As String
 End Sub
 
 Private Sub Calendario_Click
-	'CallSubDelayed2(Activity,"verRegistros","verRegistros")
-	'CallSubDelayed2(StartActivity("modulo2"),"verRegistros")
-	
+	llamador=""
 	Wait For (Dialog2.ShowTemplate(DateTemplate2, "", "", "Cancel")) Complete (Result As Int)
 	
 	If Result = xui.DialogResponse_Positive Then
 		llamador="Cal"
 		CallSubDelayed2("modulo1","ver_registro",datatotexT(DateTemplate2.Date))
-		'modulo1.ver_reg(modulo1.datatotexT(DateTemplate2.Date))
 	End If
 End Sub
 

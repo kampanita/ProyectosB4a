@@ -83,7 +83,7 @@ Sub leer_registros
 
 	'Lineas de Totales
 
-	rs=sql.ExecQuery2("select Dia,Horas,Tipo,Tipo2,incidencia from dias where dia like ? order by Dia asc",Array As String(where))
+	rs=sql.ExecQuery2("select Dia,Horas,Tipo,Tipo2,incidencia from dias where dia like ? and tipo2<>'LIB' order by Dia asc",Array As String(where))
 	
 	Grid.Clear
 	Do While rs.NextRow

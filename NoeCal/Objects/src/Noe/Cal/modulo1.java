@@ -371,73 +371,73 @@ anywheresoftware.b4a.sql.SQL.ResultSetWrapper _rs = null;
 int _respuesta = 0;
 String _query = "";
 String _tipo = "";
- //BA.debugLineNum = 139;BA.debugLine="Private Sub Aceptar_Click";
- //BA.debugLineNum = 140;BA.debugLine="If Horas.Text<>\"\" And Fecha.Text <> \"\" And Spinne";
+ //BA.debugLineNum = 141;BA.debugLine="Private Sub Aceptar_Click";
+ //BA.debugLineNum = 142;BA.debugLine="If Horas.Text<>\"\" And Fecha.Text <> \"\" And Spinne";
 if ((mostCurrent._horas.getText()).equals("") == false && (mostCurrent._fecha.getText()).equals("") == false && mostCurrent._spinner1.getSelectedIndex()!=0 && mostCurrent._spinner2.getSelectedIndex()!=0) { 
- //BA.debugLineNum = 141;BA.debugLine="Dim rs As ResultSet";
+ //BA.debugLineNum = 143;BA.debugLine="Dim rs As ResultSet";
 _rs = new anywheresoftware.b4a.sql.SQL.ResultSetWrapper();
- //BA.debugLineNum = 143;BA.debugLine="Dim respuesta As Int";
+ //BA.debugLineNum = 145;BA.debugLine="Dim respuesta As Int";
 _respuesta = 0;
- //BA.debugLineNum = 144;BA.debugLine="respuesta=sql.ExecQuerySingleResult($\"select cou";
+ //BA.debugLineNum = 146;BA.debugLine="respuesta=sql.ExecQuerySingleResult($\"select cou";
 _respuesta = (int)(Double.parseDouble(_sql.ExecQuerySingleResult(("select count(*) from dias where dia='")+mostCurrent._fecha.getText()+("'"))));
- //BA.debugLineNum = 146;BA.debugLine="Dim query As String";
+ //BA.debugLineNum = 148;BA.debugLine="Dim query As String";
 _query = "";
- //BA.debugLineNum = 147;BA.debugLine="If respuesta=0 Then";
+ //BA.debugLineNum = 149;BA.debugLine="If respuesta=0 Then";
 if (_respuesta==0) { 
- //BA.debugLineNum = 149;BA.debugLine="Dim tipo As String";
+ //BA.debugLineNum = 151;BA.debugLine="Dim tipo As String";
 _tipo = "";
- //BA.debugLineNum = 150;BA.debugLine="tipo=Spinner1.SelectedItem";
+ //BA.debugLineNum = 152;BA.debugLine="tipo=Spinner1.SelectedItem";
 _tipo = mostCurrent._spinner1.getSelectedItem();
- //BA.debugLineNum = 151;BA.debugLine="query=\"insert into dias(dia,horas,tipo,tipo2,in";
+ //BA.debugLineNum = 153;BA.debugLine="query=\"insert into dias(dia,horas,tipo,tipo2,in";
 _query = "insert into dias(dia,horas,tipo,tipo2,incidencia) values(?,?,?,?,?)";
- //BA.debugLineNum = 152;BA.debugLine="Try";
-try { //BA.debugLineNum = 153;BA.debugLine="sql.ExecNonQuery2(query,Array As Object(Fecha.";
+ //BA.debugLineNum = 154;BA.debugLine="Try";
+try { //BA.debugLineNum = 155;BA.debugLine="sql.ExecNonQuery2(query,Array As Object(Fecha.";
 _sql.ExecNonQuery2(_query,anywheresoftware.b4a.keywords.Common.ArrayToList(new Object[]{(Object)(mostCurrent._fecha.getText()),(Object)(mostCurrent._horas.getText()),(Object)(_tipo),(Object)(mostCurrent._spinner2.getSelectedItem()),(Object)(mostCurrent._incidencia.getText())}));
  } 
        catch (Exception e13) {
-			processBA.setLastException(e13); //BA.debugLineNum = 155;BA.debugLine="Log(LastException)";
-anywheresoftware.b4a.keywords.Common.LogImpl("51572880",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
+			processBA.setLastException(e13); //BA.debugLineNum = 157;BA.debugLine="Log(LastException)";
+anywheresoftware.b4a.keywords.Common.LogImpl("722806544",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
  };
- //BA.debugLineNum = 157;BA.debugLine="rs=sql.ExecQuery(\"commit\")";
+ //BA.debugLineNum = 159;BA.debugLine="rs=sql.ExecQuery(\"commit\")";
 _rs = (anywheresoftware.b4a.sql.SQL.ResultSetWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.sql.SQL.ResultSetWrapper(), (android.database.Cursor)(_sql.ExecQuery("commit")));
- //BA.debugLineNum = 159;BA.debugLine="rs.Close";
+ //BA.debugLineNum = 161;BA.debugLine="rs.Close";
 _rs.Close();
- //BA.debugLineNum = 160;BA.debugLine="ToastMessageShow(\"Se ha guardado el parte en la";
+ //BA.debugLineNum = 162;BA.debugLine="ToastMessageShow(\"Se ha guardado el parte en la";
 anywheresoftware.b4a.keywords.Common.ToastMessageShow(BA.ObjectToCharSequence("Se ha guardado el parte en la BBDD"),anywheresoftware.b4a.keywords.Common.True);
- //BA.debugLineNum = 162;BA.debugLine="Fecha.Text=\"\"";
+ //BA.debugLineNum = 164;BA.debugLine="Fecha.Text=\"\"";
 mostCurrent._fecha.setText(BA.ObjectToCharSequence(""));
- //BA.debugLineNum = 163;BA.debugLine="Horas.Text=\"\"";
+ //BA.debugLineNum = 165;BA.debugLine="Horas.Text=\"\"";
 mostCurrent._horas.setText(BA.ObjectToCharSequence(""));
- //BA.debugLineNum = 164;BA.debugLine="Incidencia.Text=\"\"";
+ //BA.debugLineNum = 166;BA.debugLine="Incidencia.Text=\"\"";
 mostCurrent._incidencia.setText(BA.ObjectToCharSequence(""));
- //BA.debugLineNum = 165;BA.debugLine="Spinner2.SelectedIndex=0";
+ //BA.debugLineNum = 167;BA.debugLine="Spinner2.SelectedIndex=0";
 mostCurrent._spinner2.setSelectedIndex((int) (0));
- //BA.debugLineNum = 166;BA.debugLine="Spinner1.SelectedIndex=0";
+ //BA.debugLineNum = 168;BA.debugLine="Spinner1.SelectedIndex=0";
 mostCurrent._spinner1.setSelectedIndex((int) (0));
  }else {
- //BA.debugLineNum = 168;BA.debugLine="Dim tipo As String";
+ //BA.debugLineNum = 170;BA.debugLine="Dim tipo As String";
 _tipo = "";
- //BA.debugLineNum = 169;BA.debugLine="tipo=Spinner1.SelectedItem";
+ //BA.debugLineNum = 171;BA.debugLine="tipo=Spinner1.SelectedItem";
 _tipo = mostCurrent._spinner1.getSelectedItem();
- //BA.debugLineNum = 170;BA.debugLine="query=\"update dias set Horas=?,tipo=?,tipo2=?,i";
+ //BA.debugLineNum = 172;BA.debugLine="query=\"update dias set Horas=?,tipo=?,tipo2=?,i";
 _query = "update dias set Horas=?,tipo=?,tipo2=?,incidencia=? where dia='"+mostCurrent._fecha.getText()+"'";
- //BA.debugLineNum = 171;BA.debugLine="Try";
-try { //BA.debugLineNum = 172;BA.debugLine="sql.ExecNonQuery2(query,Array As Object(Horas.";
+ //BA.debugLineNum = 173;BA.debugLine="Try";
+try { //BA.debugLineNum = 174;BA.debugLine="sql.ExecNonQuery2(query,Array As Object(Horas.";
 _sql.ExecNonQuery2(_query,anywheresoftware.b4a.keywords.Common.ArrayToList(new Object[]{(Object)(mostCurrent._horas.getText()),(Object)(_tipo),(Object)(mostCurrent._spinner2.getSelectedItem()),(Object)(mostCurrent._incidencia.getText())}));
  } 
        catch (Exception e30) {
-			processBA.setLastException(e30); //BA.debugLineNum = 174;BA.debugLine="Log(LastException)";
-anywheresoftware.b4a.keywords.Common.LogImpl("51572899",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
+			processBA.setLastException(e30); //BA.debugLineNum = 176;BA.debugLine="Log(LastException)";
+anywheresoftware.b4a.keywords.Common.LogImpl("722806563",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
  };
- //BA.debugLineNum = 176;BA.debugLine="rs=sql.ExecQuery(\"commit\")";
+ //BA.debugLineNum = 178;BA.debugLine="rs=sql.ExecQuery(\"commit\")";
 _rs = (anywheresoftware.b4a.sql.SQL.ResultSetWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.sql.SQL.ResultSetWrapper(), (android.database.Cursor)(_sql.ExecQuery("commit")));
- //BA.debugLineNum = 179;BA.debugLine="rs.Close";
+ //BA.debugLineNum = 181;BA.debugLine="rs.Close";
 _rs.Close();
- //BA.debugLineNum = 180;BA.debugLine="ToastMessageShow(\"Se ha guardado el parte en la";
+ //BA.debugLineNum = 182;BA.debugLine="ToastMessageShow(\"Se ha guardado el parte en la";
 anywheresoftware.b4a.keywords.Common.ToastMessageShow(BA.ObjectToCharSequence("Se ha guardado el parte en la BBDD"),anywheresoftware.b4a.keywords.Common.False);
  };
  };
- //BA.debugLineNum = 186;BA.debugLine="End Sub";
+ //BA.debugLineNum = 188;BA.debugLine="End Sub";
 return "";
 }
 public static String  _activity_create(boolean _firsttime) throws Exception{
@@ -449,7 +449,7 @@ mostCurrent._activity.LoadLayout("introducir",mostCurrent.activityBA);
  //BA.debugLineNum = 40;BA.debugLine="Spinner1.addall(Array As String(\"\",\"Dia Normal\",\"";
 mostCurrent._spinner1.AddAll(anywheresoftware.b4a.keywords.Common.ArrayToList(new String[]{"","Dia Normal","Dia Festivo Ordinario","Dia Festivo Extraordinario","Noche Normal","Noche Festivo Ordinario","Noche Festivo Extraordinario"}));
  //BA.debugLineNum = 41;BA.debugLine="Spinner2.addall(Array As String(\"\",\"M31\",\"M32\",\"M";
-mostCurrent._spinner2.AddAll(anywheresoftware.b4a.keywords.Common.ArrayToList(new String[]{"","M31","M32","M33","M34","M41","M42","M43","M51","M52","T31","T32","T33","T34","T41","T42","T43","T5","N3","N4","N5","RT"}));
+mostCurrent._spinner2.AddAll(anywheresoftware.b4a.keywords.Common.ArrayToList(new String[]{"","M31","M32","M33","M34","M41","M42","M43","M51","M52","T31","T32","T33","T34","T41","T42","T43","T5","N3","N4","N5","RT","LIB"}));
  //BA.debugLineNum = 42;BA.debugLine="Horas.Text=\"\"";
 mostCurrent._horas.setText(BA.ObjectToCharSequence(""));
  //BA.debugLineNum = 43;BA.debugLine="Incidencia.Text=\"\"";
@@ -472,21 +472,21 @@ mostCurrent._datetemplate._initialize /*String*/ (mostCurrent.activityBA);
 mostCurrent._datetemplate._minyear /*int*/  = (int) (1973);
  //BA.debugLineNum = 54;BA.debugLine="DateTemplate.MaxYear = 2100";
 mostCurrent._datetemplate._maxyear /*int*/  = (int) (2100);
- //BA.debugLineNum = 56;BA.debugLine="Dialog.Title = \"\"";
+ //BA.debugLineNum = 57;BA.debugLine="Dialog.Title = \"\"";
 mostCurrent._dialog._title /*Object*/  = (Object)("");
- //BA.debugLineNum = 57;BA.debugLine="SetLightTheme";
+ //BA.debugLineNum = 59;BA.debugLine="SetLightTheme";
 _setlighttheme();
- //BA.debugLineNum = 62;BA.debugLine="End Sub";
+ //BA.debugLineNum = 64;BA.debugLine="End Sub";
 return "";
 }
 public static String  _activity_pause(boolean _userclosed) throws Exception{
- //BA.debugLineNum = 69;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
- //BA.debugLineNum = 71;BA.debugLine="End Sub";
+ //BA.debugLineNum = 71;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
+ //BA.debugLineNum = 73;BA.debugLine="End Sub";
 return "";
 }
 public static String  _activity_resume() throws Exception{
- //BA.debugLineNum = 65;BA.debugLine="Sub Activity_Resume";
- //BA.debugLineNum = 67;BA.debugLine="End Sub";
+ //BA.debugLineNum = 67;BA.debugLine="Sub Activity_Resume";
+ //BA.debugLineNum = 69;BA.debugLine="End Sub";
 return "";
 }
 public static void  _borrar_click() throws Exception{
@@ -513,7 +513,7 @@ return;
 case 0:
 //C
 this.state = 1;
- //BA.debugLineNum = 270;BA.debugLine="If Fecha.Text<>\"\" Then";
+ //BA.debugLineNum = 277;BA.debugLine="If Fecha.Text<>\"\" Then";
 if (true) break;
 
 case 1:
@@ -528,23 +528,23 @@ this.state = 9;
 case 3:
 //C
 this.state = 4;
- //BA.debugLineNum = 271;BA.debugLine="Dim d As B4XDialog";
+ //BA.debugLineNum = 278;BA.debugLine="Dim d As B4XDialog";
 _d = new Noe.Cal.b4xdialog();
- //BA.debugLineNum = 272;BA.debugLine="d.initialize(Activity)";
+ //BA.debugLineNum = 279;BA.debugLine="d.initialize(Activity)";
 _d._initialize /*String*/ (mostCurrent.activityBA,(anywheresoftware.b4a.objects.B4XViewWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.B4XViewWrapper(), (java.lang.Object)(parent.mostCurrent._activity.getObject())));
- //BA.debugLineNum = 273;BA.debugLine="d.Title=\"Borrar registro\"";
+ //BA.debugLineNum = 280;BA.debugLine="d.Title=\"Borrar registro\"";
 _d._title /*Object*/  = (Object)("Borrar registro");
- //BA.debugLineNum = 274;BA.debugLine="d.BackgroundColor=Colors.White";
+ //BA.debugLineNum = 281;BA.debugLine="d.BackgroundColor=Colors.White";
 _d._backgroundcolor /*int*/  = anywheresoftware.b4a.keywords.Common.Colors.White;
- //BA.debugLineNum = 275;BA.debugLine="d.BodyTextColor=Colors.Blue";
+ //BA.debugLineNum = 282;BA.debugLine="d.BodyTextColor=Colors.Blue";
 _d._bodytextcolor /*int*/  = anywheresoftware.b4a.keywords.Common.Colors.Blue;
- //BA.debugLineNum = 276;BA.debugLine="d.VisibleAnimationDuration=300";
+ //BA.debugLineNum = 283;BA.debugLine="d.VisibleAnimationDuration=300";
 _d._visibleanimationduration /*int*/  = (int) (300);
- //BA.debugLineNum = 277;BA.debugLine="Dim rs As Object";
+ //BA.debugLineNum = 284;BA.debugLine="Dim rs As Object";
 _rs = new Object();
- //BA.debugLineNum = 278;BA.debugLine="rs=d.Show(\"¿Quieres borrar el registro?\",\"Si\",\"N";
+ //BA.debugLineNum = 285;BA.debugLine="rs=d.Show(\"¿Quieres borrar el registro?\",\"Si\",\"N";
 _rs = _d._show /*anywheresoftware.b4a.keywords.Common.ResumableSubWrapper*/ ((Object)("¿Quieres borrar el registro?"),(Object)("Si"),(Object)("No"),(Object)(""));
- //BA.debugLineNum = 279;BA.debugLine="Wait For(rs) complete (Result As Int)";
+ //BA.debugLineNum = 286;BA.debugLine="Wait For(rs) complete (Result As Int)";
 anywheresoftware.b4a.keywords.Common.WaitFor("complete", processBA, this, _rs);
 this.state = 11;
 return;
@@ -553,7 +553,7 @@ case 11:
 this.state = 4;
 _result = (Integer) result[0];
 ;
- //BA.debugLineNum = 280;BA.debugLine="If Result = xui.DialogResponse_Positive Then";
+ //BA.debugLineNum = 287;BA.debugLine="If Result = xui.DialogResponse_Positive Then";
 if (true) break;
 
 case 4:
@@ -566,19 +566,19 @@ this.state = 6;
 case 6:
 //C
 this.state = 7;
- //BA.debugLineNum = 281;BA.debugLine="sql.ExecNonQuery(\"delete from Dias where dia='\"";
+ //BA.debugLineNum = 288;BA.debugLine="sql.ExecNonQuery(\"delete from Dias where dia='\"";
 parent._sql.ExecNonQuery("delete from Dias where dia='"+parent.mostCurrent._fecha.getText()+"'");
- //BA.debugLineNum = 282;BA.debugLine="ToastMessageShow(\"Borrado el parte del dia \"&Fe";
+ //BA.debugLineNum = 289;BA.debugLine="ToastMessageShow(\"Borrado el parte del dia \"&Fe";
 anywheresoftware.b4a.keywords.Common.ToastMessageShow(BA.ObjectToCharSequence("Borrado el parte del dia "+parent.mostCurrent._fecha.getText()),anywheresoftware.b4a.keywords.Common.True);
- //BA.debugLineNum = 283;BA.debugLine="Fecha.Text=\"\"";
+ //BA.debugLineNum = 290;BA.debugLine="Fecha.Text=\"\"";
 parent.mostCurrent._fecha.setText(BA.ObjectToCharSequence(""));
- //BA.debugLineNum = 284;BA.debugLine="Spinner1.SelectedIndex=0";
+ //BA.debugLineNum = 291;BA.debugLine="Spinner1.SelectedIndex=0";
 parent.mostCurrent._spinner1.setSelectedIndex((int) (0));
- //BA.debugLineNum = 285;BA.debugLine="Spinner2.SelectedIndex=0";
+ //BA.debugLineNum = 292;BA.debugLine="Spinner2.SelectedIndex=0";
 parent.mostCurrent._spinner2.setSelectedIndex((int) (0));
- //BA.debugLineNum = 286;BA.debugLine="Horas.Text=\"\"";
+ //BA.debugLineNum = 293;BA.debugLine="Horas.Text=\"\"";
 parent.mostCurrent._horas.setText(BA.ObjectToCharSequence(""));
- //BA.debugLineNum = 287;BA.debugLine="Incidencia.Text=\"\"";
+ //BA.debugLineNum = 294;BA.debugLine="Incidencia.Text=\"\"";
 parent.mostCurrent._incidencia.setText(BA.ObjectToCharSequence(""));
  if (true) break;
 
@@ -591,7 +591,7 @@ this.state = 10;
 case 9:
 //C
 this.state = 10;
- //BA.debugLineNum = 290;BA.debugLine="ToastMessageShow(\"Nada que borrar\",False )";
+ //BA.debugLineNum = 297;BA.debugLine="ToastMessageShow(\"Nada que borrar\",False )";
 anywheresoftware.b4a.keywords.Common.ToastMessageShow(BA.ObjectToCharSequence("Nada que borrar"),anywheresoftware.b4a.keywords.Common.False);
  if (true) break;
 
@@ -599,7 +599,7 @@ case 10:
 //C
 this.state = -1;
 ;
- //BA.debugLineNum = 292;BA.debugLine="End Sub";
+ //BA.debugLineNum = 299;BA.debugLine="End Sub";
 if (true) break;
 
             }
@@ -609,19 +609,19 @@ if (true) break;
 public static void  _complete(int _result) throws Exception{
 }
 public static String  _cancelar_click() throws Exception{
- //BA.debugLineNum = 134;BA.debugLine="Private Sub Cancelar_Click";
- //BA.debugLineNum = 136;BA.debugLine="Activity.finish";
+ //BA.debugLineNum = 136;BA.debugLine="Private Sub Cancelar_Click";
+ //BA.debugLineNum = 138;BA.debugLine="Activity.finish";
 mostCurrent._activity.Finish();
- //BA.debugLineNum = 137;BA.debugLine="End Sub";
+ //BA.debugLineNum = 139;BA.debugLine="End Sub";
 return "";
 }
 public static String  _datatotext(long _datos) throws Exception{
- //BA.debugLineNum = 127;BA.debugLine="Sub datatotexT(datos As Long) As String";
- //BA.debugLineNum = 128;BA.debugLine="DateTime.DateFormat = \"dd MMMM yyyy\"";
+ //BA.debugLineNum = 129;BA.debugLine="Sub datatotexT(datos As Long) As String";
+ //BA.debugLineNum = 130;BA.debugLine="DateTime.DateFormat = \"dd MMMM yyyy\"";
 anywheresoftware.b4a.keywords.Common.DateTime.setDateFormat("dd MMMM yyyy");
- //BA.debugLineNum = 130;BA.debugLine="Return DateTime.Date(datos)";
+ //BA.debugLineNum = 132;BA.debugLine="Return DateTime.Date(datos)";
 if (true) return anywheresoftware.b4a.keywords.Common.DateTime.Date(_datos);
- //BA.debugLineNum = 132;BA.debugLine="End Sub";
+ //BA.debugLineNum = 134;BA.debugLine="End Sub";
 return "";
 }
 public static void  _fechapicker_click() throws Exception{
@@ -646,7 +646,7 @@ return;
 case 0:
 //C
 this.state = 1;
- //BA.debugLineNum = 89;BA.debugLine="Wait For (Dialog.ShowTemplate(DateTemplate, \"\", \"";
+ //BA.debugLineNum = 91;BA.debugLine="Wait For (Dialog.ShowTemplate(DateTemplate, \"\", \"";
 anywheresoftware.b4a.keywords.Common.WaitFor("complete", processBA, this, parent.mostCurrent._dialog._showtemplate /*anywheresoftware.b4a.keywords.Common.ResumableSubWrapper*/ ((Object)(parent.mostCurrent._datetemplate),(Object)(""),(Object)(""),(Object)("Cancelar")));
 this.state = 5;
 return;
@@ -655,7 +655,7 @@ case 5:
 this.state = 1;
 _result = (Integer) result[0];
 ;
- //BA.debugLineNum = 91;BA.debugLine="If Result = xui.DialogResponse_Positive Then";
+ //BA.debugLineNum = 93;BA.debugLine="If Result = xui.DialogResponse_Positive Then";
 if (true) break;
 
 case 1:
@@ -668,7 +668,7 @@ this.state = 3;
 case 3:
 //C
 this.state = 4;
- //BA.debugLineNum = 92;BA.debugLine="Fecha.Text=datatotexT(DateTemplate.Date)";
+ //BA.debugLineNum = 94;BA.debugLine="Fecha.Text=datatotexT(DateTemplate.Date)";
 parent.mostCurrent._fecha.setText(BA.ObjectToCharSequence(_datatotext(parent.mostCurrent._datetemplate._getdate /*long*/ ())));
  if (true) break;
 
@@ -676,9 +676,9 @@ case 4:
 //C
 this.state = -1;
 ;
- //BA.debugLineNum = 95;BA.debugLine="ver_reg(Fecha.Text)";
+ //BA.debugLineNum = 97;BA.debugLine="ver_reg(Fecha.Text)";
 _ver_reg(parent.mostCurrent._fecha.getText());
- //BA.debugLineNum = 98;BA.debugLine="End Sub";
+ //BA.debugLineNum = 100;BA.debugLine="End Sub";
 if (true) break;
 
             }
@@ -732,170 +732,173 @@ return "";
 public static String  _setlighttheme() throws Exception{
 int _textcolor = 0;
 anywheresoftware.b4a.objects.B4XViewWrapper _b = null;
- //BA.debugLineNum = 188;BA.debugLine="Sub SetLightTheme";
- //BA.debugLineNum = 189;BA.debugLine="Dialog.TitleBarColor = xui.Color_Blue";
+ //BA.debugLineNum = 190;BA.debugLine="Sub SetLightTheme";
+ //BA.debugLineNum = 191;BA.debugLine="Dialog.TitleBarColor = xui.Color_Blue";
 mostCurrent._dialog._titlebarcolor /*int*/  = _xui.Color_Blue;
- //BA.debugLineNum = 190;BA.debugLine="Dialog.TitleBarHeight = 80dip";
+ //BA.debugLineNum = 192;BA.debugLine="Dialog.TitleBarHeight = 80dip";
 mostCurrent._dialog._titlebarheight /*int*/  = anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (80));
- //BA.debugLineNum = 191;BA.debugLine="Dim TextColor As Int = 0xFF5B5B5B";
+ //BA.debugLineNum = 193;BA.debugLine="Dim TextColor As Int = 0xFF5B5B5B";
 _textcolor = ((int)0xff5b5b5b);
- //BA.debugLineNum = 193;BA.debugLine="Dialog.BackgroundColor = xui.Color_LightGray";
+ //BA.debugLineNum = 195;BA.debugLine="Dialog.BackgroundColor = xui.Color_LightGray";
 mostCurrent._dialog._backgroundcolor /*int*/  = _xui.Color_LightGray;
- //BA.debugLineNum = 194;BA.debugLine="Dialog.ButtonsColor = xui.Color_White";
-mostCurrent._dialog._buttonscolor /*int*/  = _xui.Color_White;
- //BA.debugLineNum = 195;BA.debugLine="Dialog.ButtonsTextColor = Dialog.TitleBarColor";
-mostCurrent._dialog._buttonstextcolor /*int*/  = mostCurrent._dialog._titlebarcolor /*int*/ ;
- //BA.debugLineNum = 196;BA.debugLine="Dialog.BorderColor = xui.Color_Transparent";
+ //BA.debugLineNum = 198;BA.debugLine="Dialog.BorderColor = xui.Color_Transparent";
 mostCurrent._dialog._bordercolor /*int*/  = _xui.Color_Transparent;
- //BA.debugLineNum = 197;BA.debugLine="DateTemplate.DaysInWeekColor = xui.Color_Black";
+ //BA.debugLineNum = 199;BA.debugLine="DateTemplate.DaysInWeekColor = xui.Color_Black";
 mostCurrent._datetemplate._daysinweekcolor /*int*/  = _xui.Color_Black;
- //BA.debugLineNum = 198;BA.debugLine="DateTemplate.SelectedColor = 0xFF39D7CE";
+ //BA.debugLineNum = 200;BA.debugLine="DateTemplate.SelectedColor = 0xFF39D7CE";
 mostCurrent._datetemplate._selectedcolor /*int*/  = ((int)0xff39d7ce);
- //BA.debugLineNum = 199;BA.debugLine="DateTemplate.HighlightedColor = 0xFF00CEFF";
+ //BA.debugLineNum = 201;BA.debugLine="DateTemplate.HighlightedColor = 0xFF00CEFF";
 mostCurrent._datetemplate._highlightedcolor /*int*/  = ((int)0xff00ceff);
- //BA.debugLineNum = 200;BA.debugLine="DateTemplate.DaysInMonthColor = TextColor";
-mostCurrent._datetemplate._daysinmonthcolor /*int*/  = _textcolor;
- //BA.debugLineNum = 201;BA.debugLine="DateTemplate.lblMonth.TextColor = TextColor";
+ //BA.debugLineNum = 203;BA.debugLine="DateTemplate.DaysInMonthColor = xui.color_white";
+mostCurrent._datetemplate._daysinmonthcolor /*int*/  = _xui.Color_White;
+ //BA.debugLineNum = 204;BA.debugLine="DateTemplate.lblMonth.TextColor = TextColor";
 mostCurrent._datetemplate._lblmonth /*anywheresoftware.b4a.objects.B4XViewWrapper*/ .setTextColor(_textcolor);
- //BA.debugLineNum = 202;BA.debugLine="DateTemplate.lblYear.TextColor = TextColor";
+ //BA.debugLineNum = 205;BA.debugLine="DateTemplate.lblYear.TextColor = TextColor";
 mostCurrent._datetemplate._lblyear /*anywheresoftware.b4a.objects.B4XViewWrapper*/ .setTextColor(_textcolor);
- //BA.debugLineNum = 203;BA.debugLine="DateTemplate.SelectedColor = 0xFFFFA761";
+ //BA.debugLineNum = 206;BA.debugLine="DateTemplate.SelectedColor = 0xFFFFA761";
 mostCurrent._datetemplate._selectedcolor /*int*/  = ((int)0xffffa761);
- //BA.debugLineNum = 205;BA.debugLine="For Each b As B4XView In Array(DateTemplate.btnMo";
+ //BA.debugLineNum = 208;BA.debugLine="For Each b As B4XView In Array(DateTemplate.btnMo";
 _b = new anywheresoftware.b4a.objects.B4XViewWrapper();
 {
-final Object[] group15 = new Object[]{(Object)(mostCurrent._datetemplate._btnmonthleft /*anywheresoftware.b4a.objects.B4XViewWrapper*/ .getObject()),(Object)(mostCurrent._datetemplate._btnmonthright /*anywheresoftware.b4a.objects.B4XViewWrapper*/ .getObject()),(Object)(mostCurrent._datetemplate._btnyearleft /*anywheresoftware.b4a.objects.B4XViewWrapper*/ .getObject()),(Object)(mostCurrent._datetemplate._btnyearright /*anywheresoftware.b4a.objects.B4XViewWrapper*/ .getObject())};
-final int groupLen15 = group15.length
-;int index15 = 0;
+final Object[] group13 = new Object[]{(Object)(mostCurrent._datetemplate._btnmonthleft /*anywheresoftware.b4a.objects.B4XViewWrapper*/ .getObject()),(Object)(mostCurrent._datetemplate._btnmonthright /*anywheresoftware.b4a.objects.B4XViewWrapper*/ .getObject()),(Object)(mostCurrent._datetemplate._btnyearleft /*anywheresoftware.b4a.objects.B4XViewWrapper*/ .getObject()),(Object)(mostCurrent._datetemplate._btnyearright /*anywheresoftware.b4a.objects.B4XViewWrapper*/ .getObject())};
+final int groupLen13 = group13.length
+;int index13 = 0;
 ;
-for (; index15 < groupLen15;index15++){
-_b = (anywheresoftware.b4a.objects.B4XViewWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.B4XViewWrapper(), (java.lang.Object)(group15[index15]));
- //BA.debugLineNum = 206;BA.debugLine="b.Color = xui.Color_Transparent";
+for (; index13 < groupLen13;index13++){
+_b = (anywheresoftware.b4a.objects.B4XViewWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.B4XViewWrapper(), (java.lang.Object)(group13[index13]));
+ //BA.debugLineNum = 209;BA.debugLine="b.Color = xui.Color_Transparent";
 _b.setColor(_xui.Color_Transparent);
- //BA.debugLineNum = 207;BA.debugLine="b.TextColor = TextColor";
+ //BA.debugLineNum = 210;BA.debugLine="b.TextColor = TextColor";
 _b.setTextColor(_textcolor);
  }
 };
- //BA.debugLineNum = 213;BA.debugLine="End Sub";
+ //BA.debugLineNum = 216;BA.debugLine="End Sub";
 return "";
 }
 public static String  _spinner2_itemclick(int _position,Object _value) throws Exception{
 String _valor = "";
- //BA.debugLineNum = 218;BA.debugLine="Private Sub Spinner2_ItemClick (Position As Int, V";
- //BA.debugLineNum = 219;BA.debugLine="Dim valor As String";
+ //BA.debugLineNum = 221;BA.debugLine="Private Sub Spinner2_ItemClick (Position As Int, V";
+ //BA.debugLineNum = 222;BA.debugLine="Dim valor As String";
 _valor = "";
- //BA.debugLineNum = 220;BA.debugLine="valor=Value";
+ //BA.debugLineNum = 223;BA.debugLine="valor=Value";
 _valor = BA.ObjectToString(_value);
- //BA.debugLineNum = 223;BA.debugLine="If valor.startswith(\"M\") Or valor.startswith(\"T\")";
+ //BA.debugLineNum = 226;BA.debugLine="If valor.startswith(\"M\") Or valor.startswith(\"T\")";
 if (_valor.startsWith("M") || _valor.startsWith("T")) { 
- //BA.debugLineNum = 224;BA.debugLine="Horas.Text=\"7.25\"";
+ //BA.debugLineNum = 227;BA.debugLine="Horas.Text=\"7.25\"";
 mostCurrent._horas.setText(BA.ObjectToCharSequence("7.25"));
  };
- //BA.debugLineNum = 226;BA.debugLine="If valor.startswith(\"N\") Then";
+ //BA.debugLineNum = 229;BA.debugLine="If valor.startswith(\"N\") Then";
 if (_valor.startsWith("N")) { 
- //BA.debugLineNum = 227;BA.debugLine="Horas.Text=\"9.5\"";
+ //BA.debugLineNum = 230;BA.debugLine="Horas.Text=\"9.5\"";
 mostCurrent._horas.setText(BA.ObjectToCharSequence("9.5"));
  };
- //BA.debugLineNum = 229;BA.debugLine="If valor.StartsWith(\"RT\") Then";
+ //BA.debugLineNum = 232;BA.debugLine="If valor.StartsWith(\"RT\") Then";
 if (_valor.startsWith("RT")) { 
- //BA.debugLineNum = 230;BA.debugLine="Horas.Text=\"2.25\"";
+ //BA.debugLineNum = 233;BA.debugLine="Horas.Text=\"2.25\"";
 mostCurrent._horas.setText(BA.ObjectToCharSequence("2.25"));
  };
- //BA.debugLineNum = 232;BA.debugLine="End Sub";
+ //BA.debugLineNum = 235;BA.debugLine="If valor.StartsWith(\"LIB\") Then";
+if (_valor.startsWith("LIB")) { 
+ //BA.debugLineNum = 236;BA.debugLine="Horas.Text=\"0\"";
+mostCurrent._horas.setText(BA.ObjectToCharSequence("0"));
+ //BA.debugLineNum = 237;BA.debugLine="Spinner1.SelectedIndex=1";
+mostCurrent._spinner1.setSelectedIndex((int) (1));
+ };
+ //BA.debugLineNum = 239;BA.debugLine="End Sub";
 return "";
 }
 public static String  _ver_reg(String _lafecha) throws Exception{
 anywheresoftware.b4a.sql.SQL.ResultSetWrapper _rs = null;
 int _respuesta = 0;
 String _cual = "";
- //BA.debugLineNum = 100;BA.debugLine="Sub ver_reg(laFecha As String)";
- //BA.debugLineNum = 101;BA.debugLine="Dim rs As ResultSet";
+ //BA.debugLineNum = 102;BA.debugLine="Sub ver_reg(laFecha As String)";
+ //BA.debugLineNum = 103;BA.debugLine="Dim rs As ResultSet";
 _rs = new anywheresoftware.b4a.sql.SQL.ResultSetWrapper();
- //BA.debugLineNum = 102;BA.debugLine="Dim respuesta As Int";
+ //BA.debugLineNum = 104;BA.debugLine="Dim respuesta As Int";
 _respuesta = 0;
- //BA.debugLineNum = 103;BA.debugLine="respuesta=sql.ExecQuerySingleResult($\"select coun";
+ //BA.debugLineNum = 105;BA.debugLine="respuesta=sql.ExecQuerySingleResult($\"select coun";
 _respuesta = (int)(Double.parseDouble(_sql.ExecQuerySingleResult(("select count(*) from dias where dia='")+_lafecha+("'"))));
- //BA.debugLineNum = 106;BA.debugLine="If respuesta=1 Then";
+ //BA.debugLineNum = 108;BA.debugLine="If respuesta=1 Then";
 if (_respuesta==1) { 
- //BA.debugLineNum = 107;BA.debugLine="ToastMessageShow(\"Parte ya existía, recuperamos";
+ //BA.debugLineNum = 109;BA.debugLine="ToastMessageShow(\"Parte ya existía, recuperamos";
 anywheresoftware.b4a.keywords.Common.ToastMessageShow(BA.ObjectToCharSequence("Parte ya existía, recuperamos la información."),anywheresoftware.b4a.keywords.Common.False);
- //BA.debugLineNum = 108;BA.debugLine="rs=sql.ExecQuery($\"select Dia,Horas,Tipo,tipo2,i";
+ //BA.debugLineNum = 110;BA.debugLine="rs=sql.ExecQuery($\"select Dia,Horas,Tipo,tipo2,i";
 _rs = (anywheresoftware.b4a.sql.SQL.ResultSetWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.sql.SQL.ResultSetWrapper(), (android.database.Cursor)(_sql.ExecQuery(("select Dia,Horas,Tipo,tipo2,incidencia from dias where Dia='")+mostCurrent._fecha.getText()+("'"))));
- //BA.debugLineNum = 109;BA.debugLine="rs.Position=0";
+ //BA.debugLineNum = 111;BA.debugLine="rs.Position=0";
 _rs.setPosition((int) (0));
- //BA.debugLineNum = 111;BA.debugLine="Horas.Text=rs.GetDouble(\"Horas\")";
+ //BA.debugLineNum = 113;BA.debugLine="Horas.Text=rs.GetDouble(\"Horas\")";
 mostCurrent._horas.setText(BA.ObjectToCharSequence(_rs.GetDouble("Horas")));
- //BA.debugLineNum = 112;BA.debugLine="Dim cual As String";
+ //BA.debugLineNum = 114;BA.debugLine="Dim cual As String";
 _cual = "";
- //BA.debugLineNum = 113;BA.debugLine="cual =rs.GetString(\"Tipo\")";
+ //BA.debugLineNum = 115;BA.debugLine="cual =rs.GetString(\"Tipo\")";
 _cual = _rs.GetString("Tipo");
- //BA.debugLineNum = 114;BA.debugLine="Spinner1.SelectedIndex=Spinner1.IndexOf(cual)";
+ //BA.debugLineNum = 116;BA.debugLine="Spinner1.SelectedIndex=Spinner1.IndexOf(cual)";
 mostCurrent._spinner1.setSelectedIndex(mostCurrent._spinner1.IndexOf(_cual));
- //BA.debugLineNum = 116;BA.debugLine="cual=rs.GetString(\"Tipo2\")";
+ //BA.debugLineNum = 118;BA.debugLine="cual=rs.GetString(\"Tipo2\")";
 _cual = _rs.GetString("Tipo2");
- //BA.debugLineNum = 117;BA.debugLine="Spinner2.SelectedIndex=Spinner2.IndexOf(cual)";
+ //BA.debugLineNum = 119;BA.debugLine="Spinner2.SelectedIndex=Spinner2.IndexOf(cual)";
 mostCurrent._spinner2.setSelectedIndex(mostCurrent._spinner2.IndexOf(_cual));
- //BA.debugLineNum = 119;BA.debugLine="Incidencia.text=rs.getString(\"Incidencia\")";
+ //BA.debugLineNum = 121;BA.debugLine="Incidencia.text=rs.getString(\"Incidencia\")";
 mostCurrent._incidencia.setText(BA.ObjectToCharSequence(_rs.GetString("Incidencia")));
  }else {
- //BA.debugLineNum = 121;BA.debugLine="Fecha.Text=laFecha";
+ //BA.debugLineNum = 123;BA.debugLine="Fecha.Text=laFecha";
 mostCurrent._fecha.setText(BA.ObjectToCharSequence(_lafecha));
- //BA.debugLineNum = 122;BA.debugLine="Spinner1.SelectedIndex=0";
+ //BA.debugLineNum = 124;BA.debugLine="Spinner1.SelectedIndex=0";
 mostCurrent._spinner1.setSelectedIndex((int) (0));
- //BA.debugLineNum = 123;BA.debugLine="Spinner2.SelectedIndex=0";
+ //BA.debugLineNum = 125;BA.debugLine="Spinner2.SelectedIndex=0";
 mostCurrent._spinner2.setSelectedIndex((int) (0));
  };
- //BA.debugLineNum = 125;BA.debugLine="End Sub";
+ //BA.debugLineNum = 127;BA.debugLine="End Sub";
 return "";
 }
 public static String  _ver_registro(String _lafecha) throws Exception{
 anywheresoftware.b4a.sql.SQL.ResultSetWrapper _rs = null;
 int _respuesta = 0;
 String _cual = "";
- //BA.debugLineNum = 234;BA.debugLine="Sub ver_registro(lafecha As String)";
- //BA.debugLineNum = 236;BA.debugLine="Activity.LoadLayout(\"introducir\")";
+ //BA.debugLineNum = 241;BA.debugLine="Sub ver_registro(lafecha As String)";
+ //BA.debugLineNum = 243;BA.debugLine="Activity.LoadLayout(\"introducir\")";
 mostCurrent._activity.LoadLayout("introducir",mostCurrent.activityBA);
- //BA.debugLineNum = 237;BA.debugLine="Spinner1.addall(Array As String(\"\",\"Dia Normal\",\"";
+ //BA.debugLineNum = 244;BA.debugLine="Spinner1.addall(Array As String(\"\",\"Dia Normal\",\"";
 mostCurrent._spinner1.AddAll(anywheresoftware.b4a.keywords.Common.ArrayToList(new String[]{"","Dia Normal","Dia Festivo Ordinario","Dia Festivo Extraordinario","Noche Normal","Noche Festivo Ordinario","Noche Festivo Extraordinario"}));
- //BA.debugLineNum = 238;BA.debugLine="Spinner2.addall(Array As String(\"\",\"M31\",\"M32\",\"M";
-mostCurrent._spinner2.AddAll(anywheresoftware.b4a.keywords.Common.ArrayToList(new String[]{"","M31","M32","M33","M34","M41","M42","M43","M51","M52","T31","T32","T33","T34","T41","T42","T43","T5","N3","N4","N5","RT"}));
- //BA.debugLineNum = 240;BA.debugLine="Dim rs As ResultSet";
+ //BA.debugLineNum = 245;BA.debugLine="Spinner2.addall(Array As String(\"\",\"M31\",\"M32\",\"M";
+mostCurrent._spinner2.AddAll(anywheresoftware.b4a.keywords.Common.ArrayToList(new String[]{"","M31","M32","M33","M34","M41","M42","M43","M51","M52","T31","T32","T33","T34","T41","T42","T43","T5","N3","N4","N5","RT","LIB"}));
+ //BA.debugLineNum = 247;BA.debugLine="Dim rs As ResultSet";
 _rs = new anywheresoftware.b4a.sql.SQL.ResultSetWrapper();
- //BA.debugLineNum = 242;BA.debugLine="Dim respuesta As Int";
+ //BA.debugLineNum = 249;BA.debugLine="Dim respuesta As Int";
 _respuesta = 0;
- //BA.debugLineNum = 243;BA.debugLine="respuesta=sql.ExecQuerySingleResult($\"select coun";
+ //BA.debugLineNum = 250;BA.debugLine="respuesta=sql.ExecQuerySingleResult($\"select coun";
 _respuesta = (int)(Double.parseDouble(_sql.ExecQuerySingleResult(("select count(*) from dias where dia='")+_lafecha+("'"))));
- //BA.debugLineNum = 246;BA.debugLine="If respuesta=1 Then";
+ //BA.debugLineNum = 253;BA.debugLine="If respuesta=1 Then";
 if (_respuesta==1) { 
- //BA.debugLineNum = 248;BA.debugLine="rs=sql.ExecQuery($\"select Dia,Horas,Tipo,tipo2,i";
+ //BA.debugLineNum = 255;BA.debugLine="rs=sql.ExecQuery($\"select Dia,Horas,Tipo,tipo2,i";
 _rs = (anywheresoftware.b4a.sql.SQL.ResultSetWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.sql.SQL.ResultSetWrapper(), (android.database.Cursor)(_sql.ExecQuery(("select Dia,Horas,Tipo,tipo2,incidencia from dias where Dia='")+_lafecha+("'"))));
- //BA.debugLineNum = 249;BA.debugLine="rs.Position=0";
+ //BA.debugLineNum = 256;BA.debugLine="rs.Position=0";
 _rs.setPosition((int) (0));
- //BA.debugLineNum = 251;BA.debugLine="Fecha.Text=rs.GetString(\"Dia\")";
+ //BA.debugLineNum = 258;BA.debugLine="Fecha.Text=rs.GetString(\"Dia\")";
 mostCurrent._fecha.setText(BA.ObjectToCharSequence(_rs.GetString("Dia")));
- //BA.debugLineNum = 252;BA.debugLine="Horas.Text=rs.GetDouble(\"Horas\")";
+ //BA.debugLineNum = 259;BA.debugLine="Horas.Text=rs.GetDouble(\"Horas\")";
 mostCurrent._horas.setText(BA.ObjectToCharSequence(_rs.GetDouble("Horas")));
- //BA.debugLineNum = 253;BA.debugLine="Incidencia.Text=rs.GetString(\"Incidencia\")";
+ //BA.debugLineNum = 260;BA.debugLine="Incidencia.Text=rs.GetString(\"Incidencia\")";
 mostCurrent._incidencia.setText(BA.ObjectToCharSequence(_rs.GetString("Incidencia")));
- //BA.debugLineNum = 254;BA.debugLine="Dim cual As String";
+ //BA.debugLineNum = 261;BA.debugLine="Dim cual As String";
 _cual = "";
- //BA.debugLineNum = 255;BA.debugLine="cual =rs.GetString(\"Tipo\")";
+ //BA.debugLineNum = 262;BA.debugLine="cual =rs.GetString(\"Tipo\")";
 _cual = _rs.GetString("Tipo");
- //BA.debugLineNum = 256;BA.debugLine="Spinner1.SelectedIndex=Spinner1.IndexOf(cual)";
+ //BA.debugLineNum = 263;BA.debugLine="Spinner1.SelectedIndex=Spinner1.IndexOf(cual)";
 mostCurrent._spinner1.setSelectedIndex(mostCurrent._spinner1.IndexOf(_cual));
- //BA.debugLineNum = 257;BA.debugLine="cual =rs.GetString(\"Tipo2\")";
+ //BA.debugLineNum = 264;BA.debugLine="cual =rs.GetString(\"Tipo2\")";
 _cual = _rs.GetString("Tipo2");
- //BA.debugLineNum = 258;BA.debugLine="Spinner2.SelectedIndex=Spinner2.IndexOf(cual)";
+ //BA.debugLineNum = 265;BA.debugLine="Spinner2.SelectedIndex=Spinner2.IndexOf(cual)";
 mostCurrent._spinner2.setSelectedIndex(mostCurrent._spinner2.IndexOf(_cual));
  }else {
- //BA.debugLineNum = 260;BA.debugLine="Fecha.Text=lafecha";
+ //BA.debugLineNum = 267;BA.debugLine="Fecha.Text=lafecha";
 mostCurrent._fecha.setText(BA.ObjectToCharSequence(_lafecha));
- //BA.debugLineNum = 261;BA.debugLine="Spinner1.SelectedIndex=0";
+ //BA.debugLineNum = 268;BA.debugLine="Spinner1.SelectedIndex=0";
 mostCurrent._spinner1.setSelectedIndex((int) (0));
- //BA.debugLineNum = 262;BA.debugLine="Spinner2.SelectedIndex=0";
+ //BA.debugLineNum = 269;BA.debugLine="Spinner2.SelectedIndex=0";
 mostCurrent._spinner2.setSelectedIndex((int) (0));
  };
- //BA.debugLineNum = 266;BA.debugLine="End Sub";
+ //BA.debugLineNum = 273;BA.debugLine="End Sub";
 return "";
 }
 }
