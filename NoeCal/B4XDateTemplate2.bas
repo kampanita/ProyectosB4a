@@ -44,7 +44,7 @@ End Sub
 Public Sub Initialize
 	sql.Initialize(File.DirInternal, "NoeCal.db", False)
 	pnlDialog = xui.CreatePanel("")
-	pnlDialog.SetLayoutAnimated(0, 0, 0, 320dip,400dip)
+	pnlDialog.SetLayoutAnimated(0, 0, 0, 320dip,420dip)
 	pnlDialog.LoadLayout("DateTemplate2")
 	pnlDialog.Tag = Me
 	month = DateTime.GetMonth(DateTime.Now)
