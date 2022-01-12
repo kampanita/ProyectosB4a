@@ -1,9 +1,9 @@
 ﻿ModuleBookmarks0=
 ModuleBookmarks1=
-ModuleBreakpoints0=517
+ModuleBreakpoints0=522
 ModuleBreakpoints1=
-ModuleClosedNodes0=12,13,15,16,17,18
+ModuleClosedNodes0=12,15,16,17,18
 ModuleClosedNodes1=1
-NavigationStack=Main,Guardar_en_disco,322,1,Main,Leer_de_pastebin,419,1,Main,Leer_de_disco,441,1,Main,Activity_Create,85,0,Main,guardar_en_memoria,233,0,Main,Leer_de_Dropbox,170,6,Main,cargar_lista,443,0,Main,Guardar_en_internet_Dropbox,217,6,Main,Process_Globals,56,6,Main,Globals,65,4
+NavigationStack=Main,dbxFiles_UploadProgress,508,1,Main,Button2_Click,591,0,Main,Activity_Create,72,0,Main,dbxSharing_listFolders,513,0,Main,Globals,67,4,Diseñador Visual,Compras.bal,-100,6,Main,Button1_Click,120,0,Main,Activity_Pause,106,6,Main,Guardar_en_internet_Dropbox,209,6,Main,Process_Globals,35,6
 SelectedBuild=0
 VisibleModules=1

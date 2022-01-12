@@ -1,14 +1,12 @@
 ﻿Build1=Default,iNKuBo.Compras
 File1=Compras.bal
-File2=Layout.bal
-File3=pastebin.txt
-File4=pastebin2.txt
-File5=test.txt
+File2=pastebin.txt
+File3=pastebin2.txt
+File4=test.txt
 FileGroup1=Default Group
 FileGroup2=Default Group
 FileGroup3=Default Group
 FileGroup4=Default Group
-FileGroup5=Default Group
 Group=Default Group
 Library1=core
 Library2=dropboxv2j
@@ -16,13 +14,12 @@ Library3=okhttp
 Library4=okhttputils2
 Library5=xml2map
 Library6=xui
-Library7=json
 ManifestCode='This code will be applied to the manifest file during compilation.~\n~'You do not need to modify it in most cases.~\n~'See this link for for more information: https://www.b4x.com/forum/showthread.php?p=78136~\n~AddManifestText(~\n~<uses-sdk android:minSdkVersion="14" android:targetSdkVersion="29"/>~\n~<supports-screens android:largeScreens="true" ~\n~    android:normalScreens="true" ~\n~    android:smallScreens="true" ~\n~    android:anyDensity="true"/>)~\n~SetApplicationAttribute(android:icon, "@drawable/icon")~\n~SetApplicationAttribute(android:label, "$LABEL$")~\n~CreateResourceFromFile(Macro, Themes.LightTheme)~\n~'End of default text.~\n~SetApplicationAttribute(android:label, "@string/app_name") ' NEW in v3.0!!!~\n~AddApplicationText(~\n~<activity android:name="com.dropbox.sync.android.DbxAuthActivity" />~\n~<activity~\n~  android:name="com.dropbox.client2.android.AuthActivity"~\n~  android:launchMode="singleTask" >~\n~  <intent-filter>~\n~    <data android:scheme="db-YOURAPPKEY" /> <!-- NEED TO UPDATE -->~\n~    <action android:name="android.intent.action.VIEW" />~\n~    <category android:name="android.intent.category.BROWSABLE" />~\n~    <category android:name="android.intent.category.DEFAULT" />~\n~  </intent-filter>~\n~</activity>~\n~<service~\n~  android:name="com.dropbox.sync.android.DbxSyncService"~\n~  android:enabled="true"~\n~  android:exported="false"~\n~  android:label="Dropbox Sync" />~\n~  )
 Module1=Starter
-NumberOfFiles=5
-NumberOfLibraries=7
+NumberOfFiles=4
+NumberOfLibraries=6
 NumberOfModules=1
-Version=11.16
+Version=11.2
 @EndOfDesignText@
 #Region  Project Attributes 
 	#ApplicationLabel: Compras
@@ -52,21 +49,21 @@ Sub Process_Globals
 
     'CLAVES DE DROPBOX
 	Private key As String = "lj61utogy2w47zb"
-	Private secret As String = "vn2zt5kxxfcd4f0"
+'	Private secret As String = "vn2zt5kxxfcd4f0"
 	Private access_token="dOCrtawc6EQAAAAAAAAAAWMAgy428MUF7MMlTUUJN-wvwT8M5DtsrR3i-Enqr8Il"
 	
 	
 
 	'Private MainForm As Form
 	Dim Dropbox As DropboxV2
-	Dim token As String
+'	Dim token As String
 	Dim client As DbxClientV2
 	Dim config As DbxRequestConfig
 	Dim dbxFiles As DbxUserFilesRequests
-	Dim dbxSharing As DbxUserSharingRequests
-	Dim dbxUsers As DbxUserUsersRequests
-	Dim clientId As String =key
-	Dim token As String = access_token
+'	Dim dbxSharing As DbxUserSharingRequests
+'	Dim dbxUsers As DbxUserUsersRequests
+'	Dim clientId As String =key
+'	Dim token As String = access_token
 	
 	Private xui As XUI
 	Dim api_dev_key As String
@@ -79,7 +76,7 @@ Sub Process_Globals
 	Dim pass As String
 	Dim fichero As String
 	Dim lisss As List
-	Dim Borrado As Boolean
+
 End Sub
 
 Sub Globals
@@ -91,7 +88,7 @@ Sub Globals
 	'Private fichero_datos As String="Lista_JaviR.txt"
 	Private fichero_datos As String="test.txt"
 	'Private fichero_datos As String="Lista_churri_J.txt"
-	
+	Dim Borrado As Boolean
 End Sub
 
 
@@ -130,10 +127,14 @@ Sub Activity_Pause (UserClosed As Boolean)
 	Log("en pausa")
 	If UserClosed Then
 		Wait for(Guardar_en_internet_Dropbox) Complete (Result As Boolean)
+		'ToastMessageShow("[Activity_Pause] Salgo de la activity",True)
 		'ExitApplication
-	Else
-		Guardar_en_disco
+	Else		
+		Guardar_en_disco	
+		Wait for(Guardar_en_internet_Dropbox) Complete (Result As Boolean)
+		'ToastMessageShow("[Activity_Pause] Guardo en disco y después en internet",True)
 	End If
+	Log("Sigo en pausa")
 End Sub
 
 Sub Button1_Click
@@ -185,10 +186,10 @@ Sub Leer_de_Dropbox
 	dbxFiles.download("/"&fichero_datos,File.DirInternal,fichero_datos)
 	wait for dbxFiles_DownloadFinished(success As Boolean, meta As FileMetadata, sessionId As String)
 	If success Then
-		ToastMessageShow(">Lista:OK",False)
+		ToastMessageShow("Internet -> Telefono [Lista:OK]",False)
 		ListView1.SingleLineLayout.Label.Color=Colors.Green
 	Else
-		ToastMessageShow(">Lista:KO",False)
+		ToastMessageShow("Internet -> Telefono [Lista:KO]",False)
 		ListView1.SingleLineLayout.Label.Color=Colors.Red
 	End If
 	Leer_de_disco
@@ -228,10 +229,10 @@ Sub Guardar_en_internet_Dropbox As ResumableSub
 				wait for dbxFiles_UploadFinished(success As Boolean, metaObj As Object, sessionId As String)
 				Log($"dbxFiles_UploadFinished(${success}, ${metaObj}, ${sessionId})"$)
 				If success Then
-					ToastMessageShow("Lista>:OK",False)
-					ListView1.SingleLineLayout.Label.Color=Colors.DarkGray
+					ToastMessageShow("Telefono -> Internet [Lista:OK]",False)
+					'ListView1.SingleLineLayout.Label.Color=Colors.DarkGray
 				Else
-					ToastMessageShow("Lista>:KO",True)
+					ToastMessageShow("Telefono -> Internet [Lista:KO]",True)
 					ListView1.SingleLineLayout.Label.Color=Colors.Red
 				End If
 		
@@ -243,24 +244,24 @@ Sub Guardar_en_internet_Dropbox As ResumableSub
 			wait for dbxFiles_UploadFinished(success As Boolean, metaObj As Object, sessionId As String)
 			Log($"dbxFiles_UploadFinished(${success}, ${metaObj}, ${sessionId})"$)
 			If success Then
-				ToastMessageShow("Lista>:OK",False)
+				ToastMessageShow("Telefono -> Internet [Lista:OK]",False)
 				ListView1.SingleLineLayout.Label.Color=Colors.Green
 			Else
-				ToastMessageShow("Lista>:KO",True)
+				ToastMessageShow("Telefono -> Internet [Lista:KO]",True)
 				ListView1.SingleLineLayout.Label.Color=Colors.Red
 			End If
 		End If
 	Else
 		Borrado=True
 		dbxFiles.upload(File.DirInternal,fichero_datos,"/"&fichero_datos,False,True)
-		ToastMessageShow("Subiendo Lista a Internet",False)
+		'ToastMessageShow("Subiendo Lista a Internet",False)
 		wait for dbxFiles_UploadFinished(success As Boolean, metaObj As Object, sessionId As String)
 		Log($"dbxFiles_UploadFinished(${success}, ${metaObj}, ${sessionId})"$)
 		If success Then
-			ToastMessageShow("Lista>:OK",False)
-			ListView1.SingleLineLayout.Label.Color=Colors.Green
+			ToastMessageShow("Telefono -> Internet [Lista:OK]",False)
+			'ListView1.SingleLineLayout.Label.Color=Colors.Green
 		Else
-			ToastMessageShow("Lista>:KO",True)
+			ToastMessageShow("Telefono -> Internet [Lista:KO]",True)
 			ListView1.SingleLineLayout.Label.Color=Colors.Red
 		End If
 		
@@ -530,6 +531,7 @@ End Sub
 
 Sub dbxFiles_UploadProgress(sessionId As String, path As String, filename As String, uploaded As Long, size As Long)
 	Log($"${filename} -> ${NumberFormat(uploaded / 1024, 0, 0)} KB /${NumberFormat(size / 1024, 0, 0)} kb -> ${NumberFormat(100 * (uploaded / size), 0, 2) } - Session ${sessionId}"$)
+	ToastMessageShow($"${filename} -> ${NumberFormat(uploaded / 1024, 0, 0)} KB /${NumberFormat(size / 1024, 0, 0)} kb -> ${NumberFormat(100 * (uploaded / size), 0, 2) } - Session ${sessionId}"$,False)
 End Sub
 
 
@@ -613,70 +615,3 @@ Private Sub Button2_Click
 	Leer_de_Dropbox
 End Sub
 
-'DROPBOX OLD STUFF
-'Sub login_db_old
-'		manager.Initialize(key, secret, "manager")
-'		manager.LinkAccount
-'End Sub
-'Sub Manager_AccountReady (Success As Boolean)
-'	Log("Account Ready: " & Success)
-'	If Success Then
-'		For Each FileInfo As DbxFileInfo In manager.ListFiles("/")
-'			Log(FileInfo.Name & ", " & FileInfo.IsFolder)
-'		Next
-'		manager.DownloadFile("/", "lista.txt", File.DirRootExternal, "test.txt")
-'	End If
-'   
-'End Sub
-'
-'Sub Manager_DownloadCompleted (Success As Boolean, LocalDir As String, LocalFileName As String)
-'	Log("DownloadCompleted: " & Success)
-'End Sub
-
-
-'GDRVIE OLD STUFF
-'Sub TestConnect
-'	Log("oAuth TestConnect")
-'   
-'	ti.Valid=False
-'   
-'	Dim h_tc As HttpJob
-'	h_tc.Initialize("", Me)
-'	h_tc.Download2("https://www.googleapis.com/drive/v3/files", _
-'         Array As String("access_token", ti.AccessToken, _
-'                         "corpora", "user", _
-'                         "q","mimeType!='application/vnd.google-apps.folder' and trashed=false"))
-'	Wait For (h_tc) JobDone(h_tc As HttpJob)
-'   
-'	If h_tc.Success Then
-'		Log(h_tc.GetString)
-'		ti.Valid=True
-'	Else
-'		Log("OAuth, Getting access token from refresh token in TestConnect")
-'		Dim j_rt As HttpJob
-'		j_rt.Initialize("", Me)
-'		j_rt.PostString("https://www.googleapis.com/oauth2/v4/token", _
-'        $"refresh_token=${ti.RefreshToken}&client_id=${mClientId}&grant_type=refresh_token&redirect_uri=${packageName & ":/oath"}"$)
-'
-'		Wait For (j_rt) JobDone(j_rt As HttpJob)
-'
-'		If j_rt.Success Then
-'			Log("OAuth TestConnect, Refresh access token Success")
-'           
-'			Dim jp As JSONParser
-'			jp.Initialize(j_rt.GetString)
-'			Dim m As Map = jp.NextObject
-'			ti.AccessExpiry = DateTime.Now + m.Get("expires_in")
-'			ti.AccessToken = m.Get("access_token")
-'			If m.ContainsKey("refresh_token") Then ti.RefreshToken = m.Get("refresh_token")
-'			ti.Valid = True
-'			SaveToken
-'		Else
-'			Log("OAuth TestConnect, Refresh Token Error")
-'		End If
-'		j_rt.Release
-'	End If
-'   
-'	h_tc.Release
-'	CallSubDelayed3(mTarget, mEventName & "_TestFinish", ti.Valid, ti)
-'End Sub

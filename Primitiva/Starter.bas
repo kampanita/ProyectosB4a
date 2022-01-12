@@ -7,6 +7,7 @@ Version=9.9
 #Region  Service Attributes 
 	#StartAtBoot: False
 	#ExcludeFromLibrary: True
+	
 #End Region
 
 Sub Process_Globals
@@ -30,7 +31,7 @@ Sub Service_Create
 	Dim jo As JavaObject
 	jo.InitializeStatic("java.util.Locale").RunMethod("setDefault", Array(locale))
 	
-'	ActivateSSL
+	ActivateSSL
 End Sub
 
 Sub Service_Start (StartingIntent As Intent)
@@ -49,47 +50,47 @@ End Sub
 Sub Service_Destroy
 
 End Sub
-'Sub ActivateSSL
-'
-'	Dim javaobjectContext                                                       As JavaObject
-'	Dim javaobjectInstance                                                      As JavaObject
-'	Dim objectListener                                                          As Object
-'	Dim phoneInstance                                                           As Phone
-'
-'	Try
-'		Select Case phoneInstance.SdkVersion
-'			Case 16, 17, 18, 19, 20 ' Android 4.1 - 4.4
-'			Case Else
-'				Return
-'		End Select
-'		javaobjectInstance.InitializeStatic ("com.google.android.gms.security.ProviderInstaller")
-'		javaobjectContext.InitializeContext
-'		DisableStrictMode
-'		objectListener = javaobjectInstance.CreateEventFromUI ("com.google.android.gms.security.ProviderInstaller.ProviderInstallListener", "objectListener", Null)
-'		javaobjectInstance.RunMethod ("installIfNeededAsync", Array (javaobjectContext, objectListener))
-'		Wait For objectListener_Event (stringMethodName As String, objectArguments () As Object)
-'		' If stringMethodName = "onProviderInstalled" Then [ Provider installed successfully ] Else [ Error installing provider (objectArguments (0)) ]
-'	Catch
-'		Log("Application_Error")
-'	End Try
-'
-'End Sub
-'
-'Sub DisableStrictMode
-'
-'	Dim javaobjectInstance                                                      As JavaObject
-'	Dim javaobjectPolicy                                                        As JavaObject
-'	Dim javaobjectStrictMode                                                    As JavaObject
-'
-'	Try
-'		javaobjectInstance.InitializeStatic ("android.os.Build.VERSION")
-'		If javaobjectInstance.GetField ("SDK_INT") > 9 Then
-'			javaobjectPolicy = javaobjectPolicy.InitializeNewInstance ("android.os.StrictMode.ThreadPolicy.Builder", Null)
-'			javaobjectPolicy = javaobjectPolicy.RunMethodJO ("permitAll", Null). RunMethodJO ("build", Null)
-'			javaobjectStrictMode.InitializeStatic ("android.os.StrictMode"). RunMethod ("setThreadPolicy", Array (javaobjectPolicy))
-'		End If
-'	Catch
-'		Log("Application_Error")
-'	End Try
-'
-'End Sub
+Sub ActivateSSL
+
+	Dim javaobjectContext                                                       As JavaObject
+	Dim javaobjectInstance                                                      As JavaObject
+	Dim objectListener                                                          As Object
+	Dim phoneInstance                                                           As Phone
+
+	Try
+		Select Case phoneInstance.SdkVersion
+			Case 16, 17, 18, 19, 20 ' Android 4.1 - 4.4
+			Case Else
+				Return
+		End Select
+		javaobjectInstance.InitializeStatic ("com.google.android.gms.security.ProviderInstaller")
+		javaobjectContext.InitializeContext
+		DisableStrictMode
+		objectListener = javaobjectInstance.CreateEventFromUI ("com.google.android.gms.security.ProviderInstaller.ProviderInstallListener", "objectListener", Null)
+		javaobjectInstance.RunMethod ("installIfNeededAsync", Array (javaobjectContext, objectListener))
+		Wait For objectListener_Event (stringMethodName As String, objectArguments () As Object)
+		' If stringMethodName = "onProviderInstalled" Then [ Provider installed successfully ] Else [ Error installing provider (objectArguments (0)) ]
+	Catch
+		Log("Application_Error")
+	End Try
+
+End Sub
+
+Sub DisableStrictMode
+
+	Dim javaobjectInstance                                                      As JavaObject
+	Dim javaobjectPolicy                                                        As JavaObject
+	Dim javaobjectStrictMode                                                    As JavaObject
+
+	Try
+		javaobjectInstance.InitializeStatic ("android.os.Build.VERSION")
+		If javaobjectInstance.GetField ("SDK_INT") > 9 Then
+			javaobjectPolicy = javaobjectPolicy.InitializeNewInstance ("android.os.StrictMode.ThreadPolicy.Builder", Null)
+			javaobjectPolicy = javaobjectPolicy.RunMethodJO ("permitAll", Null). RunMethodJO ("build", Null)
+			javaobjectStrictMode.InitializeStatic ("android.os.StrictMode"). RunMethod ("setThreadPolicy", Array (javaobjectPolicy))
+		End If
+	Catch
+		Log("Application_Error")
+	End Try
+
+End Sub

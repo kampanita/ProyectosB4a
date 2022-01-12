@@ -2,11 +2,11 @@
 <manifest
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	package="b4a.Primitiva"
-	android:versionCode="1"
+	android:versionCode="2"
 	android:versionName=""
-	android:installLocation="preferExternal">
+	android:installLocation="internalOnly">
 	
-	<uses-sdk android:minSdkVersion="14" android:targetSdkVersion="29"/>
+	<uses-sdk android:minSdkVersion="16" android:targetSdkVersion="30"/>
 	<supports-screens android:largeScreens="true" 
 	    android:normalScreens="true" 
 	    android:smallScreens="true" 
@@ -19,9 +19,12 @@
 		android:label="La Primi"
 		android:theme="@style/LightTheme">
 		
-		<meta-data
-		    android:name="com.google.android.gms.version"
-		    android:value="@integer/google_play_services_version" />
+		<activity android:name="com.google.android.gms.common.api.GoogleApiActivity"
+		  android:theme="@android:style/Theme.Translucent.NoTitleBar"
+		  android:exported="false"/>
+		    <meta-data
+		  android:name="com.google.android.gms.version"
+		  android:value="@integer/google_play_services_version" />
 		<activity
 			android:windowSoftInputMode="stateHidden"
 			android:launchMode="singleTop"

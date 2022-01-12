@@ -396,7 +396,7 @@ _sql.ExecNonQuery2(_query,anywheresoftware.b4a.keywords.Common.ArrayToList(new O
  } 
        catch (Exception e13) {
 			processBA.setLastException(e13); //BA.debugLineNum = 157;BA.debugLine="Log(LastException)";
-anywheresoftware.b4a.keywords.Common.LogImpl("722806544",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("822806544",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
  };
  //BA.debugLineNum = 159;BA.debugLine="rs=sql.ExecQuery(\"commit\")";
 _rs = (anywheresoftware.b4a.sql.SQL.ResultSetWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.sql.SQL.ResultSetWrapper(), (android.database.Cursor)(_sql.ExecQuery("commit")));
@@ -427,7 +427,7 @@ _sql.ExecNonQuery2(_query,anywheresoftware.b4a.keywords.Common.ArrayToList(new O
  } 
        catch (Exception e30) {
 			processBA.setLastException(e30); //BA.debugLineNum = 176;BA.debugLine="Log(LastException)";
-anywheresoftware.b4a.keywords.Common.LogImpl("722806563",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
+anywheresoftware.b4a.keywords.Common.LogImpl("822806563",BA.ObjectToString(anywheresoftware.b4a.keywords.Common.LastException(mostCurrent.activityBA)),0);
  };
  //BA.debugLineNum = 178;BA.debugLine="rs=sql.ExecQuery(\"commit\")";
 _rs = (anywheresoftware.b4a.sql.SQL.ResultSetWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.sql.SQL.ResultSetWrapper(), (android.database.Cursor)(_sql.ExecQuery("commit")));

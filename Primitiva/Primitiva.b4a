@@ -1,49 +1,47 @@
-﻿Build1=Default,b4a.Primitiva
-File1=4ecf8e92-7fbd-4e21-ae18-75339b370ced_source-aspect-ratio_default_0.jpg
-File10=WebView.bal
-File2=layout.bal
-File3=Layout2.bal
-File4=lista.txt
-File5=premiados.bal
-File6=primi.db
-File7=primitiva.jpg
-File8=row_premiados.bal
-File9=ver_rows.bal
+﻿Build1=Default,b4a.Primitiva,HU2_ACCEPTALL
+Build2=New_1,b4a.Primitiva,HU2_ACCEPTALL
+File1=layout.bal
+File2=Layout2.bal
+File3=premiados.bal
+File4=primi.db
+File5=primitiva.jpg
+File6=row_premiados.bal
+File7=ver_rows.bal
+File8=WebView.bal
 FileGroup1=Default Group
-FileGroup10=Default Group
 FileGroup2=Default Group
 FileGroup3=Default Group
 FileGroup4=Default Group
-FileGroup5=Default Group
+FileGroup5=Nuevo Grupo
 FileGroup6=Default Group
-FileGroup7=Nuevo Grupo
+FileGroup7=Default Group
 FileGroup8=Default Group
-FileGroup9=Default Group
 Group=Default Group
 Library1=animation
 Library2=core
-Library3=javaobject
-Library4=okhttputils2
+Library3=okhttputils2
+Library4=reflection
 Library5=sql
 Library6=xcustomlistview
 Library7=xui
 Library8=xui views
-Library9=reflection
-ManifestCode='This code will be applied to the manifest file during compilation.~\n~'You do not need to modify it in most cases.~\n~'See this link for for more information: https://www.b4x.com/forum/showthread.php?p=78136~\n~AddManifestText(~\n~<uses-sdk android:minSdkVersion="14" android:targetSdkVersion="29"/>~\n~<supports-screens android:largeScreens="true" ~\n~    android:normalScreens="true" ~\n~    android:smallScreens="true" ~\n~    android:anyDensity="true"/>)~\n~SetApplicationAttribute(android:icon, "@drawable/icon")~\n~SetApplicationAttribute(android:label, "$LABEL$")~\n~CreateResourceFromFile(Macro, Themes.LightTheme)~\n~'End of default text.~\n~AddApplicationText (<meta-data~\n~    android:name="com.google.android.gms.version"~\n~    android:value="@integer/google_play_services_version" />)
+Library9=phone
+ManifestCode='This code will be applied to the manifest file during compilation.~\n~'You do not need to modify it in most cases.~\n~'See this link for for more information: https://www.b4x.com/forum/showthread.php?p=78136~\n~AddManifestText(~\n~<uses-sdk android:minSdkVersion="16" android:targetSdkVersion="30"/>~\n~<supports-screens android:largeScreens="true" ~\n~    android:normalScreens="true" ~\n~    android:smallScreens="true" ~\n~    android:anyDensity="true"/>)~\n~SetApplicationAttribute(android:icon, "@drawable/icon")~\n~SetApplicationAttribute(android:label, "$LABEL$")~\n~CreateResourceFromFile(Macro, Themes.LightTheme)~\n~'End of default text.~\n~AddApplicationText(~\n~   <activity android:name="com.google.android.gms.common.api.GoogleApiActivity"~\n~  android:theme="@android:style/Theme.Translucent.NoTitleBar"~\n~  android:exported="false"/>~\n~    <meta-data~\n~  android:name="com.google.android.gms.version"~\n~  android:value="@integer/google_play_services_version" />~\n~)
 Module1=Starter
-NumberOfFiles=10
+NumberOfFiles=8
 NumberOfLibraries=9
 NumberOfModules=1
-Version=11.16
+Version=11.2
 @EndOfDesignText@
 #Region  Project Attributes 
 	#ApplicationLabel: La Primi
-	#VersionCode: 1
+	#VersionCode: 2
 	#VersionName: 
 	'SupportedOrientations possible values: unspecified, landscape or portrait.
 	#SupportedOrientations: unspecified
 	#AdditionalJar: com.google.android.gms:play-services-base
-	#CanInstallToExternalStorage: True
+	#CanInstallToExternalStorage: false
+	
 #End Region
 
 #Region  Activity Attributes 
@@ -78,7 +76,7 @@ Sub Globals
 	
 	Private CustomListView2 As CustomListView
 	Private Panel1 As Panel
-	Private ListView1 As ListView
+'	Private ListView1 As ListView
 	Private Ganadora As Label
 	Private combi As Label
 	Private acier As Label
@@ -101,7 +99,9 @@ End Sub
 
 Sub Activity_Resume
 	'CustomListView1.Add(crea_row(lista),"")
+	Wait For (CheckProviderInstaller) complete (success As Boolean)
 	cargar_guardados
+	
 End Sub
 
 Sub Activity_Pause (UserClosed As Boolean)
@@ -109,7 +109,7 @@ Sub Activity_Pause (UserClosed As Boolean)
 End Sub
 
 Private Sub Nueva_Click
-
+	
 	lista=CreateNumbersList(6,1,49,True)
 	CustomListView1.Add(crea_row(lista),"")
 	CustomListView1.ScrollToItem(CustomListView1.Size-1)
@@ -251,7 +251,7 @@ End Sub
 Private Sub Comprobar_Click
 	Activity.LoadLayout("WebView")
 	Dim url As String
-	
+	TryToFix
 	url="https://www.laprimitiva.info/"
 	
 	Dim html As String
@@ -272,15 +272,27 @@ Private Sub Comprobar_Click
 		html=html.Substring2(index1,index2)
 		html=$"<head><link rel="stylesheet" href="https://www.laprimitiva.info/css/master.min.css"></head><body>"$ & html & "</body>"
 	
-		html=RegexReplace($"href=\"/loteriaprimitiva/"$,html,$"href=\"http://laprimitiva.info/loteriaprimitiva/"$)
-		html=RegexReplace($"href="/jugar-loteria-primitiva.html""$,html,$"href=\"http://laprimitiva.info/jugar-loteria-primitiva.html""$)
+		html=RegexReplace($"href=\"/loteriaprimitiva/"$,html,$"href=\"https://laprimitiva.info/loteriaprimitiva/"$)
+		html=RegexReplace($"href="/jugar-loteria-primitiva.html""$,html,$"href=\"https://laprimitiva.info/jugar-loteria-primitiva.html""$)
 
 		WebView1.LoadHtml(html)
 	End If
 	http.Release
 	
 End Sub
+Public Sub TryToFix
+	Dim jo As JavaObject
+	jo.InitializeStatic("com.google.android.gms.security.ProviderInstaller")
+	Dim context As JavaObject
+	context.InitializeContext
+    
+	Starter.DisableStrictMode
 
+	Dim listener As Object = jo.CreateEventFromUI("com.google.android.gms.security.ProviderInstaller.ProviderInstallListener", _
+        "ProviderInstall", Null)
+	Log("Installing security provider if needed...")
+	jo.RunMethod("installIfNeededAsync", Array(context, listener))
+End Sub
 Private Sub Comprobar2_Click
 	Activity.LoadLayout("premiados")
 	Dim url As String
@@ -446,17 +458,33 @@ Private Sub borrar_guardados_Click
 End Sub
 
 Private Sub guardar_solo_1_Click
-		
-	If lista.Size>0 Then		
-		sql.ExecNonQuery2("insert into Apuestas (fecha,n1,n2,n3,n4,n5,n6) values (?,?,?,?,?,?,?)",Array As String(DateTime.date(DateTime.now),lista.get(0),lista.get(1),lista.get(2),lista.get(3),lista.get(4),lista.get(5)))
-		sql.ExecNonQuery2("delete from Apuestas_tmp where fecha=? and n1=? and n2=? and n3=? and n4=? and n5=? and n6=?",Array As Object(DateTime.date(DateTime.now),lista.get(0),lista.get(1),lista.get(2),lista.get(3),lista.get(4),lista.get(5)))
-		
-		CustomListView1.Clear
-		cargar_guardados
-		ToastMessageShow("Guardada la combinacion en la BBDD",True)
-	Else
-		ToastMessageShow("Nada que guardar",True)
-	End If
+	Dim rs As ResultSet
+	rs=sql.ExecQuery("select count(*) num from apuestas where n1='8' and n2='22' and n3='26' and n4='31' and n5='46' and n6='49'")
+	If rs.RowCount>0 Then
+		rs.Position=0
+		If rs.getint("num")=0 Then
+			sql.ExecNonQuery2("insert into Apuestas (fecha,n1,n2,n3,n4,n5,n6) values (?,'8','22','26','31','46','49')",Array As String(DateTime.date(DateTime.now)))
+			sql.ExecNonQuery2("insert into Apuestas (fecha,n1,n2,n3,n4,n5,n6) values (?,'9','25','35','38','40','44')",Array As String(DateTime.date(DateTime.now)))
+			sql.ExecNonQuery2("insert into Apuestas (fecha,n1,n2,n3,n4,n5,n6) values (?,'7','12','13','18','30','33')",Array As String(DateTime.date(DateTime.now)))
+			sql.ExecNonQuery2("insert into Apuestas (fecha,n1,n2,n3,n4,n5,n6) values (?,'1','9','12','14','44','48')",Array As String(DateTime.date(DateTime.now)))
+			ToastMessageShow("Guardada la combinacion ESPECIAL NOE en la BBDD",True)
+			
+		Else
+			ToastMessageShow("ombinacion ESPECIAL NOE ya está guardada",True)
+		End If
+ 	End If
+	CustomListView1.Clear
+	cargar_guardados
+'	If lista.Size>0 Then		
+'		sql.ExecNonQuery2("insert into Apuestas (fecha,n1,n2,n3,n4,n5,n6) values (?,?,?,?,?,?,?)",Array As String(DateTime.date(DateTime.now),lista.get(0),lista.get(1),lista.get(2),lista.get(3),lista.get(4),lista.get(5)))
+'		sql.ExecNonQuery2("delete from Apuestas_tmp where fecha=? and n1=? and n2=? and n3=? and n4=? and n5=? and n6=?",Array As Object(DateTime.date(DateTime.now),lista.get(0),lista.get(1),lista.get(2),lista.get(3),lista.get(4),lista.get(5)))
+'		
+'		CustomListView1.Clear
+'		cargar_guardados
+'		ToastMessageShow("Guardada la combinacion ESPECIAL NOE en la BBDD",True)
+'	Else
+'		ToastMessageShow("Nada que guardar",True)
+'	End If
 End Sub
 
 Sub cargar_guardados
@@ -530,6 +558,40 @@ Private Sub Borra_tmp_Click
 		sql.ExecNonQuery("delete from Apuestas_tmp")
 		ToastMessageShow("Borrados todas las combinaciones de memoria.",True)
 	End If
-	cargar_guardados
- End If
+		cargar_guardados
+	End If
+End Sub
+
+
+Sub CheckProviderInstaller As ResumableSub
+	' Don't forget to add to module:
+	'#AdditionalJar: com.google.android.gms:play-services-base
+	'Don't forget to add to the Manifest
+	'    '************ Google Play Services Base ************
+	'    AddApplicationText(
+	'    <Activity android:name="com.google.android.gms.common.api.GoogleApiActivity"
+	'    android:theme="@android:style/Theme.Translucent.NoTitleBar"
+	'    android:exported="false"/>
+	'    <meta-data
+	'    android:name="com.google.android.gms.version"
+	'    android:value="@integer/google_play_services_version" />
+	'    )
+	'    '************ Google Play Services Base (end) ************
+	Dim retVal As Boolean = False
+	Dim jo As JavaObject
+	jo.InitializeStatic("com.google.android.gms.security.ProviderInstaller")
+	Dim context As JavaObject
+	context.InitializeContext
+	Dim listener As Object = jo.CreateEventFromUI("com.google.android.gms.security.ProviderInstaller.ProviderInstallListener", _
+        "listener", Null)
+	Log("Installing security provider if needed...")
+	jo.RunMethod("installIfNeededAsync", Array(context, listener))
+	Wait For listener_Event (MethodName As String, Args() As Object)
+	If MethodName = "onProviderInstalled" Then
+		Log("Provider installed successfully")
+		retVal = True
+	Else
+		Log("Error installing provider: " & Args(0))
+	End If
+	Return retVal
 End Sub
