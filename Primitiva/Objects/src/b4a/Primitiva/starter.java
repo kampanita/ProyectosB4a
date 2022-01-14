@@ -245,7 +245,7 @@ case 11:
 this.state = 12;
 this.catchState = 0;
  //BA.debugLineNum = 68;BA.debugLine="Log(\"Application_Error\")";
-anywheresoftware.b4a.keywords.Common.LogImpl("425755669","Application_Error",0);
+anywheresoftware.b4a.keywords.Common.LogImpl("62162709","Application_Error",0);
  if (true) break;
 if (true) break;
 
@@ -303,7 +303,7 @@ _javaobjectstrictmode.InitializeStatic("android.os.StrictMode").RunMethod("setTh
  } 
        catch (Exception e12) {
 			processBA.setLastException(e12); //BA.debugLineNum = 87;BA.debugLine="Log(\"Application_Error\")";
-anywheresoftware.b4a.keywords.Common.LogImpl("425821198","Application_Error",0);
+anywheresoftware.b4a.keywords.Common.LogImpl("62228238","Application_Error",0);
  };
  //BA.debugLineNum = 90;BA.debugLine="End Sub";
 return "";

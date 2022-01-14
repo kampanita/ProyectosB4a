@@ -370,21 +370,21 @@ public static String  _activity_create(boolean _firsttime) throws Exception{
  //BA.debugLineNum = 52;BA.debugLine="Sub Activity_Create(FirstTime As Boolean)";
  //BA.debugLineNum = 53;BA.debugLine="Activity.LoadLayout(\"Layout2\")";
 mostCurrent._activity.LoadLayout("Layout2",mostCurrent.activityBA);
- //BA.debugLineNum = 57;BA.debugLine="sql.Initialize(File.DirInternal,\"primi.db\",True)";
+ //BA.debugLineNum = 54;BA.debugLine="sql.Initialize(File.DirInternal,\"primi.db\",True)";
 _sql.Initialize(anywheresoftware.b4a.keywords.Common.File.getDirInternal(),"primi.db",anywheresoftware.b4a.keywords.Common.True);
- //BA.debugLineNum = 58;BA.debugLine="If FirstTime Then";
+ //BA.debugLineNum = 55;BA.debugLine="If FirstTime Then";
 if (_firsttime) { 
- //BA.debugLineNum = 59;BA.debugLine="lista.Initialize";
+ //BA.debugLineNum = 56;BA.debugLine="lista.Initialize";
 mostCurrent._lista.Initialize();
- //BA.debugLineNum = 60;BA.debugLine="cargar_guardados";
+ //BA.debugLineNum = 57;BA.debugLine="cargar_guardados";
 _cargar_guardados();
  };
- //BA.debugLineNum = 63;BA.debugLine="End Sub";
+ //BA.debugLineNum = 60;BA.debugLine="End Sub";
 return "";
 }
 public static String  _activity_pause(boolean _userclosed) throws Exception{
- //BA.debugLineNum = 72;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
- //BA.debugLineNum = 74;BA.debugLine="End Sub";
+ //BA.debugLineNum = 69;BA.debugLine="Sub Activity_Pause (UserClosed As Boolean)";
+ //BA.debugLineNum = 71;BA.debugLine="End Sub";
 return "";
 }
 public static void  _activity_resume() throws Exception{
@@ -409,7 +409,7 @@ return;
 case 0:
 //C
 this.state = -1;
- //BA.debugLineNum = 67;BA.debugLine="Wait For (CheckProviderInstaller) complete (succe";
+ //BA.debugLineNum = 64;BA.debugLine="Wait For (CheckProviderInstaller) complete (succe";
 anywheresoftware.b4a.keywords.Common.WaitFor("complete", processBA, this, _checkproviderinstaller());
 this.state = 1;
 return;
@@ -418,9 +418,9 @@ case 1:
 this.state = -1;
 _success = (Boolean) result[0];
 ;
- //BA.debugLineNum = 68;BA.debugLine="cargar_guardados";
+ //BA.debugLineNum = 65;BA.debugLine="cargar_guardados";
 _cargar_guardados();
- //BA.debugLineNum = 70;BA.debugLine="End Sub";
+ //BA.debugLineNum = 67;BA.debugLine="End Sub";
 if (true) break;
 
             }
@@ -453,7 +453,7 @@ return;
 case 0:
 //C
 this.state = 1;
- //BA.debugLineNum = 512;BA.debugLine="If lista.Size>0 Then";
+ //BA.debugLineNum = 509;BA.debugLine="If lista.Size>0 Then";
 if (true) break;
 
 case 1:
@@ -466,23 +466,23 @@ this.state = 3;
 case 3:
 //C
 this.state = 4;
- //BA.debugLineNum = 513;BA.debugLine="Dim d As B4XDialog";
+ //BA.debugLineNum = 510;BA.debugLine="Dim d As B4XDialog";
 _d = new b4a.Primitiva.b4xdialog();
- //BA.debugLineNum = 514;BA.debugLine="d.initialize(Activity)";
+ //BA.debugLineNum = 511;BA.debugLine="d.initialize(Activity)";
 _d._initialize /*String*/ (mostCurrent.activityBA,(anywheresoftware.b4a.objects.B4XViewWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.B4XViewWrapper(), (java.lang.Object)(parent.mostCurrent._activity.getObject())));
- //BA.debugLineNum = 515;BA.debugLine="d.Title=\"¡¡ATENCIÓN!!\"";
+ //BA.debugLineNum = 512;BA.debugLine="d.Title=\"¡¡ATENCIÓN!!\"";
 _d._title /*Object*/  = (Object)("¡¡ATENCIÓN!!");
- //BA.debugLineNum = 516;BA.debugLine="d.BackgroundColor=Colors.White";
+ //BA.debugLineNum = 513;BA.debugLine="d.BackgroundColor=Colors.White";
 _d._backgroundcolor /*int*/  = anywheresoftware.b4a.keywords.Common.Colors.White;
- //BA.debugLineNum = 517;BA.debugLine="d.BodyTextColor=Colors.Blue";
+ //BA.debugLineNum = 514;BA.debugLine="d.BodyTextColor=Colors.Blue";
 _d._bodytextcolor /*int*/  = anywheresoftware.b4a.keywords.Common.Colors.Blue;
- //BA.debugLineNum = 518;BA.debugLine="d.VisibleAnimationDuration=300";
+ //BA.debugLineNum = 515;BA.debugLine="d.VisibleAnimationDuration=300";
 _d._visibleanimationduration /*int*/  = (int) (300);
- //BA.debugLineNum = 519;BA.debugLine="Dim rs As Object";
+ //BA.debugLineNum = 516;BA.debugLine="Dim rs As Object";
 _rs = new Object();
- //BA.debugLineNum = 520;BA.debugLine="rs=d.Show(\"Quieres borrar todos las combinaciones";
+ //BA.debugLineNum = 517;BA.debugLine="rs=d.Show(\"Quieres borrar todos las combinaciones";
 _rs = _d._show /*anywheresoftware.b4a.keywords.Common.ResumableSubWrapper*/ ((Object)("Quieres borrar todos las combinaciones temporales ¿?"),(Object)("Si"),(Object)("No"),(Object)(""));
- //BA.debugLineNum = 521;BA.debugLine="Wait For(rs) complete (Result As Int)";
+ //BA.debugLineNum = 518;BA.debugLine="Wait For(rs) complete (Result As Int)";
 anywheresoftware.b4a.keywords.Common.WaitFor("complete", processBA, this, _rs);
 this.state = 9;
 return;
@@ -491,7 +491,7 @@ case 9:
 this.state = 4;
 _result = (Integer) result[0];
 ;
- //BA.debugLineNum = 522;BA.debugLine="If Result = xui.DialogResponse_Positive Then";
+ //BA.debugLineNum = 519;BA.debugLine="If Result = xui.DialogResponse_Positive Then";
 if (true) break;
 
 case 4:
@@ -504,9 +504,9 @@ this.state = 6;
 case 6:
 //C
 this.state = 7;
- //BA.debugLineNum = 523;BA.debugLine="sql.ExecNonQuery(\"delete from Apuestas_tmp\")";
+ //BA.debugLineNum = 520;BA.debugLine="sql.ExecNonQuery(\"delete from Apuestas_tmp\")";
 parent._sql.ExecNonQuery("delete from Apuestas_tmp");
- //BA.debugLineNum = 524;BA.debugLine="ToastMessageShow(\"Borrados todas las combinacion";
+ //BA.debugLineNum = 521;BA.debugLine="ToastMessageShow(\"Borrados todas las combinacion";
 anywheresoftware.b4a.keywords.Common.ToastMessageShow(BA.ObjectToCharSequence("Borrados todas las combinaciones de memoria."),anywheresoftware.b4a.keywords.Common.True);
  if (true) break;
 
@@ -514,7 +514,7 @@ case 7:
 //C
 this.state = 8;
 ;
- //BA.debugLineNum = 526;BA.debugLine="cargar_guardados";
+ //BA.debugLineNum = 523;BA.debugLine="cargar_guardados";
 _cargar_guardados();
  if (true) break;
 
@@ -522,7 +522,7 @@ case 8:
 //C
 this.state = -1;
 ;
- //BA.debugLineNum = 528;BA.debugLine="End Sub";
+ //BA.debugLineNum = 525;BA.debugLine="End Sub";
 if (true) break;
 
             }
@@ -553,23 +553,23 @@ return;
 case 0:
 //C
 this.state = 1;
- //BA.debugLineNum = 409;BA.debugLine="Dim d As B4XDialog";
+ //BA.debugLineNum = 406;BA.debugLine="Dim d As B4XDialog";
 _d = new b4a.Primitiva.b4xdialog();
- //BA.debugLineNum = 410;BA.debugLine="d.initialize(Activity)";
+ //BA.debugLineNum = 407;BA.debugLine="d.initialize(Activity)";
 _d._initialize /*String*/ (mostCurrent.activityBA,(anywheresoftware.b4a.objects.B4XViewWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.B4XViewWrapper(), (java.lang.Object)(parent.mostCurrent._activity.getObject())));
- //BA.debugLineNum = 411;BA.debugLine="d.Title=\"¡¡ATENCIÓN!!\"";
+ //BA.debugLineNum = 408;BA.debugLine="d.Title=\"¡¡ATENCIÓN!!\"";
 _d._title /*Object*/  = (Object)("¡¡ATENCIÓN!!");
- //BA.debugLineNum = 412;BA.debugLine="d.BackgroundColor=Colors.White";
+ //BA.debugLineNum = 409;BA.debugLine="d.BackgroundColor=Colors.White";
 _d._backgroundcolor /*int*/  = anywheresoftware.b4a.keywords.Common.Colors.White;
- //BA.debugLineNum = 413;BA.debugLine="d.BodyTextColor=Colors.Blue";
+ //BA.debugLineNum = 410;BA.debugLine="d.BodyTextColor=Colors.Blue";
 _d._bodytextcolor /*int*/  = anywheresoftware.b4a.keywords.Common.Colors.Blue;
- //BA.debugLineNum = 414;BA.debugLine="d.VisibleAnimationDuration=300";
+ //BA.debugLineNum = 411;BA.debugLine="d.VisibleAnimationDuration=300";
 _d._visibleanimationduration /*int*/  = (int) (300);
- //BA.debugLineNum = 415;BA.debugLine="Dim rs As Object";
+ //BA.debugLineNum = 412;BA.debugLine="Dim rs As Object";
 _rs = new Object();
- //BA.debugLineNum = 416;BA.debugLine="rs=d.Show(\"Quieres borrar todos las combinaciones";
+ //BA.debugLineNum = 413;BA.debugLine="rs=d.Show(\"Quieres borrar todos las combinaciones";
 _rs = _d._show /*anywheresoftware.b4a.keywords.Common.ResumableSubWrapper*/ ((Object)("Quieres borrar todos las combinaciones guardadas ¿?"+anywheresoftware.b4a.keywords.Common.CRLF+" Se perderán los datos almacenados."+anywheresoftware.b4a.keywords.Common.CRLF+"Recuerda que puedes borrar una a una manteniendo pulsado sobre ella."),(Object)("Si"),(Object)("No"),(Object)(""));
- //BA.debugLineNum = 417;BA.debugLine="Wait For(rs) complete (Result As Int)";
+ //BA.debugLineNum = 414;BA.debugLine="Wait For(rs) complete (Result As Int)";
 anywheresoftware.b4a.keywords.Common.WaitFor("complete", processBA, this, _rs);
 this.state = 5;
 return;
@@ -578,7 +578,7 @@ case 5:
 this.state = 1;
 _result = (Integer) result[0];
 ;
- //BA.debugLineNum = 418;BA.debugLine="If Result = xui.DialogResponse_Positive Then";
+ //BA.debugLineNum = 415;BA.debugLine="If Result = xui.DialogResponse_Positive Then";
 if (true) break;
 
 case 1:
@@ -591,11 +591,11 @@ this.state = 3;
 case 3:
 //C
 this.state = 4;
- //BA.debugLineNum = 419;BA.debugLine="sql.ExecNonQuery(\"delete from Apuestas\")";
+ //BA.debugLineNum = 416;BA.debugLine="sql.ExecNonQuery(\"delete from Apuestas\")";
 parent._sql.ExecNonQuery("delete from Apuestas");
- //BA.debugLineNum = 420;BA.debugLine="ToastMessageShow(\"Borrados todas las combinacion";
+ //BA.debugLineNum = 417;BA.debugLine="ToastMessageShow(\"Borrados todas las combinacion";
 anywheresoftware.b4a.keywords.Common.ToastMessageShow(BA.ObjectToCharSequence("Borrados todas las combinaciones de memoria."),anywheresoftware.b4a.keywords.Common.True);
- //BA.debugLineNum = 421;BA.debugLine="cargar_guardados";
+ //BA.debugLineNum = 418;BA.debugLine="cargar_guardados";
 _cargar_guardados();
  if (true) break;
 
@@ -603,7 +603,7 @@ case 4:
 //C
 this.state = -1;
 ;
- //BA.debugLineNum = 423;BA.debugLine="End Sub";
+ //BA.debugLineNum = 420;BA.debugLine="End Sub";
 if (true) break;
 
             }
@@ -615,53 +615,53 @@ anywheresoftware.b4a.sql.SQL.ResultSetWrapper _rs = null;
 anywheresoftware.b4a.objects.collections.List _items = null;
 int _primary_key = 0;
 int _i = 0;
- //BA.debugLineNum = 455;BA.debugLine="Sub cargar_guardados";
- //BA.debugLineNum = 457;BA.debugLine="Activity.LoadLayout(\"Layout2\")";
+ //BA.debugLineNum = 452;BA.debugLine="Sub cargar_guardados";
+ //BA.debugLineNum = 454;BA.debugLine="Activity.LoadLayout(\"Layout2\")";
 mostCurrent._activity.LoadLayout("Layout2",mostCurrent.activityBA);
- //BA.debugLineNum = 458;BA.debugLine="Dim rs As ResultSet";
+ //BA.debugLineNum = 455;BA.debugLine="Dim rs As ResultSet";
 _rs = new anywheresoftware.b4a.sql.SQL.ResultSetWrapper();
- //BA.debugLineNum = 459;BA.debugLine="rs=sql.ExecQuery(\"select * from Apuestas_tmp\")";
+ //BA.debugLineNum = 456;BA.debugLine="rs=sql.ExecQuery(\"select * from Apuestas_tmp\")";
 _rs = (anywheresoftware.b4a.sql.SQL.ResultSetWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.sql.SQL.ResultSetWrapper(), (android.database.Cursor)(_sql.ExecQuery("select * from Apuestas_tmp")));
- //BA.debugLineNum = 460;BA.debugLine="Dim items As List";
+ //BA.debugLineNum = 457;BA.debugLine="Dim items As List";
 _items = new anywheresoftware.b4a.objects.collections.List();
- //BA.debugLineNum = 461;BA.debugLine="Dim primary_key As Int";
+ //BA.debugLineNum = 458;BA.debugLine="Dim primary_key As Int";
 _primary_key = 0;
- //BA.debugLineNum = 462;BA.debugLine="For i=0 To rs.RowCount-1";
+ //BA.debugLineNum = 459;BA.debugLine="For i=0 To rs.RowCount-1";
 {
 final int step6 = 1;
 final int limit6 = (int) (_rs.getRowCount()-1);
 _i = (int) (0) ;
 for (;_i <= limit6 ;_i = _i + step6 ) {
- //BA.debugLineNum = 463;BA.debugLine="rs.Position=i";
+ //BA.debugLineNum = 460;BA.debugLine="rs.Position=i";
 _rs.setPosition(_i);
- //BA.debugLineNum = 464;BA.debugLine="items.initialize";
+ //BA.debugLineNum = 461;BA.debugLine="items.initialize";
 _items.Initialize();
- //BA.debugLineNum = 465;BA.debugLine="primary_key=rs.GetiNT(\"Apuesta\")";
+ //BA.debugLineNum = 462;BA.debugLine="primary_key=rs.GetiNT(\"Apuesta\")";
 _primary_key = _rs.GetInt("Apuesta");
- //BA.debugLineNum = 467;BA.debugLine="items.Add(rs.Getint(\"n1\"))";
+ //BA.debugLineNum = 464;BA.debugLine="items.Add(rs.Getint(\"n1\"))";
 _items.Add((Object)(_rs.GetInt("n1")));
- //BA.debugLineNum = 468;BA.debugLine="items.Add(rs.Getint(\"n2\"))";
+ //BA.debugLineNum = 465;BA.debugLine="items.Add(rs.Getint(\"n2\"))";
 _items.Add((Object)(_rs.GetInt("n2")));
- //BA.debugLineNum = 469;BA.debugLine="items.Add(rs.Getint(\"n3\"))";
+ //BA.debugLineNum = 466;BA.debugLine="items.Add(rs.Getint(\"n3\"))";
 _items.Add((Object)(_rs.GetInt("n3")));
- //BA.debugLineNum = 470;BA.debugLine="items.Add(rs.Getint(\"n4\"))";
+ //BA.debugLineNum = 467;BA.debugLine="items.Add(rs.Getint(\"n4\"))";
 _items.Add((Object)(_rs.GetInt("n4")));
- //BA.debugLineNum = 471;BA.debugLine="items.Add(rs.Getint(\"n5\"))";
+ //BA.debugLineNum = 468;BA.debugLine="items.Add(rs.Getint(\"n5\"))";
 _items.Add((Object)(_rs.GetInt("n5")));
- //BA.debugLineNum = 472;BA.debugLine="items.Add(rs.Getint(\"n6\"))";
+ //BA.debugLineNum = 469;BA.debugLine="items.Add(rs.Getint(\"n6\"))";
 _items.Add((Object)(_rs.GetInt("n6")));
- //BA.debugLineNum = 473;BA.debugLine="CustomListView1.Add(crea_row(items),primary_key)";
+ //BA.debugLineNum = 470;BA.debugLine="CustomListView1.Add(crea_row(items),primary_key)";
 mostCurrent._customlistview1._add(_crea_row(_items),(Object)(_primary_key));
  }
 };
- //BA.debugLineNum = 476;BA.debugLine="lista=items";
+ //BA.debugLineNum = 473;BA.debugLine="lista=items";
 mostCurrent._lista = _items;
- //BA.debugLineNum = 477;BA.debugLine="If CustomListView1.size>0 Then";
+ //BA.debugLineNum = 474;BA.debugLine="If CustomListView1.size>0 Then";
 if (mostCurrent._customlistview1._getsize()>0) { 
- //BA.debugLineNum = 478;BA.debugLine="CustomListView1.ScrollToItem(CustomListView1.Siz";
+ //BA.debugLineNum = 475;BA.debugLine="CustomListView1.ScrollToItem(CustomListView1.Siz";
 mostCurrent._customlistview1._scrolltoitem((int) (mostCurrent._customlistview1._getsize()-1));
  };
- //BA.debugLineNum = 481;BA.debugLine="End Sub";
+ //BA.debugLineNum = 478;BA.debugLine="End Sub";
 return "";
 }
 public static anywheresoftware.b4a.keywords.Common.ResumableSubWrapper  _checkproviderinstaller() throws Exception{
@@ -692,23 +692,23 @@ anywheresoftware.b4a.keywords.Common.ReturnFromResumableSub(this,null);return;}
 case 0:
 //C
 this.state = 1;
- //BA.debugLineNum = 545;BA.debugLine="Dim retVal As Boolean = False";
+ //BA.debugLineNum = 542;BA.debugLine="Dim retVal As Boolean = False";
 _retval = anywheresoftware.b4a.keywords.Common.False;
- //BA.debugLineNum = 546;BA.debugLine="Dim jo As JavaObject";
+ //BA.debugLineNum = 543;BA.debugLine="Dim jo As JavaObject";
 _jo = new anywheresoftware.b4j.object.JavaObject();
- //BA.debugLineNum = 547;BA.debugLine="jo.InitializeStatic(\"com.google.android.gms.secur";
+ //BA.debugLineNum = 544;BA.debugLine="jo.InitializeStatic(\"com.google.android.gms.secur";
 _jo.InitializeStatic("com.google.android.gms.security.ProviderInstaller");
- //BA.debugLineNum = 548;BA.debugLine="Dim context As JavaObject";
+ //BA.debugLineNum = 545;BA.debugLine="Dim context As JavaObject";
 _context = new anywheresoftware.b4j.object.JavaObject();
- //BA.debugLineNum = 549;BA.debugLine="context.InitializeContext";
+ //BA.debugLineNum = 546;BA.debugLine="context.InitializeContext";
 _context.InitializeContext(processBA);
- //BA.debugLineNum = 550;BA.debugLine="Dim listener As Object = jo.CreateEventFromUI(\"co";
+ //BA.debugLineNum = 547;BA.debugLine="Dim listener As Object = jo.CreateEventFromUI(\"co";
 _listener = _jo.CreateEventFromUI(processBA,"com.google.android.gms.security.ProviderInstaller.ProviderInstallListener","listener",anywheresoftware.b4a.keywords.Common.Null);
- //BA.debugLineNum = 552;BA.debugLine="Log(\"Installing security provider if needed...\")";
-anywheresoftware.b4a.keywords.Common.LogImpl("425296917","Installing security provider if needed...",0);
- //BA.debugLineNum = 553;BA.debugLine="jo.RunMethod(\"installIfNeededAsync\", Array(contex";
+ //BA.debugLineNum = 549;BA.debugLine="Log(\"Installing security provider if needed...\")";
+anywheresoftware.b4a.keywords.Common.LogImpl("61703957","Installing security provider if needed...",0);
+ //BA.debugLineNum = 550;BA.debugLine="jo.RunMethod(\"installIfNeededAsync\", Array(contex";
 _jo.RunMethod("installIfNeededAsync",new Object[]{(Object)(_context.getObject()),_listener});
- //BA.debugLineNum = 554;BA.debugLine="Wait For listener_Event (MethodName As String, Ar";
+ //BA.debugLineNum = 551;BA.debugLine="Wait For listener_Event (MethodName As String, Ar";
 anywheresoftware.b4a.keywords.Common.WaitFor("listener_event", processBA, this, null);
 this.state = 7;
 return;
@@ -718,7 +718,7 @@ this.state = 1;
 _methodname = (String) result[0];
 _args = (Object[]) result[1];
 ;
- //BA.debugLineNum = 555;BA.debugLine="If MethodName = \"onProviderInstalled\" Then";
+ //BA.debugLineNum = 552;BA.debugLine="If MethodName = \"onProviderInstalled\" Then";
 if (true) break;
 
 case 1:
@@ -733,27 +733,27 @@ this.state = 5;
 case 3:
 //C
 this.state = 6;
- //BA.debugLineNum = 556;BA.debugLine="Log(\"Provider installed successfully\")";
-anywheresoftware.b4a.keywords.Common.LogImpl("425296921","Provider installed successfully",0);
- //BA.debugLineNum = 557;BA.debugLine="retVal = True";
+ //BA.debugLineNum = 553;BA.debugLine="Log(\"Provider installed successfully\")";
+anywheresoftware.b4a.keywords.Common.LogImpl("61703961","Provider installed successfully",0);
+ //BA.debugLineNum = 554;BA.debugLine="retVal = True";
 _retval = anywheresoftware.b4a.keywords.Common.True;
  if (true) break;
 
 case 5:
 //C
 this.state = 6;
- //BA.debugLineNum = 559;BA.debugLine="Log(\"Error installing provider: \" & Args(0))";
-anywheresoftware.b4a.keywords.Common.LogImpl("425296924","Error installing provider: "+BA.ObjectToString(_args[(int) (0)]),0);
+ //BA.debugLineNum = 556;BA.debugLine="Log(\"Error installing provider: \" & Args(0))";
+anywheresoftware.b4a.keywords.Common.LogImpl("61703964","Error installing provider: "+BA.ObjectToString(_args[(int) (0)]),0);
  if (true) break;
 
 case 6:
 //C
 this.state = -1;
 ;
- //BA.debugLineNum = 561;BA.debugLine="Return retVal";
+ //BA.debugLineNum = 558;BA.debugLine="Return retVal";
 if (true) {
 anywheresoftware.b4a.keywords.Common.ReturnFromResumableSub(this,(Object)(_retval));return;};
- //BA.debugLineNum = 562;BA.debugLine="End Sub";
+ //BA.debugLineNum = 559;BA.debugLine="End Sub";
 if (true) break;
 
             }
@@ -790,23 +790,23 @@ return;
 case 0:
 //C
 this.state = 1;
- //BA.debugLineNum = 217;BA.debugLine="Activity.LoadLayout(\"WebView\")";
+ //BA.debugLineNum = 214;BA.debugLine="Activity.LoadLayout(\"WebView\")";
 parent.mostCurrent._activity.LoadLayout("WebView",mostCurrent.activityBA);
- //BA.debugLineNum = 218;BA.debugLine="Dim url As String";
+ //BA.debugLineNum = 215;BA.debugLine="Dim url As String";
 _url = "";
- //BA.debugLineNum = 219;BA.debugLine="TryToFix";
+ //BA.debugLineNum = 216;BA.debugLine="TryToFix";
 _trytofix();
- //BA.debugLineNum = 220;BA.debugLine="url=\"https://www.laprimitiva.info/\"";
+ //BA.debugLineNum = 217;BA.debugLine="url=\"https://www.laprimitiva.info/\"";
 _url = "https://www.laprimitiva.info/";
- //BA.debugLineNum = 222;BA.debugLine="Dim html As String";
+ //BA.debugLineNum = 219;BA.debugLine="Dim html As String";
 _html = "";
- //BA.debugLineNum = 223;BA.debugLine="Dim http As HttpJob";
+ //BA.debugLineNum = 220;BA.debugLine="Dim http As HttpJob";
 _http = new b4a.Primitiva.httpjob();
- //BA.debugLineNum = 224;BA.debugLine="http.Initialize(\"\",Me)";
+ //BA.debugLineNum = 221;BA.debugLine="http.Initialize(\"\",Me)";
 _http._initialize /*String*/ (processBA,"",main.getObject());
- //BA.debugLineNum = 225;BA.debugLine="http.Download(url)";
+ //BA.debugLineNum = 222;BA.debugLine="http.Download(url)";
 _http._download /*String*/ (_url);
- //BA.debugLineNum = 226;BA.debugLine="Wait For (http) JobDone(http As HttpJob)";
+ //BA.debugLineNum = 223;BA.debugLine="Wait For (http) JobDone(http As HttpJob)";
 anywheresoftware.b4a.keywords.Common.WaitFor("jobdone", processBA, this, (Object)(_http));
 this.state = 5;
 return;
@@ -815,7 +815,7 @@ case 5:
 this.state = 1;
 _http = (b4a.Primitiva.httpjob) result[0];
 ;
- //BA.debugLineNum = 227;BA.debugLine="If http.Success Then";
+ //BA.debugLineNum = 224;BA.debugLine="If http.Success Then";
 if (true) break;
 
 case 1:
@@ -828,25 +828,25 @@ this.state = 3;
 case 3:
 //C
 this.state = 4;
- //BA.debugLineNum = 229;BA.debugLine="html=http.getString";
+ //BA.debugLineNum = 226;BA.debugLine="html=http.getString";
 _html = _http._getstring /*String*/ ();
- //BA.debugLineNum = 231;BA.debugLine="Dim inicio As String =$\"<article class=\"$";
+ //BA.debugLineNum = 228;BA.debugLine="Dim inicio As String =$\"<article class=\"$";
 _inicio = ("<article class=");
- //BA.debugLineNum = 232;BA.debugLine="Dim final As String	=$\"</article>\"$";
+ //BA.debugLineNum = 229;BA.debugLine="Dim final As String	=$\"</article>\"$";
 _final = ("</article>");
- //BA.debugLineNum = 234;BA.debugLine="Dim index1 As Int=html.IndexOf(inicio)";
+ //BA.debugLineNum = 231;BA.debugLine="Dim index1 As Int=html.IndexOf(inicio)";
 _index1 = _html.indexOf(_inicio);
- //BA.debugLineNum = 235;BA.debugLine="Dim index2 As Int=html.IndexOf(final)";
+ //BA.debugLineNum = 232;BA.debugLine="Dim index2 As Int=html.IndexOf(final)";
 _index2 = _html.indexOf(_final);
- //BA.debugLineNum = 237;BA.debugLine="html=html.Substring2(index1,index2)";
+ //BA.debugLineNum = 234;BA.debugLine="html=html.Substring2(index1,index2)";
 _html = _html.substring(_index1,_index2);
- //BA.debugLineNum = 238;BA.debugLine="html=$\"<head><link rel=\"stylesheet\" href=\"https:";
+ //BA.debugLineNum = 235;BA.debugLine="html=$\"<head><link rel=\"stylesheet\" href=\"https:";
 _html = ("<head><link rel=\"stylesheet\" href=\"https://www.laprimitiva.info/css/master.min.css\"></head><body>")+_html+"</body>";
- //BA.debugLineNum = 240;BA.debugLine="html=RegexReplace($\"href=\\\"/loteriaprimitiva/\"$,";
+ //BA.debugLineNum = 237;BA.debugLine="html=RegexReplace($\"href=\\\"/loteriaprimitiva/\"$,";
 _html = _regexreplace(("href=\\\"/loteriaprimitiva/"),_html,("href=\\\"https://laprimitiva.info/loteriaprimitiva/"));
- //BA.debugLineNum = 241;BA.debugLine="html=RegexReplace($\"href=\"/jugar-loteria-primiti";
+ //BA.debugLineNum = 238;BA.debugLine="html=RegexReplace($\"href=\"/jugar-loteria-primiti";
 _html = _regexreplace(("href=\"/jugar-loteria-primitiva.html\""),_html,("href=\\\"https://laprimitiva.info/jugar-loteria-primitiva.html\""));
- //BA.debugLineNum = 243;BA.debugLine="WebView1.LoadHtml(html)";
+ //BA.debugLineNum = 240;BA.debugLine="WebView1.LoadHtml(html)";
 parent.mostCurrent._webview1.LoadHtml(_html);
  if (true) break;
 
@@ -854,9 +854,9 @@ case 4:
 //C
 this.state = -1;
 ;
- //BA.debugLineNum = 245;BA.debugLine="http.Release";
+ //BA.debugLineNum = 242;BA.debugLine="http.Release";
 _http._release /*String*/ ();
- //BA.debugLineNum = 247;BA.debugLine="End Sub";
+ //BA.debugLineNum = 244;BA.debugLine="End Sub";
 if (true) break;
 
             }
@@ -917,65 +917,65 @@ return;
 case 0:
 //C
 this.state = 1;
- //BA.debugLineNum = 262;BA.debugLine="Activity.LoadLayout(\"premiados\")";
+ //BA.debugLineNum = 259;BA.debugLine="Activity.LoadLayout(\"premiados\")";
 parent.mostCurrent._activity.LoadLayout("premiados",mostCurrent.activityBA);
- //BA.debugLineNum = 263;BA.debugLine="Dim url As String";
+ //BA.debugLineNum = 260;BA.debugLine="Dim url As String";
 _url = "";
- //BA.debugLineNum = 264;BA.debugLine="url=\"https://www.laprimitiva.info/\"";
+ //BA.debugLineNum = 261;BA.debugLine="url=\"https://www.laprimitiva.info/\"";
 _url = "https://www.laprimitiva.info/";
- //BA.debugLineNum = 265;BA.debugLine="Dim x As Int";
+ //BA.debugLineNum = 262;BA.debugLine="Dim x As Int";
 _x = 0;
- //BA.debugLineNum = 266;BA.debugLine="Dim i As Int";
+ //BA.debugLineNum = 263;BA.debugLine="Dim i As Int";
 _i = 0;
- //BA.debugLineNum = 267;BA.debugLine="Dim acertado As Int=0";
+ //BA.debugLineNum = 264;BA.debugLine="Dim acertado As Int=0";
 _acertado = (int) (0);
- //BA.debugLineNum = 268;BA.debugLine="Dim complementario As Int=0";
+ //BA.debugLineNum = 265;BA.debugLine="Dim complementario As Int=0";
 _complementario = (int) (0);
- //BA.debugLineNum = 269;BA.debugLine="Dim combinacion As String";
+ //BA.debugLineNum = 266;BA.debugLine="Dim combinacion As String";
 _combinacion = "";
- //BA.debugLineNum = 270;BA.debugLine="Dim lacombi As List";
+ //BA.debugLineNum = 267;BA.debugLine="Dim lacombi As List";
 _lacombi = new anywheresoftware.b4a.objects.collections.List();
- //BA.debugLineNum = 271;BA.debugLine="Dim elacierto As List";
+ //BA.debugLineNum = 268;BA.debugLine="Dim elacierto As List";
 _elacierto = new anywheresoftware.b4a.objects.collections.List();
- //BA.debugLineNum = 272;BA.debugLine="Dim elcomplem As List";
+ //BA.debugLineNum = 269;BA.debugLine="Dim elcomplem As List";
 _elcomplem = new anywheresoftware.b4a.objects.collections.List();
- //BA.debugLineNum = 273;BA.debugLine="Dim inicio As String";
+ //BA.debugLineNum = 270;BA.debugLine="Dim inicio As String";
 _inicio = "";
- //BA.debugLineNum = 274;BA.debugLine="Dim final As String";
+ //BA.debugLineNum = 271;BA.debugLine="Dim final As String";
 _final = "";
- //BA.debugLineNum = 275;BA.debugLine="Dim index1 As Int";
+ //BA.debugLineNum = 272;BA.debugLine="Dim index1 As Int";
 _index1 = 0;
- //BA.debugLineNum = 276;BA.debugLine="Dim index2 As Int";
+ //BA.debugLineNum = 273;BA.debugLine="Dim index2 As Int";
 _index2 = 0;
- //BA.debugLineNum = 277;BA.debugLine="Dim mat As Matcher";
+ //BA.debugLineNum = 274;BA.debugLine="Dim mat As Matcher";
 _mat = new anywheresoftware.b4a.keywords.Regex.MatcherWrapper();
- //BA.debugLineNum = 278;BA.debugLine="Dim premiados As List";
+ //BA.debugLineNum = 275;BA.debugLine="Dim premiados As List";
 _premiados = new anywheresoftware.b4a.objects.collections.List();
- //BA.debugLineNum = 279;BA.debugLine="premiados.Initialize";
+ //BA.debugLineNum = 276;BA.debugLine="premiados.Initialize";
 _premiados.Initialize();
- //BA.debugLineNum = 280;BA.debugLine="elacierto.Initialize";
+ //BA.debugLineNum = 277;BA.debugLine="elacierto.Initialize";
 _elacierto.Initialize();
- //BA.debugLineNum = 281;BA.debugLine="elcomplem.Initialize";
+ //BA.debugLineNum = 278;BA.debugLine="elcomplem.Initialize";
 _elcomplem.Initialize();
- //BA.debugLineNum = 282;BA.debugLine="lacombi.Initialize";
+ //BA.debugLineNum = 279;BA.debugLine="lacombi.Initialize";
 _lacombi.Initialize();
- //BA.debugLineNum = 283;BA.debugLine="Dim html As String";
+ //BA.debugLineNum = 280;BA.debugLine="Dim html As String";
 _html = "";
- //BA.debugLineNum = 284;BA.debugLine="Dim http As HttpJob";
+ //BA.debugLineNum = 281;BA.debugLine="Dim http As HttpJob";
 _http = new b4a.Primitiva.httpjob();
- //BA.debugLineNum = 285;BA.debugLine="Dim mensaje As List";
+ //BA.debugLineNum = 282;BA.debugLine="Dim mensaje As List";
 _mensaje = new anywheresoftware.b4a.objects.collections.List();
- //BA.debugLineNum = 286;BA.debugLine="mensaje.Initialize";
+ //BA.debugLineNum = 283;BA.debugLine="mensaje.Initialize";
 _mensaje.Initialize();
- //BA.debugLineNum = 287;BA.debugLine="Dim rs As ResultSet";
+ //BA.debugLineNum = 284;BA.debugLine="Dim rs As ResultSet";
 _rs = new anywheresoftware.b4a.sql.SQL.ResultSetWrapper();
- //BA.debugLineNum = 288;BA.debugLine="http.Initialize(\"\",Me)";
+ //BA.debugLineNum = 285;BA.debugLine="http.Initialize(\"\",Me)";
 _http._initialize /*String*/ (processBA,"",main.getObject());
- //BA.debugLineNum = 289;BA.debugLine="Dim texto As String";
+ //BA.debugLineNum = 286;BA.debugLine="Dim texto As String";
 _texto = "";
- //BA.debugLineNum = 294;BA.debugLine="http.Download(url)";
+ //BA.debugLineNum = 291;BA.debugLine="http.Download(url)";
 _http._download /*String*/ (_url);
- //BA.debugLineNum = 295;BA.debugLine="Wait For (http) JobDone(http As HttpJob)";
+ //BA.debugLineNum = 292;BA.debugLine="Wait For (http) JobDone(http As HttpJob)";
 anywheresoftware.b4a.keywords.Common.WaitFor("jobdone", processBA, this, (Object)(_http));
 this.state = 50;
 return;
@@ -984,7 +984,7 @@ case 50:
 this.state = 1;
 _http = (b4a.Primitiva.httpjob) result[0];
 ;
- //BA.debugLineNum = 296;BA.debugLine="If http.Success Then";
+ //BA.debugLineNum = 293;BA.debugLine="If http.Success Then";
 if (true) break;
 
 case 1:
@@ -997,17 +997,17 @@ this.state = 3;
 case 3:
 //C
 this.state = 4;
- //BA.debugLineNum = 297;BA.debugLine="html=http.getString";
+ //BA.debugLineNum = 294;BA.debugLine="html=http.getString";
 _html = _http._getstring /*String*/ ();
- //BA.debugLineNum = 298;BA.debugLine="inicio =$\"<article class=\"$";
+ //BA.debugLineNum = 295;BA.debugLine="inicio =$\"<article class=\"$";
 _inicio = ("<article class=");
- //BA.debugLineNum = 299;BA.debugLine="final=$\"</article>\"$";
+ //BA.debugLineNum = 296;BA.debugLine="final=$\"</article>\"$";
 _final = ("</article>");
- //BA.debugLineNum = 300;BA.debugLine="Dim index1 As Int=html.IndexOf(inicio)";
+ //BA.debugLineNum = 297;BA.debugLine="Dim index1 As Int=html.IndexOf(inicio)";
 _index1 = _html.indexOf(_inicio);
- //BA.debugLineNum = 301;BA.debugLine="Dim index2 As Int=html.IndexOf(final)";
+ //BA.debugLineNum = 298;BA.debugLine="Dim index2 As Int=html.IndexOf(final)";
 _index2 = _html.indexOf(_final);
- //BA.debugLineNum = 302;BA.debugLine="html=html.Substring2(index1,index2)";
+ //BA.debugLineNum = 299;BA.debugLine="html=html.Substring2(index1,index2)";
 _html = _html.substring(_index1,_index2);
  if (true) break;
 
@@ -1015,23 +1015,23 @@ case 4:
 //C
 this.state = 5;
 ;
- //BA.debugLineNum = 304;BA.debugLine="http.Release";
+ //BA.debugLineNum = 301;BA.debugLine="http.Release";
 _http._release /*String*/ ();
- //BA.debugLineNum = 305;BA.debugLine="inicio=$\"<div class=\"combi\">\"$";
+ //BA.debugLineNum = 302;BA.debugLine="inicio=$\"<div class=\"combi\">\"$";
 _inicio = ("<div class=\"combi\">");
- //BA.debugLineNum = 306;BA.debugLine="final=$\"<div class=\"sepanum\"></div>\"$";
+ //BA.debugLineNum = 303;BA.debugLine="final=$\"<div class=\"sepanum\"></div>\"$";
 _final = ("<div class=\"sepanum\"></div>");
- //BA.debugLineNum = 307;BA.debugLine="index1=html.IndexOf(inicio)";
+ //BA.debugLineNum = 304;BA.debugLine="index1=html.IndexOf(inicio)";
 _index1 = _html.indexOf(_inicio);
- //BA.debugLineNum = 308;BA.debugLine="index2=html.IndexOf(final)";
+ //BA.debugLineNum = 305;BA.debugLine="index2=html.IndexOf(final)";
 _index2 = _html.indexOf(_final);
- //BA.debugLineNum = 309;BA.debugLine="html=html.Substring2(index1,index2)";
+ //BA.debugLineNum = 306;BA.debugLine="html=html.Substring2(index1,index2)";
 _html = _html.substring(_index1,_index2);
- //BA.debugLineNum = 311;BA.debugLine="Dim patron As String=$\"<div class=\\\"num\\\">(\\d+)<\\";
+ //BA.debugLineNum = 308;BA.debugLine="Dim patron As String=$\"<div class=\\\"num\\\">(\\d+)<\\";
 _patron = ("<div class=\\\"num\\\">(\\d+)<\\/div>");
- //BA.debugLineNum = 312;BA.debugLine="mat=Regex.Matcher(patron,html)";
+ //BA.debugLineNum = 309;BA.debugLine="mat=Regex.Matcher(patron,html)";
 _mat = anywheresoftware.b4a.keywords.Common.Regex.Matcher(_patron,_html);
- //BA.debugLineNum = 314;BA.debugLine="Do While mat.Find = True";
+ //BA.debugLineNum = 311;BA.debugLine="Do While mat.Find = True";
 if (true) break;
 
 case 5:
@@ -1046,7 +1046,7 @@ if (true) break;
 case 7:
 //C
 this.state = 5;
- //BA.debugLineNum = 315;BA.debugLine="premiados.Add(mat.Group(1))";
+ //BA.debugLineNum = 312;BA.debugLine="premiados.Add(mat.Group(1))";
 _premiados.Add((Object)(_mat.Group((int) (1))));
  if (true) break;
 
@@ -1054,9 +1054,9 @@ case 8:
 //C
 this.state = 9;
 ;
- //BA.debugLineNum = 318;BA.debugLine="rs=sql.ExecQuery(\"select n1,n2,n3,n4,n5,n6 from a";
+ //BA.debugLineNum = 315;BA.debugLine="rs=sql.ExecQuery(\"select n1,n2,n3,n4,n5,n6 from a";
 _rs = (anywheresoftware.b4a.sql.SQL.ResultSetWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.sql.SQL.ResultSetWrapper(), (android.database.Cursor)(parent._sql.ExecQuery("select n1,n2,n3,n4,n5,n6 from apuestas")));
- //BA.debugLineNum = 320;BA.debugLine="Do While rs.NextRow";
+ //BA.debugLineNum = 317;BA.debugLine="Do While rs.NextRow";
 if (true) break;
 
 case 9:
@@ -1071,13 +1071,13 @@ if (true) break;
 case 11:
 //C
 this.state = 12;
- //BA.debugLineNum = 321;BA.debugLine="acertado=0";
+ //BA.debugLineNum = 318;BA.debugLine="acertado=0";
 _acertado = (int) (0);
- //BA.debugLineNum = 322;BA.debugLine="complementario=0";
+ //BA.debugLineNum = 319;BA.debugLine="complementario=0";
 _complementario = (int) (0);
- //BA.debugLineNum = 323;BA.debugLine="combinacion=rellena(rs.GetInt(\"n1\"))&\"-\"&rellena";
+ //BA.debugLineNum = 320;BA.debugLine="combinacion=rellena(rs.GetInt(\"n1\"))&\"-\"&rellena";
 _combinacion = _rellena(_rs.GetInt("n1"))+"-"+_rellena(_rs.GetInt("n2"))+"-"+_rellena(_rs.GetInt("n3"))+"-"+_rellena(_rs.GetInt("n4"))+"-"+_rellena(_rs.GetInt("n5"))+"-"+_rellena(_rs.GetInt("n6"));
- //BA.debugLineNum = 325;BA.debugLine="For i = 1 To 6";
+ //BA.debugLineNum = 322;BA.debugLine="For i = 1 To 6";
 if (true) break;
 
 case 12:
@@ -1104,7 +1104,7 @@ if (true) break;
 case 14:
 //C
 this.state = 15;
- //BA.debugLineNum = 326;BA.debugLine="For x=0 To 5";
+ //BA.debugLineNum = 323;BA.debugLine="For x=0 To 5";
 if (true) break;
 
 case 15:
@@ -1131,7 +1131,7 @@ if (true) break;
 case 17:
 //C
 this.state = 18;
- //BA.debugLineNum = 327;BA.debugLine="If rs.getInt(\"n\"&i)=premiados.Get(x) Then";
+ //BA.debugLineNum = 324;BA.debugLine="If rs.getInt(\"n\"&i)=premiados.Get(x) Then";
 if (true) break;
 
 case 18:
@@ -1144,7 +1144,7 @@ this.state = 20;
 case 20:
 //C
 this.state = 21;
- //BA.debugLineNum = 328;BA.debugLine="acertado=acertado+1";
+ //BA.debugLineNum = 325;BA.debugLine="acertado=acertado+1";
 _acertado = (int) (_acertado+1);
  if (true) break;
 
@@ -1162,7 +1162,7 @@ this.state = 52;
  if (true) break;
 if (true) break;
 ;
- //BA.debugLineNum = 332;BA.debugLine="For i=1 To 6";
+ //BA.debugLineNum = 329;BA.debugLine="For i=1 To 6";
 
 case 23:
 //for
@@ -1188,7 +1188,7 @@ if (true) break;
 case 25:
 //C
 this.state = 26;
- //BA.debugLineNum = 333;BA.debugLine="If rs.getInt(\"n\"&i)=premiados.Get(6) Then";
+ //BA.debugLineNum = 330;BA.debugLine="If rs.getInt(\"n\"&i)=premiados.Get(6) Then";
 if (true) break;
 
 case 26:
@@ -1201,7 +1201,7 @@ this.state = 28;
 case 28:
 //C
 this.state = 29;
- //BA.debugLineNum = 334;BA.debugLine="complementario=complementario+1";
+ //BA.debugLineNum = 331;BA.debugLine="complementario=complementario+1";
 _complementario = (int) (_complementario+1);
  if (true) break;
 
@@ -1216,15 +1216,15 @@ case 30:
 //C
 this.state = 31;
 ;
- //BA.debugLineNum = 337;BA.debugLine="mensaje.Add(\"[ \"&combinacion&\" ] : Acertados:\" &";
+ //BA.debugLineNum = 334;BA.debugLine="mensaje.Add(\"[ \"&combinacion&\" ] : Acertados:\" &";
 _mensaje.Add((Object)("[ "+_combinacion+" ] : Acertados:"+BA.NumberToString(_acertado)+" Complementario:"+BA.NumberToString(_complementario)));
- //BA.debugLineNum = 338;BA.debugLine="lacombi.add(combinacion)";
+ //BA.debugLineNum = 335;BA.debugLine="lacombi.add(combinacion)";
 _lacombi.Add((Object)(_combinacion));
- //BA.debugLineNum = 339;BA.debugLine="elacierto.add(acertado)";
+ //BA.debugLineNum = 336;BA.debugLine="elacierto.add(acertado)";
 _elacierto.Add((Object)(_acertado));
- //BA.debugLineNum = 340;BA.debugLine="elcomplem.add(complementario)";
+ //BA.debugLineNum = 337;BA.debugLine="elcomplem.add(complementario)";
 _elcomplem.Add((Object)(_complementario));
- //BA.debugLineNum = 341;BA.debugLine="If acertado>=3 Then";
+ //BA.debugLineNum = 338;BA.debugLine="If acertado>=3 Then";
 if (true) break;
 
 case 31:
@@ -1237,7 +1237,7 @@ this.state = 33;
 case 33:
 //C
 this.state = 34;
- //BA.debugLineNum = 342;BA.debugLine="MsgboxAsync(\"Tienes un premio de \"&acertado&\" A";
+ //BA.debugLineNum = 339;BA.debugLine="MsgboxAsync(\"Tienes un premio de \"&acertado&\" A";
 anywheresoftware.b4a.keywords.Common.MsgboxAsync(BA.ObjectToCharSequence("Tienes un premio de "+BA.NumberToString(_acertado)+" Aciertos y "+BA.NumberToString(_complementario)+" Complementario con la combinacion : ["+_combinacion+"]"),BA.ObjectToCharSequence("PREMIO!!"),processBA);
  if (true) break;
 
@@ -1251,9 +1251,9 @@ case 35:
 //C
 this.state = 36;
 ;
- //BA.debugLineNum = 345;BA.debugLine="texto=\"\"";
+ //BA.debugLineNum = 342;BA.debugLine="texto=\"\"";
 _texto = "";
- //BA.debugLineNum = 346;BA.debugLine="For i=0 To 5";
+ //BA.debugLineNum = 343;BA.debugLine="For i=0 To 5";
 if (true) break;
 
 case 36:
@@ -1280,7 +1280,7 @@ if (true) break;
 case 38:
 //C
 this.state = 39;
- //BA.debugLineNum = 347;BA.debugLine="If i=0 Then";
+ //BA.debugLineNum = 344;BA.debugLine="If i=0 Then";
 if (true) break;
 
 case 39:
@@ -1295,14 +1295,14 @@ this.state = 43;
 case 41:
 //C
 this.state = 44;
- //BA.debugLineNum = 348;BA.debugLine="texto=rellena(premiados.Get(i))";
+ //BA.debugLineNum = 345;BA.debugLine="texto=rellena(premiados.Get(i))";
 _texto = _rellena((int)(BA.ObjectToNumber(_premiados.Get(_i))));
  if (true) break;
 
 case 43:
 //C
 this.state = 44;
- //BA.debugLineNum = 350;BA.debugLine="texto=texto&\"-\"&rellena(premiados.Get(i))";
+ //BA.debugLineNum = 347;BA.debugLine="texto=texto&\"-\"&rellena(premiados.Get(i))";
 _texto = _texto+"-"+_rellena((int)(BA.ObjectToNumber(_premiados.Get(_i))));
  if (true) break;
 
@@ -1317,9 +1317,9 @@ case 45:
 //C
 this.state = 46;
 ;
- //BA.debugLineNum = 353;BA.debugLine="texto=\"[ \"&texto& \" ]   COMP:\" & rellena(premiado";
+ //BA.debugLineNum = 350;BA.debugLine="texto=\"[ \"&texto& \" ]   COMP:\" & rellena(premiado";
 _texto = "[ "+_texto+" ]   COMP:"+_rellena((int)(BA.ObjectToNumber(_premiados.Get((int) (6)))))+" REINT:"+_rellena((int)(BA.ObjectToNumber(_premiados.Get((int) (7)))));
- //BA.debugLineNum = 354;BA.debugLine="For i = 0 To mensaje.Size-1";
+ //BA.debugLineNum = 351;BA.debugLine="For i = 0 To mensaje.Size-1";
 if (true) break;
 
 case 46:
@@ -1346,7 +1346,7 @@ if (true) break;
 case 48:
 //C
 this.state = 60;
- //BA.debugLineNum = 355;BA.debugLine="premio_grid.Add(crea_row_premiados(lacombi.Get(";
+ //BA.debugLineNum = 352;BA.debugLine="premio_grid.Add(crea_row_premiados(lacombi.Get(";
 parent.mostCurrent._premio_grid._add(_crea_row_premiados(BA.ObjectToString(_lacombi.Get(_i)),BA.ObjectToString(_elacierto.Get(_i)),BA.ObjectToString(_elcomplem.Get(_i))),(Object)(_i));
  if (true) break;
 if (true) break;
@@ -1355,9 +1355,9 @@ case 49:
 //C
 this.state = -1;
 ;
- //BA.debugLineNum = 358;BA.debugLine="Ganadora.Text=texto";
+ //BA.debugLineNum = 355;BA.debugLine="Ganadora.Text=texto";
 parent.mostCurrent._ganadora.setText(BA.ObjectToCharSequence(_texto));
- //BA.debugLineNum = 366;BA.debugLine="End Sub";
+ //BA.debugLineNum = 363;BA.debugLine="End Sub";
 if (true) break;
 
             }
@@ -1367,89 +1367,70 @@ if (true) break;
 public static anywheresoftware.b4a.objects.B4XViewWrapper  _crea_row(anywheresoftware.b4a.objects.collections.List _listac) throws Exception{
 anywheresoftware.b4a.objects.B4XViewWrapper _p = null;
 anywheresoftware.b4a.objects.AnimationWrapper _a = null;
- //BA.debugLineNum = 112;BA.debugLine="Sub crea_row(listac As List) As B4XView";
- //BA.debugLineNum = 113;BA.debugLine="Dim p As B4XView= xui.CreatePanel(\"\")";
+ //BA.debugLineNum = 109;BA.debugLine="Sub crea_row(listac As List) As B4XView";
+ //BA.debugLineNum = 110;BA.debugLine="Dim p As B4XView= xui.CreatePanel(\"\")";
 _p = new anywheresoftware.b4a.objects.B4XViewWrapper();
 _p = mostCurrent._xui.CreatePanel(processBA,"");
- //BA.debugLineNum = 114;BA.debugLine="p.LoadLayout(\"ver_rows\")";
+ //BA.debugLineNum = 111;BA.debugLine="p.LoadLayout(\"ver_rows\")";
 _p.LoadLayout("ver_rows",mostCurrent.activityBA);
- //BA.debugLineNum = 115;BA.debugLine="L1.text=listac.Get(0)";
+ //BA.debugLineNum = 112;BA.debugLine="L1.text=listac.Get(0)";
 mostCurrent._l1.setText(BA.ObjectToCharSequence(_listac.Get((int) (0))));
- //BA.debugLineNum = 116;BA.debugLine="L2.text=listac.Get(1)";
+ //BA.debugLineNum = 113;BA.debugLine="L2.text=listac.Get(1)";
 mostCurrent._l2.setText(BA.ObjectToCharSequence(_listac.Get((int) (1))));
- //BA.debugLineNum = 117;BA.debugLine="L3.text=listac.Get(2)";
+ //BA.debugLineNum = 114;BA.debugLine="L3.text=listac.Get(2)";
 mostCurrent._l3.setText(BA.ObjectToCharSequence(_listac.Get((int) (2))));
- //BA.debugLineNum = 118;BA.debugLine="L4.text=listac.Get(3)";
+ //BA.debugLineNum = 115;BA.debugLine="L4.text=listac.Get(3)";
 mostCurrent._l4.setText(BA.ObjectToCharSequence(_listac.Get((int) (3))));
- //BA.debugLineNum = 119;BA.debugLine="L5.text=listac.Get(4)";
+ //BA.debugLineNum = 116;BA.debugLine="L5.text=listac.Get(4)";
 mostCurrent._l5.setText(BA.ObjectToCharSequence(_listac.Get((int) (4))));
- //BA.debugLineNum = 120;BA.debugLine="L6.text=listac.Get(5)";
+ //BA.debugLineNum = 117;BA.debugLine="L6.text=listac.Get(5)";
 mostCurrent._l6.setText(BA.ObjectToCharSequence(_listac.Get((int) (5))));
- //BA.debugLineNum = 123;BA.debugLine="p.SetLayoutAnimated(100,0,0,100%x,60dip)";
+ //BA.debugLineNum = 120;BA.debugLine="p.SetLayoutAnimated(100,0,0,100%x,60dip)";
 _p.SetLayoutAnimated((int) (100),(int) (0),(int) (0),anywheresoftware.b4a.keywords.Common.PerXToCurrent((float) (100),mostCurrent.activityBA),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (60)));
- //BA.debugLineNum = 125;BA.debugLine="Dim a As Animation";
+ //BA.debugLineNum = 122;BA.debugLine="Dim a As Animation";
 _a = new anywheresoftware.b4a.objects.AnimationWrapper();
- //BA.debugLineNum = 126;BA.debugLine="a.InitializeRotateCenter(\"\", 0, 360, L1)";
+ //BA.debugLineNum = 123;BA.debugLine="a.InitializeRotateCenter(\"\", 0, 360, L1)";
 _a.InitializeRotateCenter(mostCurrent.activityBA,"",(float) (0),(float) (360),(android.view.View)(mostCurrent._l1.getObject()));
- //BA.debugLineNum = 127;BA.debugLine="a.Duration=500";
+ //BA.debugLineNum = 124;BA.debugLine="a.Duration=500";
 _a.setDuration((long) (500));
- //BA.debugLineNum = 128;BA.debugLine="a.RepeatCount=2";
-_a.setRepeatCount((int) (2));
- //BA.debugLineNum = 129;BA.debugLine="a.RepeatMode=a.REPEAT_REVERSE";
-_a.setRepeatMode(_a.REPEAT_REVERSE);
- //BA.debugLineNum = 130;BA.debugLine="a.Start(L1)";
+ //BA.debugLineNum = 125;BA.debugLine="a.RepeatCount=1";
+_a.setRepeatCount((int) (1));
+ //BA.debugLineNum = 127;BA.debugLine="a.Start(L1)";
 _a.Start((android.view.View)(mostCurrent._l1.getObject()));
- //BA.debugLineNum = 131;BA.debugLine="a.Start(L2)";
+ //BA.debugLineNum = 128;BA.debugLine="a.Start(L2)";
 _a.Start((android.view.View)(mostCurrent._l2.getObject()));
- //BA.debugLineNum = 132;BA.debugLine="a.Start(L3)";
+ //BA.debugLineNum = 129;BA.debugLine="a.Start(L3)";
 _a.Start((android.view.View)(mostCurrent._l3.getObject()));
- //BA.debugLineNum = 133;BA.debugLine="a.Start(L4)";
+ //BA.debugLineNum = 130;BA.debugLine="a.Start(L4)";
 _a.Start((android.view.View)(mostCurrent._l4.getObject()));
- //BA.debugLineNum = 134;BA.debugLine="a.Start(L5)";
+ //BA.debugLineNum = 131;BA.debugLine="a.Start(L5)";
 _a.Start((android.view.View)(mostCurrent._l5.getObject()));
- //BA.debugLineNum = 135;BA.debugLine="a.Start(L6)";
+ //BA.debugLineNum = 132;BA.debugLine="a.Start(L6)";
 _a.Start((android.view.View)(mostCurrent._l6.getObject()));
- //BA.debugLineNum = 152;BA.debugLine="Return p";
+ //BA.debugLineNum = 149;BA.debugLine="Return p";
 if (true) return _p;
- //BA.debugLineNum = 153;BA.debugLine="End Sub";
+ //BA.debugLineNum = 150;BA.debugLine="End Sub";
 return null;
 }
 public static anywheresoftware.b4a.objects.B4XViewWrapper  _crea_row_premiados(String _c,String _a,String _cmp) throws Exception{
 anywheresoftware.b4a.objects.B4XViewWrapper _p = null;
-anywheresoftware.b4a.objects.AnimationWrapper _xx = null;
- //BA.debugLineNum = 155;BA.debugLine="Sub crea_row_premiados(c As String,a As String,cmp";
- //BA.debugLineNum = 156;BA.debugLine="Dim p As B4XView= xui.CreatePanel(\"\")";
+ //BA.debugLineNum = 152;BA.debugLine="Sub crea_row_premiados(c As String,a As String,cmp";
+ //BA.debugLineNum = 153;BA.debugLine="Dim p As B4XView= xui.CreatePanel(\"\")";
 _p = new anywheresoftware.b4a.objects.B4XViewWrapper();
 _p = mostCurrent._xui.CreatePanel(processBA,"");
- //BA.debugLineNum = 157;BA.debugLine="p.LoadLayout(\"row_premiados\")";
+ //BA.debugLineNum = 154;BA.debugLine="p.LoadLayout(\"row_premiados\")";
 _p.LoadLayout("row_premiados",mostCurrent.activityBA);
- //BA.debugLineNum = 158;BA.debugLine="combi.Text=c";
+ //BA.debugLineNum = 155;BA.debugLine="combi.Text=c";
 mostCurrent._combi.setText(BA.ObjectToCharSequence(_c));
- //BA.debugLineNum = 159;BA.debugLine="acier.Text=a";
+ //BA.debugLineNum = 156;BA.debugLine="acier.Text=a";
 mostCurrent._acier.setText(BA.ObjectToCharSequence(_a));
- //BA.debugLineNum = 160;BA.debugLine="compl.Text=cmp";
+ //BA.debugLineNum = 157;BA.debugLine="compl.Text=cmp";
 mostCurrent._compl.setText(BA.ObjectToCharSequence(_cmp));
- //BA.debugLineNum = 162;BA.debugLine="p.SetLayoutAnimated(100,0,0,100%x,30dip)";
+ //BA.debugLineNum = 159;BA.debugLine="p.SetLayoutAnimated(100,0,0,100%x,30dip)";
 _p.SetLayoutAnimated((int) (100),(int) (0),(int) (0),anywheresoftware.b4a.keywords.Common.PerXToCurrent((float) (100),mostCurrent.activityBA),anywheresoftware.b4a.keywords.Common.DipToCurrent((int) (30)));
- //BA.debugLineNum = 164;BA.debugLine="Dim xx As Animation";
-_xx = new anywheresoftware.b4a.objects.AnimationWrapper();
- //BA.debugLineNum = 165;BA.debugLine="xx.InitializeRotateCenter(\"\", 0, 360, L1)";
-_xx.InitializeRotateCenter(mostCurrent.activityBA,"",(float) (0),(float) (360),(android.view.View)(mostCurrent._l1.getObject()));
- //BA.debugLineNum = 166;BA.debugLine="xx.Duration=500";
-_xx.setDuration((long) (500));
- //BA.debugLineNum = 167;BA.debugLine="xx.RepeatCount=2";
-_xx.setRepeatCount((int) (2));
- //BA.debugLineNum = 168;BA.debugLine="xx.RepeatMode=xx.REPEAT_REVERSE";
-_xx.setRepeatMode(_xx.REPEAT_REVERSE);
- //BA.debugLineNum = 169;BA.debugLine="xx.Start(combi)";
-_xx.Start((android.view.View)(mostCurrent._combi.getObject()));
- //BA.debugLineNum = 170;BA.debugLine="xx.Start(acier)";
-_xx.Start((android.view.View)(mostCurrent._acier.getObject()));
- //BA.debugLineNum = 171;BA.debugLine="xx.Start(compl)";
-_xx.Start((android.view.View)(mostCurrent._compl.getObject()));
- //BA.debugLineNum = 172;BA.debugLine="Return p";
+ //BA.debugLineNum = 169;BA.debugLine="Return p";
 if (true) return _p;
- //BA.debugLineNum = 173;BA.debugLine="End Sub";
+ //BA.debugLineNum = 170;BA.debugLine="End Sub";
 return null;
 }
 public static anywheresoftware.b4a.objects.collections.List  _createnumberslist(int _numberstocreate,int _minnumber,int _maxnumber,boolean _ascend) throws Exception{
@@ -1457,44 +1438,44 @@ anywheresoftware.b4a.objects.collections.List _results = null;
 anywheresoftware.b4a.objects.collections.Map _nummap = null;
 int _i = 0;
 Object _o = null;
- //BA.debugLineNum = 88;BA.debugLine="Sub CreateNumbersList(NumbersToCreate As Int,MinNu";
- //BA.debugLineNum = 89;BA.debugLine="Dim Results As List";
+ //BA.debugLineNum = 85;BA.debugLine="Sub CreateNumbersList(NumbersToCreate As Int,MinNu";
+ //BA.debugLineNum = 86;BA.debugLine="Dim Results As List";
 _results = new anywheresoftware.b4a.objects.collections.List();
- //BA.debugLineNum = 90;BA.debugLine="Results.Initialize";
+ //BA.debugLineNum = 87;BA.debugLine="Results.Initialize";
 _results.Initialize();
- //BA.debugLineNum = 92;BA.debugLine="If MaxNumber - MinNumber < NumbersToCreate Then R";
+ //BA.debugLineNum = 89;BA.debugLine="If MaxNumber - MinNumber < NumbersToCreate Then R";
 if (_maxnumber-_minnumber<_numberstocreate) { 
 if (true) return _results;};
- //BA.debugLineNum = 94;BA.debugLine="Dim NumMap As Map";
+ //BA.debugLineNum = 91;BA.debugLine="Dim NumMap As Map";
 _nummap = new anywheresoftware.b4a.objects.collections.Map();
- //BA.debugLineNum = 96;BA.debugLine="NumMap.Initialize";
+ //BA.debugLineNum = 93;BA.debugLine="NumMap.Initialize";
 _nummap.Initialize();
- //BA.debugLineNum = 97;BA.debugLine="Dim i As Int";
+ //BA.debugLineNum = 94;BA.debugLine="Dim i As Int";
 _i = 0;
- //BA.debugLineNum = 98;BA.debugLine="For i = MinNumber To MaxNumber";
+ //BA.debugLineNum = 95;BA.debugLine="For i = MinNumber To MaxNumber";
 {
 final int step7 = 1;
 final int limit7 = _maxnumber;
 _i = _minnumber ;
 for (;_i <= limit7 ;_i = _i + step7 ) {
- //BA.debugLineNum = 99;BA.debugLine="NumMap.Put(i,i)";
+ //BA.debugLineNum = 96;BA.debugLine="NumMap.Put(i,i)";
 _nummap.Put((Object)(_i),(Object)(_i));
  }
 };
- //BA.debugLineNum = 102;BA.debugLine="Do While Results.Size < NumbersToCreate";
+ //BA.debugLineNum = 99;BA.debugLine="Do While Results.Size < NumbersToCreate";
 while (_results.getSize()<_numberstocreate) {
- //BA.debugLineNum = 103;BA.debugLine="Dim O As Object = NumMap.Remove(Rnd(MinNumber, M";
+ //BA.debugLineNum = 100;BA.debugLine="Dim O As Object = NumMap.Remove(Rnd(MinNumber, M";
 _o = _nummap.Remove((Object)(anywheresoftware.b4a.keywords.Common.Rnd(_minnumber,(int) (_maxnumber+1))));
- //BA.debugLineNum = 104;BA.debugLine="If O <> Null Then Results.Add(O)";
+ //BA.debugLineNum = 101;BA.debugLine="If O <> Null Then Results.Add(O)";
 if (_o!= null) { 
 _results.Add(_o);};
  }
 ;
- //BA.debugLineNum = 107;BA.debugLine="Results.Sort(Ascend)";
+ //BA.debugLineNum = 104;BA.debugLine="Results.Sort(Ascend)";
 _results.Sort(_ascend);
- //BA.debugLineNum = 109;BA.debugLine="Return Results";
+ //BA.debugLineNum = 106;BA.debugLine="Return Results";
 if (true) return _results;
- //BA.debugLineNum = 110;BA.debugLine="End Sub";
+ //BA.debugLineNum = 107;BA.debugLine="End Sub";
 return null;
 }
 public static void  _customlistview2_itemlongclick(int _index,Object _value) throws Exception{
@@ -1526,23 +1507,23 @@ return;
 case 0:
 //C
 this.state = 1;
- //BA.debugLineNum = 370;BA.debugLine="Dim d As B4XDialog";
+ //BA.debugLineNum = 367;BA.debugLine="Dim d As B4XDialog";
 _d = new b4a.Primitiva.b4xdialog();
- //BA.debugLineNum = 371;BA.debugLine="d.initialize(Activity)";
+ //BA.debugLineNum = 368;BA.debugLine="d.initialize(Activity)";
 _d._initialize /*String*/ (mostCurrent.activityBA,(anywheresoftware.b4a.objects.B4XViewWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.objects.B4XViewWrapper(), (java.lang.Object)(parent.mostCurrent._activity.getObject())));
- //BA.debugLineNum = 372;BA.debugLine="d.Title=\"Borrando combinación\"";
+ //BA.debugLineNum = 369;BA.debugLine="d.Title=\"Borrando combinación\"";
 _d._title /*Object*/  = (Object)("Borrando combinación");
- //BA.debugLineNum = 373;BA.debugLine="d.BackgroundColor=Colors.White";
+ //BA.debugLineNum = 370;BA.debugLine="d.BackgroundColor=Colors.White";
 _d._backgroundcolor /*int*/  = anywheresoftware.b4a.keywords.Common.Colors.White;
- //BA.debugLineNum = 374;BA.debugLine="d.BodyTextColor=Colors.Blue";
+ //BA.debugLineNum = 371;BA.debugLine="d.BodyTextColor=Colors.Blue";
 _d._bodytextcolor /*int*/  = anywheresoftware.b4a.keywords.Common.Colors.Blue;
- //BA.debugLineNum = 375;BA.debugLine="d.VisibleAnimationDuration=300";
+ //BA.debugLineNum = 372;BA.debugLine="d.VisibleAnimationDuration=300";
 _d._visibleanimationduration /*int*/  = (int) (300);
- //BA.debugLineNum = 376;BA.debugLine="Dim rs As Object";
+ //BA.debugLineNum = 373;BA.debugLine="Dim rs As Object";
 _rs = new Object();
- //BA.debugLineNum = 377;BA.debugLine="rs=d.Show(\"Quieres borrar la combinacion ¿?\"&CRLF";
+ //BA.debugLineNum = 374;BA.debugLine="rs=d.Show(\"Quieres borrar la combinacion ¿?\"&CRLF";
 _rs = _d._show /*anywheresoftware.b4a.keywords.Common.ResumableSubWrapper*/ ((Object)("Quieres borrar la combinacion ¿?"+anywheresoftware.b4a.keywords.Common.CRLF+" Solo se eliminará esta combinación."),(Object)("Si"),(Object)("No"),(Object)(""));
- //BA.debugLineNum = 378;BA.debugLine="Wait For(rs) complete (Result As Int)";
+ //BA.debugLineNum = 375;BA.debugLine="Wait For(rs) complete (Result As Int)";
 anywheresoftware.b4a.keywords.Common.WaitFor("complete", processBA, this, _rs);
 this.state = 5;
 return;
@@ -1551,7 +1532,7 @@ case 5:
 this.state = 1;
 _result = (Integer) result[0];
 ;
- //BA.debugLineNum = 379;BA.debugLine="If Result = xui.DialogResponse_Positive Then";
+ //BA.debugLineNum = 376;BA.debugLine="If Result = xui.DialogResponse_Positive Then";
 if (true) break;
 
 case 1:
@@ -1564,17 +1545,17 @@ this.state = 3;
 case 3:
 //C
 this.state = 4;
- //BA.debugLineNum = 380;BA.debugLine="Dim primary_key As Int";
+ //BA.debugLineNum = 377;BA.debugLine="Dim primary_key As Int";
 _primary_key = 0;
- //BA.debugLineNum = 381;BA.debugLine="primary_key=Value";
+ //BA.debugLineNum = 378;BA.debugLine="primary_key=Value";
 _primary_key = (int)(BA.ObjectToNumber(_value));
- //BA.debugLineNum = 382;BA.debugLine="CustomListView1.RemoveAt(Index)";
+ //BA.debugLineNum = 379;BA.debugLine="CustomListView1.RemoveAt(Index)";
 parent.mostCurrent._customlistview1._removeat(_index);
- //BA.debugLineNum = 383;BA.debugLine="sql.ExecNonQuery(\"delete from Apuestas where Apu";
+ //BA.debugLineNum = 380;BA.debugLine="sql.ExecNonQuery(\"delete from Apuestas where Apu";
 parent._sql.ExecNonQuery("delete from Apuestas where Apuesta='"+BA.NumberToString(_primary_key)+"'");
- //BA.debugLineNum = 384;BA.debugLine="ToastMessageShow(\"Borrada la combinación\",True)";
+ //BA.debugLineNum = 381;BA.debugLine="ToastMessageShow(\"Borrada la combinación\",True)";
 anywheresoftware.b4a.keywords.Common.ToastMessageShow(BA.ObjectToCharSequence("Borrada la combinación"),anywheresoftware.b4a.keywords.Common.True);
- //BA.debugLineNum = 385;BA.debugLine="VerGuardados_Click";
+ //BA.debugLineNum = 382;BA.debugLine="VerGuardados_Click";
 _verguardados_click();
  if (true) break;
 
@@ -1582,7 +1563,7 @@ case 4:
 //C
 this.state = -1;
 ;
- //BA.debugLineNum = 388;BA.debugLine="End Sub";
+ //BA.debugLineNum = 385;BA.debugLine="End Sub";
 if (true) break;
 
             }
@@ -1636,83 +1617,83 @@ return "";
 }
 public static String  _guardar_click() throws Exception{
 anywheresoftware.b4a.sql.SQL.ResultSetWrapper _rs = null;
- //BA.debugLineNum = 175;BA.debugLine="Private Sub Guardar_Click";
- //BA.debugLineNum = 176;BA.debugLine="Dim rs As ResultSet";
+ //BA.debugLineNum = 172;BA.debugLine="Private Sub Guardar_Click";
+ //BA.debugLineNum = 173;BA.debugLine="Dim rs As ResultSet";
 _rs = new anywheresoftware.b4a.sql.SQL.ResultSetWrapper();
- //BA.debugLineNum = 177;BA.debugLine="rs=sql.ExecQuery(\"select count(*) from Apuestas_";
+ //BA.debugLineNum = 174;BA.debugLine="rs=sql.ExecQuery(\"select count(*) from Apuestas_";
 _rs = (anywheresoftware.b4a.sql.SQL.ResultSetWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.sql.SQL.ResultSetWrapper(), (android.database.Cursor)(_sql.ExecQuery("select count(*) from Apuestas_tmp")));
- //BA.debugLineNum = 178;BA.debugLine="If rs.RowCount>0 Then";
+ //BA.debugLineNum = 175;BA.debugLine="If rs.RowCount>0 Then";
 if (_rs.getRowCount()>0) { 
- //BA.debugLineNum = 179;BA.debugLine="rs=sql.ExecQuery(\"select fecha,n1,n2,n3,n4,n5,n6";
+ //BA.debugLineNum = 176;BA.debugLine="rs=sql.ExecQuery(\"select fecha,n1,n2,n3,n4,n5,n6";
 _rs = (anywheresoftware.b4a.sql.SQL.ResultSetWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.sql.SQL.ResultSetWrapper(), (android.database.Cursor)(_sql.ExecQuery("select fecha,n1,n2,n3,n4,n5,n6 from Apuestas_tmp")));
- //BA.debugLineNum = 180;BA.debugLine="Do While rs.NextRow";
+ //BA.debugLineNum = 177;BA.debugLine="Do While rs.NextRow";
 while (_rs.NextRow()) {
- //BA.debugLineNum = 181;BA.debugLine="sql.ExecNonQuery(\"insert into Apuestas (fecha,n";
+ //BA.debugLineNum = 178;BA.debugLine="sql.ExecNonQuery(\"insert into Apuestas (fecha,n";
 _sql.ExecNonQuery("insert into Apuestas (fecha,n1,n2,n3,n4,n5,n6) values ('"+_rs.GetString("Fecha")+"','"+BA.NumberToString(_rs.GetInt("n1"))+"','"+BA.NumberToString(_rs.GetInt("n2"))+"','"+BA.NumberToString(_rs.GetInt("n3"))+"','"+BA.NumberToString(_rs.GetInt("n4"))+"','"+BA.NumberToString(_rs.GetInt("n5"))+"','"+BA.NumberToString(_rs.GetInt("n6"))+"')");
  }
 ;
- //BA.debugLineNum = 183;BA.debugLine="sql.ExecNonQuery(\"delete from Apuestas_tmp\")";
+ //BA.debugLineNum = 180;BA.debugLine="sql.ExecNonQuery(\"delete from Apuestas_tmp\")";
 _sql.ExecNonQuery("delete from Apuestas_tmp");
- //BA.debugLineNum = 184;BA.debugLine="CustomListView1.Clear";
+ //BA.debugLineNum = 181;BA.debugLine="CustomListView1.Clear";
 mostCurrent._customlistview1._clear();
- //BA.debugLineNum = 185;BA.debugLine="ToastMessageShow(\"Guardada la combinacion en la";
+ //BA.debugLineNum = 182;BA.debugLine="ToastMessageShow(\"Guardada la combinacion en la";
 anywheresoftware.b4a.keywords.Common.ToastMessageShow(BA.ObjectToCharSequence("Guardada la combinacion en la BBDD"),anywheresoftware.b4a.keywords.Common.True);
  }else {
- //BA.debugLineNum = 187;BA.debugLine="ToastMessageShow(\"Nada que guardar\",True)";
+ //BA.debugLineNum = 184;BA.debugLine="ToastMessageShow(\"Nada que guardar\",True)";
 anywheresoftware.b4a.keywords.Common.ToastMessageShow(BA.ObjectToCharSequence("Nada que guardar"),anywheresoftware.b4a.keywords.Common.True);
  };
- //BA.debugLineNum = 189;BA.debugLine="End Sub";
+ //BA.debugLineNum = 186;BA.debugLine="End Sub";
 return "";
 }
 public static String  _guardar_solo_1_click() throws Exception{
 anywheresoftware.b4a.sql.SQL.ResultSetWrapper _rs = null;
- //BA.debugLineNum = 425;BA.debugLine="Private Sub guardar_solo_1_Click";
- //BA.debugLineNum = 426;BA.debugLine="Dim rs As ResultSet";
+ //BA.debugLineNum = 422;BA.debugLine="Private Sub guardar_solo_1_Click";
+ //BA.debugLineNum = 423;BA.debugLine="Dim rs As ResultSet";
 _rs = new anywheresoftware.b4a.sql.SQL.ResultSetWrapper();
- //BA.debugLineNum = 427;BA.debugLine="rs=sql.ExecQuery(\"select count(*) num from apuest";
+ //BA.debugLineNum = 424;BA.debugLine="rs=sql.ExecQuery(\"select count(*) num from apuest";
 _rs = (anywheresoftware.b4a.sql.SQL.ResultSetWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.sql.SQL.ResultSetWrapper(), (android.database.Cursor)(_sql.ExecQuery("select count(*) num from apuestas where n1='8' and n2='22' and n3='26' and n4='31' and n5='46' and n6='49'")));
- //BA.debugLineNum = 428;BA.debugLine="If rs.RowCount>0 Then";
+ //BA.debugLineNum = 425;BA.debugLine="If rs.RowCount>0 Then";
 if (_rs.getRowCount()>0) { 
- //BA.debugLineNum = 429;BA.debugLine="rs.Position=0";
+ //BA.debugLineNum = 426;BA.debugLine="rs.Position=0";
 _rs.setPosition((int) (0));
- //BA.debugLineNum = 430;BA.debugLine="If rs.getint(\"num\")=0 Then";
+ //BA.debugLineNum = 427;BA.debugLine="If rs.getint(\"num\")=0 Then";
 if (_rs.GetInt("num")==0) { 
- //BA.debugLineNum = 431;BA.debugLine="sql.ExecNonQuery2(\"insert into Apuestas (fecha,";
+ //BA.debugLineNum = 428;BA.debugLine="sql.ExecNonQuery2(\"insert into Apuestas (fecha,";
 _sql.ExecNonQuery2("insert into Apuestas (fecha,n1,n2,n3,n4,n5,n6) values (?,'8','22','26','31','46','49')",anywheresoftware.b4a.keywords.Common.ArrayToList(new String[]{anywheresoftware.b4a.keywords.Common.DateTime.Date(anywheresoftware.b4a.keywords.Common.DateTime.getNow())}));
- //BA.debugLineNum = 432;BA.debugLine="sql.ExecNonQuery2(\"insert into Apuestas (fecha,";
+ //BA.debugLineNum = 429;BA.debugLine="sql.ExecNonQuery2(\"insert into Apuestas (fecha,";
 _sql.ExecNonQuery2("insert into Apuestas (fecha,n1,n2,n3,n4,n5,n6) values (?,'9','25','35','38','40','44')",anywheresoftware.b4a.keywords.Common.ArrayToList(new String[]{anywheresoftware.b4a.keywords.Common.DateTime.Date(anywheresoftware.b4a.keywords.Common.DateTime.getNow())}));
- //BA.debugLineNum = 433;BA.debugLine="sql.ExecNonQuery2(\"insert into Apuestas (fecha,";
+ //BA.debugLineNum = 430;BA.debugLine="sql.ExecNonQuery2(\"insert into Apuestas (fecha,";
 _sql.ExecNonQuery2("insert into Apuestas (fecha,n1,n2,n3,n4,n5,n6) values (?,'7','12','13','18','30','33')",anywheresoftware.b4a.keywords.Common.ArrayToList(new String[]{anywheresoftware.b4a.keywords.Common.DateTime.Date(anywheresoftware.b4a.keywords.Common.DateTime.getNow())}));
- //BA.debugLineNum = 434;BA.debugLine="sql.ExecNonQuery2(\"insert into Apuestas (fecha,";
+ //BA.debugLineNum = 431;BA.debugLine="sql.ExecNonQuery2(\"insert into Apuestas (fecha,";
 _sql.ExecNonQuery2("insert into Apuestas (fecha,n1,n2,n3,n4,n5,n6) values (?,'1','9','12','14','44','48')",anywheresoftware.b4a.keywords.Common.ArrayToList(new String[]{anywheresoftware.b4a.keywords.Common.DateTime.Date(anywheresoftware.b4a.keywords.Common.DateTime.getNow())}));
- //BA.debugLineNum = 435;BA.debugLine="ToastMessageShow(\"Guardada la combinacion ESPEC";
+ //BA.debugLineNum = 432;BA.debugLine="ToastMessageShow(\"Guardada la combinacion ESPEC";
 anywheresoftware.b4a.keywords.Common.ToastMessageShow(BA.ObjectToCharSequence("Guardada la combinacion ESPECIAL NOE en la BBDD"),anywheresoftware.b4a.keywords.Common.True);
  }else {
- //BA.debugLineNum = 438;BA.debugLine="ToastMessageShow(\"ombinacion ESPECIAL NOE ya es";
+ //BA.debugLineNum = 435;BA.debugLine="ToastMessageShow(\"ombinacion ESPECIAL NOE ya es";
 anywheresoftware.b4a.keywords.Common.ToastMessageShow(BA.ObjectToCharSequence("ombinacion ESPECIAL NOE ya está guardada"),anywheresoftware.b4a.keywords.Common.True);
  };
  };
- //BA.debugLineNum = 441;BA.debugLine="CustomListView1.Clear";
+ //BA.debugLineNum = 438;BA.debugLine="CustomListView1.Clear";
 mostCurrent._customlistview1._clear();
- //BA.debugLineNum = 442;BA.debugLine="cargar_guardados";
+ //BA.debugLineNum = 439;BA.debugLine="cargar_guardados";
 _cargar_guardados();
- //BA.debugLineNum = 453;BA.debugLine="End Sub";
+ //BA.debugLineNum = 450;BA.debugLine="End Sub";
 return "";
 }
 public static String  _nueva_click() throws Exception{
- //BA.debugLineNum = 76;BA.debugLine="Private Sub Nueva_Click";
- //BA.debugLineNum = 78;BA.debugLine="lista=CreateNumbersList(6,1,49,True)";
+ //BA.debugLineNum = 73;BA.debugLine="Private Sub Nueva_Click";
+ //BA.debugLineNum = 75;BA.debugLine="lista=CreateNumbersList(6,1,49,True)";
 mostCurrent._lista = _createnumberslist((int) (6),(int) (1),(int) (49),anywheresoftware.b4a.keywords.Common.True);
- //BA.debugLineNum = 79;BA.debugLine="CustomListView1.Add(crea_row(lista),\"\")";
+ //BA.debugLineNum = 76;BA.debugLine="CustomListView1.Add(crea_row(lista),\"\")";
 mostCurrent._customlistview1._add(_crea_row(mostCurrent._lista),(Object)(""));
- //BA.debugLineNum = 80;BA.debugLine="CustomListView1.ScrollToItem(CustomListView1.Size";
+ //BA.debugLineNum = 77;BA.debugLine="CustomListView1.ScrollToItem(CustomListView1.Size";
 mostCurrent._customlistview1._scrolltoitem((int) (mostCurrent._customlistview1._getsize()-1));
- //BA.debugLineNum = 82;BA.debugLine="If lista.Size>0 Then";
+ //BA.debugLineNum = 79;BA.debugLine="If lista.Size>0 Then";
 if (mostCurrent._lista.getSize()>0) { 
- //BA.debugLineNum = 83;BA.debugLine="sql.ExecNonQuery(\"insert into Apuestas_tmp (fech";
+ //BA.debugLineNum = 80;BA.debugLine="sql.ExecNonQuery(\"insert into Apuestas_tmp (fech";
 _sql.ExecNonQuery("insert into Apuestas_tmp (fecha,n1,n2,n3,n4,n5,n6) values ('"+anywheresoftware.b4a.keywords.Common.DateTime.Date(anywheresoftware.b4a.keywords.Common.DateTime.getNow())+"','"+BA.ObjectToString(mostCurrent._lista.Get((int) (0)))+"','"+BA.ObjectToString(mostCurrent._lista.Get((int) (1)))+"','"+BA.ObjectToString(mostCurrent._lista.Get((int) (2)))+"','"+BA.ObjectToString(mostCurrent._lista.Get((int) (3)))+"','"+BA.ObjectToString(mostCurrent._lista.Get((int) (4)))+"','"+BA.ObjectToString(mostCurrent._lista.Get((int) (5)))+"')");
  };
- //BA.debugLineNum = 86;BA.debugLine="End Sub";
+ //BA.debugLineNum = 83;BA.debugLine="End Sub";
 return "";
 }
 
@@ -1741,62 +1722,62 @@ return "";
 public static String  _regexreplace(String _pattern,String _text,String _replacement) throws Exception{
 anywheresoftware.b4a.keywords.Regex.MatcherWrapper _m = null;
 anywheresoftware.b4a.agraham.reflection.Reflection _r = null;
- //BA.debugLineNum = 483;BA.debugLine="Sub RegexReplace(Pattern As String, Text As String";
- //BA.debugLineNum = 484;BA.debugLine="Dim m As Matcher";
+ //BA.debugLineNum = 480;BA.debugLine="Sub RegexReplace(Pattern As String, Text As String";
+ //BA.debugLineNum = 481;BA.debugLine="Dim m As Matcher";
 _m = new anywheresoftware.b4a.keywords.Regex.MatcherWrapper();
- //BA.debugLineNum = 485;BA.debugLine="m = Regex.Matcher(Pattern, Text)";
+ //BA.debugLineNum = 482;BA.debugLine="m = Regex.Matcher(Pattern, Text)";
 _m = anywheresoftware.b4a.keywords.Common.Regex.Matcher(_pattern,_text);
- //BA.debugLineNum = 486;BA.debugLine="Dim r As Reflector";
+ //BA.debugLineNum = 483;BA.debugLine="Dim r As Reflector";
 _r = new anywheresoftware.b4a.agraham.reflection.Reflection();
- //BA.debugLineNum = 487;BA.debugLine="r.Target = m";
+ //BA.debugLineNum = 484;BA.debugLine="r.Target = m";
 _r.Target = (Object)(_m.getObject());
- //BA.debugLineNum = 488;BA.debugLine="Return r.RunMethod2(\"replaceAll\", Replacement, \"j";
+ //BA.debugLineNum = 485;BA.debugLine="Return r.RunMethod2(\"replaceAll\", Replacement, \"j";
 if (true) return BA.ObjectToString(_r.RunMethod2("replaceAll",_replacement,"java.lang.String"));
- //BA.debugLineNum = 489;BA.debugLine="End Sub";
+ //BA.debugLineNum = 486;BA.debugLine="End Sub";
 return "";
 }
 public static String  _rellena(int _dat) throws Exception{
- //BA.debugLineNum = 491;BA.debugLine="Sub rellena(dat As Int) As String";
- //BA.debugLineNum = 492;BA.debugLine="If dat<9 Then";
+ //BA.debugLineNum = 488;BA.debugLine="Sub rellena(dat As Int) As String";
+ //BA.debugLineNum = 489;BA.debugLine="If dat<9 Then";
 if (_dat<9) { 
- //BA.debugLineNum = 493;BA.debugLine="Return \"0\"&dat";
+ //BA.debugLineNum = 490;BA.debugLine="Return \"0\"&dat";
 if (true) return "0"+BA.NumberToString(_dat);
  }else {
- //BA.debugLineNum = 495;BA.debugLine="Return dat";
+ //BA.debugLineNum = 492;BA.debugLine="Return dat";
 if (true) return BA.NumberToString(_dat);
  };
- //BA.debugLineNum = 497;BA.debugLine="End Sub";
+ //BA.debugLineNum = 494;BA.debugLine="End Sub";
 return "";
 }
 public static String  _resultados_click() throws Exception{
- //BA.debugLineNum = 390;BA.debugLine="Private Sub Resultados_Click";
- //BA.debugLineNum = 391;BA.debugLine="Activity.LoadLayout(\"WebView\")";
+ //BA.debugLineNum = 387;BA.debugLine="Private Sub Resultados_Click";
+ //BA.debugLineNum = 388;BA.debugLine="Activity.LoadLayout(\"WebView\")";
 mostCurrent._activity.LoadLayout("WebView",mostCurrent.activityBA);
- //BA.debugLineNum = 393;BA.debugLine="End Sub";
+ //BA.debugLineNum = 390;BA.debugLine="End Sub";
 return "";
 }
 public static String  _trytofix() throws Exception{
 anywheresoftware.b4j.object.JavaObject _jo = null;
 anywheresoftware.b4j.object.JavaObject _context = null;
 Object _listener = null;
- //BA.debugLineNum = 248;BA.debugLine="Public Sub TryToFix";
- //BA.debugLineNum = 249;BA.debugLine="Dim jo As JavaObject";
+ //BA.debugLineNum = 245;BA.debugLine="Public Sub TryToFix";
+ //BA.debugLineNum = 246;BA.debugLine="Dim jo As JavaObject";
 _jo = new anywheresoftware.b4j.object.JavaObject();
- //BA.debugLineNum = 250;BA.debugLine="jo.InitializeStatic(\"com.google.android.gms.secur";
+ //BA.debugLineNum = 247;BA.debugLine="jo.InitializeStatic(\"com.google.android.gms.secur";
 _jo.InitializeStatic("com.google.android.gms.security.ProviderInstaller");
- //BA.debugLineNum = 251;BA.debugLine="Dim context As JavaObject";
+ //BA.debugLineNum = 248;BA.debugLine="Dim context As JavaObject";
 _context = new anywheresoftware.b4j.object.JavaObject();
- //BA.debugLineNum = 252;BA.debugLine="context.InitializeContext";
+ //BA.debugLineNum = 249;BA.debugLine="context.InitializeContext";
 _context.InitializeContext(processBA);
- //BA.debugLineNum = 254;BA.debugLine="Starter.DisableStrictMode";
+ //BA.debugLineNum = 251;BA.debugLine="Starter.DisableStrictMode";
 mostCurrent._starter._disablestrictmode /*String*/ ();
- //BA.debugLineNum = 256;BA.debugLine="Dim listener As Object = jo.CreateEventFromUI(\"co";
+ //BA.debugLineNum = 253;BA.debugLine="Dim listener As Object = jo.CreateEventFromUI(\"co";
 _listener = _jo.CreateEventFromUI(processBA,"com.google.android.gms.security.ProviderInstaller.ProviderInstallListener","ProviderInstall",anywheresoftware.b4a.keywords.Common.Null);
- //BA.debugLineNum = 258;BA.debugLine="Log(\"Installing security provider if needed...\")";
-anywheresoftware.b4a.keywords.Common.LogImpl("424379402","Installing security provider if needed...",0);
- //BA.debugLineNum = 259;BA.debugLine="jo.RunMethod(\"installIfNeededAsync\", Array(contex";
+ //BA.debugLineNum = 255;BA.debugLine="Log(\"Installing security provider if needed...\")";
+anywheresoftware.b4a.keywords.Common.LogImpl("6786442","Installing security provider if needed...",0);
+ //BA.debugLineNum = 256;BA.debugLine="jo.RunMethod(\"installIfNeededAsync\", Array(contex";
 _jo.RunMethod("installIfNeededAsync",new Object[]{(Object)(_context.getObject()),_listener});
- //BA.debugLineNum = 260;BA.debugLine="End Sub";
+ //BA.debugLineNum = 257;BA.debugLine="End Sub";
 return "";
 }
 public static String  _verguardados_click() throws Exception{
@@ -1804,87 +1785,87 @@ anywheresoftware.b4a.sql.SQL.ResultSetWrapper _rs = null;
 anywheresoftware.b4a.objects.collections.List _items = null;
 int _primary_key = 0;
 int _i = 0;
- //BA.debugLineNum = 191;BA.debugLine="Private Sub VerGuardados_Click";
- //BA.debugLineNum = 192;BA.debugLine="Activity.LoadLayout(\"Layout\")";
+ //BA.debugLineNum = 188;BA.debugLine="Private Sub VerGuardados_Click";
+ //BA.debugLineNum = 189;BA.debugLine="Activity.LoadLayout(\"Layout\")";
 mostCurrent._activity.LoadLayout("Layout",mostCurrent.activityBA);
- //BA.debugLineNum = 193;BA.debugLine="Dim rs As ResultSet";
+ //BA.debugLineNum = 190;BA.debugLine="Dim rs As ResultSet";
 _rs = new anywheresoftware.b4a.sql.SQL.ResultSetWrapper();
- //BA.debugLineNum = 194;BA.debugLine="rs=sql.ExecQuery(\"select * from Apuestas\")";
+ //BA.debugLineNum = 191;BA.debugLine="rs=sql.ExecQuery(\"select * from Apuestas\")";
 _rs = (anywheresoftware.b4a.sql.SQL.ResultSetWrapper) anywheresoftware.b4a.AbsObjectWrapper.ConvertToWrapper(new anywheresoftware.b4a.sql.SQL.ResultSetWrapper(), (android.database.Cursor)(_sql.ExecQuery("select * from Apuestas")));
- //BA.debugLineNum = 195;BA.debugLine="Dim items As List";
+ //BA.debugLineNum = 192;BA.debugLine="Dim items As List";
 _items = new anywheresoftware.b4a.objects.collections.List();
- //BA.debugLineNum = 196;BA.debugLine="Dim primary_key As Int";
+ //BA.debugLineNum = 193;BA.debugLine="Dim primary_key As Int";
 _primary_key = 0;
- //BA.debugLineNum = 197;BA.debugLine="For i=0 To rs.RowCount-1";
+ //BA.debugLineNum = 194;BA.debugLine="For i=0 To rs.RowCount-1";
 {
 final int step6 = 1;
 final int limit6 = (int) (_rs.getRowCount()-1);
 _i = (int) (0) ;
 for (;_i <= limit6 ;_i = _i + step6 ) {
- //BA.debugLineNum = 198;BA.debugLine="rs.Position=i";
+ //BA.debugLineNum = 195;BA.debugLine="rs.Position=i";
 _rs.setPosition(_i);
- //BA.debugLineNum = 199;BA.debugLine="items.initialize";
+ //BA.debugLineNum = 196;BA.debugLine="items.initialize";
 _items.Initialize();
- //BA.debugLineNum = 200;BA.debugLine="primary_key=rs.GetiNT(\"Apuesta\")";
+ //BA.debugLineNum = 197;BA.debugLine="primary_key=rs.GetiNT(\"Apuesta\")";
 _primary_key = _rs.GetInt("Apuesta");
- //BA.debugLineNum = 202;BA.debugLine="items.Add(rs.Getint(\"n1\"))";
+ //BA.debugLineNum = 199;BA.debugLine="items.Add(rs.Getint(\"n1\"))";
 _items.Add((Object)(_rs.GetInt("n1")));
- //BA.debugLineNum = 203;BA.debugLine="items.Add(rs.Getint(\"n2\"))";
+ //BA.debugLineNum = 200;BA.debugLine="items.Add(rs.Getint(\"n2\"))";
 _items.Add((Object)(_rs.GetInt("n2")));
- //BA.debugLineNum = 204;BA.debugLine="items.Add(rs.Getint(\"n3\"))";
+ //BA.debugLineNum = 201;BA.debugLine="items.Add(rs.Getint(\"n3\"))";
 _items.Add((Object)(_rs.GetInt("n3")));
- //BA.debugLineNum = 205;BA.debugLine="items.Add(rs.Getint(\"n4\"))";
+ //BA.debugLineNum = 202;BA.debugLine="items.Add(rs.Getint(\"n4\"))";
 _items.Add((Object)(_rs.GetInt("n4")));
- //BA.debugLineNum = 206;BA.debugLine="items.Add(rs.Getint(\"n5\"))";
+ //BA.debugLineNum = 203;BA.debugLine="items.Add(rs.Getint(\"n5\"))";
 _items.Add((Object)(_rs.GetInt("n5")));
- //BA.debugLineNum = 207;BA.debugLine="items.Add(rs.Getint(\"n6\"))";
+ //BA.debugLineNum = 204;BA.debugLine="items.Add(rs.Getint(\"n6\"))";
 _items.Add((Object)(_rs.GetInt("n6")));
- //BA.debugLineNum = 208;BA.debugLine="CustomListView2.Add(crea_row(items),primary_key)";
+ //BA.debugLineNum = 205;BA.debugLine="CustomListView2.Add(crea_row(items),primary_key)";
 mostCurrent._customlistview2._add(_crea_row(_items),(Object)(_primary_key));
  }
 };
- //BA.debugLineNum = 211;BA.debugLine="If CustomListView2.size>0 Then";
+ //BA.debugLineNum = 208;BA.debugLine="If CustomListView2.size>0 Then";
 if (mostCurrent._customlistview2._getsize()>0) { 
- //BA.debugLineNum = 212;BA.debugLine="CustomListView2.ScrollToItem(CustomListView2.Siz";
+ //BA.debugLineNum = 209;BA.debugLine="CustomListView2.ScrollToItem(CustomListView2.Siz";
 mostCurrent._customlistview2._scrolltoitem((int) (mostCurrent._customlistview2._getsize()-1));
  };
- //BA.debugLineNum = 214;BA.debugLine="End Sub";
+ //BA.debugLineNum = 211;BA.debugLine="End Sub";
 return "";
 }
 public static String  _volver_click() throws Exception{
- //BA.debugLineNum = 395;BA.debugLine="Private Sub volver_Click";
- //BA.debugLineNum = 397;BA.debugLine="Activity.LoadLayout(\"Layout2\")";
+ //BA.debugLineNum = 392;BA.debugLine="Private Sub volver_Click";
+ //BA.debugLineNum = 394;BA.debugLine="Activity.LoadLayout(\"Layout2\")";
 mostCurrent._activity.LoadLayout("Layout2",mostCurrent.activityBA);
- //BA.debugLineNum = 398;BA.debugLine="cargar_guardados";
+ //BA.debugLineNum = 395;BA.debugLine="cargar_guardados";
 _cargar_guardados();
- //BA.debugLineNum = 400;BA.debugLine="End Sub";
+ //BA.debugLineNum = 397;BA.debugLine="End Sub";
 return "";
 }
 public static String  _volver2_click() throws Exception{
- //BA.debugLineNum = 402;BA.debugLine="Private Sub Volver2_Click";
- //BA.debugLineNum = 404;BA.debugLine="Activity.LoadLayout(\"layout\")";
+ //BA.debugLineNum = 399;BA.debugLine="Private Sub Volver2_Click";
+ //BA.debugLineNum = 401;BA.debugLine="Activity.LoadLayout(\"layout\")";
 mostCurrent._activity.LoadLayout("layout",mostCurrent.activityBA);
- //BA.debugLineNum = 405;BA.debugLine="VerGuardados_Click";
+ //BA.debugLineNum = 402;BA.debugLine="VerGuardados_Click";
 _verguardados_click();
- //BA.debugLineNum = 406;BA.debugLine="End Sub";
+ //BA.debugLineNum = 403;BA.debugLine="End Sub";
 return "";
 }
 public static String  _volver3_click() throws Exception{
- //BA.debugLineNum = 499;BA.debugLine="Private Sub Volver3_Click";
- //BA.debugLineNum = 501;BA.debugLine="Activity.LoadLayout(\"layout\")";
+ //BA.debugLineNum = 496;BA.debugLine="Private Sub Volver3_Click";
+ //BA.debugLineNum = 498;BA.debugLine="Activity.LoadLayout(\"layout\")";
 mostCurrent._activity.LoadLayout("layout",mostCurrent.activityBA);
- //BA.debugLineNum = 502;BA.debugLine="VerGuardados_Click";
+ //BA.debugLineNum = 499;BA.debugLine="VerGuardados_Click";
 _verguardados_click();
- //BA.debugLineNum = 503;BA.debugLine="End Sub";
+ //BA.debugLineNum = 500;BA.debugLine="End Sub";
 return "";
 }
 public static String  _volver4_click() throws Exception{
- //BA.debugLineNum = 505;BA.debugLine="Private Sub volver4_Click";
- //BA.debugLineNum = 507;BA.debugLine="Activity.LoadLayout(\"layout2\")";
+ //BA.debugLineNum = 502;BA.debugLine="Private Sub volver4_Click";
+ //BA.debugLineNum = 504;BA.debugLine="Activity.LoadLayout(\"layout2\")";
 mostCurrent._activity.LoadLayout("layout2",mostCurrent.activityBA);
- //BA.debugLineNum = 508;BA.debugLine="cargar_guardados";
+ //BA.debugLineNum = 505;BA.debugLine="cargar_guardados";
 _cargar_guardados();
- //BA.debugLineNum = 509;BA.debugLine="End Sub";
+ //BA.debugLineNum = 506;BA.debugLine="End Sub";
 return "";
 }
 }

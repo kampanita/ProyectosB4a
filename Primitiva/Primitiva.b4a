@@ -86,9 +86,6 @@ End Sub
 
 Sub Activity_Create(FirstTime As Boolean)
 	Activity.LoadLayout("Layout2")
-'	Dim cd As ColorDrawable
-	'cd.Initialize (Colors.ARGB (100, 0, 0, 0), 5dip)
-	'Panel1.Background = cd
 	sql.Initialize(File.DirInternal,"primi.db",True)
 	If FirstTime Then
 		lista.Initialize
@@ -160,8 +157,8 @@ Sub crea_row(listac As List) As B4XView
 	Dim a As Animation
 	a.InitializeRotateCenter("", 0, 360, L1)
 	a.Duration=500
-	a.RepeatCount=2
-	a.RepeatMode=a.REPEAT_REVERSE
+	a.RepeatCount=1
+	'a.RepeatMode=a.REPEAT_REVERSE
 	a.Start(L1)
 	a.Start(L2)
 	a.Start(L3)
@@ -196,14 +193,14 @@ Sub crea_row_premiados(c As String,a As String,cmp As String) As B4XView
 
 	p.SetLayoutAnimated(100,0,0,100%x,30dip)
 	
-	Dim xx As Animation
-	xx.InitializeRotateCenter("", 0, 360, L1)
-	xx.Duration=500
-	xx.RepeatCount=2
-	xx.RepeatMode=xx.REPEAT_REVERSE
-	xx.Start(combi)
-	xx.Start(acier)
-	xx.Start(compl)
+	'Dim xx As Animation
+	'xx.InitializeRotateCenter("", 0, 360, L1)
+	'xx.Duration=500
+	'xx.RepeatCount=2
+	'xx.RepeatMode=xx.REPEAT_REVERSE
+	'xx.Start(combi)
+	'xx.Start(acier)
+	'xx.Start(compl)
 	Return p
 End Sub
 

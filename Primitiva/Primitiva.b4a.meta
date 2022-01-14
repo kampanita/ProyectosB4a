@@ -4,6 +4,6 @@ ModuleBreakpoints0=
 ModuleBreakpoints1=
 ModuleClosedNodes0=
 ModuleClosedNodes1=
-NavigationStack=Main,Process_Globals,17,0,Starter,DisableStrictMode,72,0,Starter,Service_Create,17,0,Diseñador Visual,Layout2.bal,-100,1,Diseñador Visual,layout.bal,-100,2,Diseñador Visual,premiados.bal,-100,1,Diseñador Visual,ver_rows.bal,-100,1,Diseñador Visual,row_premiados.bal,-100,1,Diseñador Visual,WebView.bal,-100,1,Main,Globals,28,0
+NavigationStack=Diseñador Visual,premiados.bal,-100,3,Diseñador Visual,row_premiados.bal,-100,3,Diseñador Visual,ver_rows.bal,-100,3,Diseñador Visual,Layout2.bal,-100,2,Diseñador Visual,layout.bal,-100,4,Diseñador Visual,WebView.bal,-100,4,Main,Globals,28,0,Main,Activity_Create,53,0,Main,crea_row,123,0,Main,crea_row_premiados,158,0
 SelectedBuild=1
 VisibleModules=1
