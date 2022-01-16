@@ -1,21 +1,25 @@
 ﻿Build1=Default,b4a.Primitiva,HU2_ACCEPTALL
 Build2=New_1,b4a.Primitiva,HU2_ACCEPTALL
-File1=layout.bal
-File2=Layout2.bal
-File3=premiados.bal
-File4=primi.db
-File5=primitiva.jpg
-File6=row_premiados.bal
-File7=ver_rows.bal
-File8=WebView.bal
+File1=caja.jpg
+File10=WebView.bal
+File2=layout.bal
+File3=Layout2.bal
+File4=premiados.bal
+File5=premiados.jpg
+File6=primi.db
+File7=primitiva.jpg
+File8=row_premiados.bal
+File9=ver_rows.bal
 FileGroup1=Default Group
+FileGroup10=Default Group
 FileGroup2=Default Group
 FileGroup3=Default Group
 FileGroup4=Default Group
 FileGroup5=Nuevo Grupo
 FileGroup6=Default Group
-FileGroup7=Default Group
+FileGroup7=Nuevo Grupo
 FileGroup8=Default Group
+FileGroup9=Default Group
 Group=Default Group
 Library1=animation
 Library2=core
@@ -28,7 +32,7 @@ Library8=xui views
 Library9=phone
 ManifestCode='This code will be applied to the manifest file during compilation.~\n~'You do not need to modify it in most cases.~\n~'See this link for for more information: https://www.b4x.com/forum/showthread.php?p=78136~\n~AddManifestText(~\n~<uses-sdk android:minSdkVersion="16" android:targetSdkVersion="30"/>~\n~<supports-screens android:largeScreens="true" ~\n~    android:normalScreens="true" ~\n~    android:smallScreens="true" ~\n~    android:anyDensity="true"/>)~\n~SetApplicationAttribute(android:icon, "@drawable/icon")~\n~SetApplicationAttribute(android:label, "$LABEL$")~\n~CreateResourceFromFile(Macro, Themes.LightTheme)~\n~'End of default text.~\n~AddApplicationText(~\n~   <activity android:name="com.google.android.gms.common.api.GoogleApiActivity"~\n~  android:theme="@android:style/Theme.Translucent.NoTitleBar"~\n~  android:exported="false"/>~\n~    <meta-data~\n~  android:name="com.google.android.gms.version"~\n~  android:value="@integer/google_play_services_version" />~\n~)
 Module1=Starter
-NumberOfFiles=8
+NumberOfFiles=10
 NumberOfLibraries=9
 NumberOfModules=1
 Version=11.2
@@ -167,9 +171,11 @@ Sub crea_row(listac As List) As B4XView
 	a.Start(L6)
 '	Dim colores As List
 '	colores.initialize
+'	Dim b As List
+'	b.Initialize
 '	For i=0 To 5
-'		a=CreateNumbersList(3,1,255,False)
-'		Dim c As Int =  Colors.rgb(a.Get(0), a.Get(1), a.Get(2))
+'		b=CreateNumbersList(3,1,255,False)
+'		Dim c As Int =  Colors.rgb(b.Get(0), b.Get(1), b.Get(2))
 '		colores.add(c)
 '	Next
 '	
@@ -319,12 +325,15 @@ Private Sub Comprobar2_Click
 	Dim rs As ResultSet
 	http.Initialize("",Me)
 	Dim texto As String
-	
 	'--------------------------------------
+	Try
+		http.Download(url)
+		Wait For (http) JobDone(http As HttpJob)
+	Catch	
+		Log("error de http")
+		
+	End Try
 	
-	
-	http.Download(url)
-	Wait For (http) JobDone(http As HttpJob)
 	If http.Success Then
 		html=http.getString
 		inicio =$"<article class="$
@@ -338,57 +347,58 @@ Private Sub Comprobar2_Click
 	final=$"<div class="sepanum"></div>"$
 	index1=html.IndexOf(inicio)
 	index2=html.IndexOf(final)
-	html=html.Substring2(index1,index2)
+	If index2>1 And index1>1 Then
+		html=html.Substring2(index1,index2)
 	
-	Dim patron As String=$"<div class=\"num\">(\d+)<\/div>"$
-	mat=Regex.Matcher(patron,html)
-	
-	Do While mat.Find = True
-		premiados.Add(mat.Group(1))
-	Loop
+		Dim patron As String=$"<div class=\"num\">(\d+)<\/div>"$
+		mat=Regex.Matcher(patron,html)
+		
+		Do While mat.Find = True
+			premiados.Add(mat.Group(1))
+		Loop
 
-	rs=sql.ExecQuery("select n1,n2,n3,n4,n5,n6 from apuestas")
+		rs=sql.ExecQuery("select n1,n2,n3,n4,n5,n6 from apuestas")
 
-	Do While rs.NextRow
-		acertado=0
-		complementario=0
-		combinacion=rellena(rs.GetInt("n1"))&"-"&rellena(rs.GetInt("n2"))&"-"&rellena(rs.GetInt("n3"))&"-"&rellena(rs.GetInt("n4"))&"-"&rellena(rs.GetInt("n5"))&"-"&rellena(rs.GetInt("n6"))
-		'Log(combinacion)
-		For i = 1 To 6
-			For x=0 To 5
-				If rs.getInt("n"&i)=premiados.Get(x) Then
-					acertado=acertado+1
+		Do While rs.NextRow
+			acertado=0
+			complementario=0
+			combinacion=rellena(rs.GetInt("n1"))&"-"&rellena(rs.GetInt("n2"))&"-"&rellena(rs.GetInt("n3"))&"-"&rellena(rs.GetInt("n4"))&"-"&rellena(rs.GetInt("n5"))&"-"&rellena(rs.GetInt("n6"))
+			'Log(combinacion)
+			For i = 1 To 6
+				For x=0 To 5
+					If rs.getInt("n"&i)=premiados.Get(x) Then
+						acertado=acertado+1
+					End If
+				Next
+			Next
+			For i=1 To 6
+				If rs.getInt("n"&i)=premiados.Get(6) Then
+					complementario=complementario+1
 				End If
 			Next
-		Next
-		For i=1 To 6
-			If rs.getInt("n"&i)=premiados.Get(6) Then
-				complementario=complementario+1
+			mensaje.Add("[ "&combinacion&" ] : Acertados:" & acertado & " Complementario:"&complementario)		
+			lacombi.add(combinacion)
+			elacierto.add(acertado)
+			elcomplem.add(complementario)
+			If acertado>=3 Then		
+				MsgboxAsync("Tienes un premio de "&acertado&" Aciertos y "&complementario&" Complementario con la combinacion : ["&combinacion&"]","PREMIO!!")
+			End If
+		Loop
+		texto=""
+		For i=0 To 5 
+			If i=0 Then
+				texto=rellena(premiados.Get(i))
+			Else
+				texto=texto&"-"&rellena(premiados.Get(i))
 			End If
 		Next
-		mensaje.Add("[ "&combinacion&" ] : Acertados:" & acertado & " Complementario:"&complementario)		
-		lacombi.add(combinacion)
-		elacierto.add(acertado)
-		elcomplem.add(complementario)
-		If acertado>=3 Then		
-			MsgboxAsync("Tienes un premio de "&acertado&" Aciertos y "&complementario&" Complementario con la combinacion : ["&combinacion&"]","PREMIO!!")
-		End If
-	Loop
-	texto=""
-	For i=0 To 5 
-		If i=0 Then
-			texto=rellena(premiados.Get(i))
-		Else
-			texto=texto&"-"&rellena(premiados.Get(i))
-		End If
-	Next
-	texto="[ "&texto& " ]   COMP:" & rellena(premiados.Get(6)) & " REINT:"&rellena(premiados.Get(7))
-	For i = 0 To mensaje.Size-1	
-		 premio_grid.Add(crea_row_premiados(lacombi.Get(i),elacierto.Get(i),elcomplem.Get(i)),i)
-		'ListView1.AddSingleLine(mensaje.Get(i))
-	Next
-	Ganadora.Text=texto
-	
+		texto="[ "&texto& " ]   COMP:" & rellena(premiados.Get(6)) & " REINT:"&rellena(premiados.Get(7))
+		For i = 0 To mensaje.Size-1	
+			 premio_grid.Add(crea_row_premiados(lacombi.Get(i),elacierto.Get(i),elcomplem.Get(i)),i)
+			'ListView1.AddSingleLine(mensaje.Get(i))
+		Next
+		Ganadora.Text=texto
+	End If
 	'ListView1.SingleLineLayout.Label.TextSize=12
 	'ListView1.SingleLineLayout.Label.TextColor=xui.Color_Black
 	'ListView1.Padding=Array As Int (0,0,0,10)
@@ -467,7 +477,7 @@ Private Sub guardar_solo_1_Click
 			ToastMessageShow("Guardada la combinacion ESPECIAL NOE en la BBDD",True)
 			
 		Else
-			ToastMessageShow("ombinacion ESPECIAL NOE ya está guardada",True)
+			ToastMessageShow("Combinacion ESPECIAL NOE ya está guardada",True)
 		End If
  	End If
 	CustomListView1.Clear
