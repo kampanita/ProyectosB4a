@@ -4,6 +4,6 @@ ModuleBreakpoints0=
 ModuleBreakpoints1=
 ModuleClosedNodes0=
 ModuleClosedNodes1=
-NavigationStack=Diseñador Visual,ver_rows.bal,-100,5,Main,crea_row,144,6,Main,borrar_guardados_Click,410,0,Main,guardar_solo_1_Click,436,0,Diseñador Visual,layout.bal,-100,4,Diseñador Visual,Layout2.bal,-100,6,Diseñador Visual,row_premiados.bal,-100,6,Main,Comprobar2_Click,362,6,Diseñador Visual,premiados.bal,-100,6,Main,volver4_Click,511,0
+NavigationStack=Main,Activity_Create,69,0,Main,Globals,27,0,Main,Process_Globals,23,0,Starter,Service_Create,27,0,Starter,DisableStrictMode,72,0,Main,cargar_guardados,453,0,Main,TryToFix,246,0,Diseñador Visual,Layout2.bal,-100,2,Diseñador Visual,layout.bal,-100,2,Main,Comprobar_Click,240,0
 SelectedBuild=0
 VisibleModules=1

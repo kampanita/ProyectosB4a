@@ -156,7 +156,7 @@ End Sub
 
 Sub datatotexT(datos As Int) As String
 	Dim data As String
-	If datos<9 Then
+	If datos<=9 Then
 		data="0"&datos
 	Else 
 		data =datos
@@ -164,6 +164,7 @@ Sub datatotexT(datos As Int) As String
 	'Log(DateTime.Date(datos))
 	Return data 
 End Sub
+
 Private Sub DrawBox(c As B4XCanvas, clr As Int, x As Int, y As Int)
 	Dim r As B4XRect
 	r.Initialize(x * boxW, y * boxH, x * boxW + boxW,  y * boxH + boxH)

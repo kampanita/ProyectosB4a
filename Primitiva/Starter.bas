@@ -31,7 +31,7 @@ Sub Service_Create
 	Dim jo As JavaObject
 	jo.InitializeStatic("java.util.Locale").RunMethod("setDefault", Array(locale))
 	
-	ActivateSSL
+	'ActivateSSL
 End Sub
 
 Sub Service_Start (StartingIntent As Intent)

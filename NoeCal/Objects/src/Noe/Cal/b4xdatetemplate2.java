@@ -181,8 +181,8 @@ String _data = "";
  //BA.debugLineNum = 151;BA.debugLine="Sub datatotexT(datos As Int) As String";
  //BA.debugLineNum = 152;BA.debugLine="Dim data As String";
 _data = "";
- //BA.debugLineNum = 153;BA.debugLine="If datos<9 Then";
-if (_datos<9) { 
+ //BA.debugLineNum = 153;BA.debugLine="If datos<=9 Then";
+if (_datos<=9) { 
  //BA.debugLineNum = 154;BA.debugLine="data=\"0\"&datos";
 _data = "0"+BA.NumberToString(_datos);
  }else {

@@ -245,7 +245,7 @@ case 11:
 this.state = 12;
 this.catchState = 0;
  //BA.debugLineNum = 68;BA.debugLine="Log(\"Application_Error\")";
-anywheresoftware.b4a.keywords.Common.LogImpl("72162709","Application_Error",0);
+anywheresoftware.b4a.keywords.Common.LogImpl("52162709","Application_Error",0);
  if (true) break;
 if (true) break;
 
@@ -303,7 +303,7 @@ _javaobjectstrictmode.InitializeStatic("android.os.StrictMode").RunMethod("setTh
  } 
        catch (Exception e12) {
 			processBA.setLastException(e12); //BA.debugLineNum = 87;BA.debugLine="Log(\"Application_Error\")";
-anywheresoftware.b4a.keywords.Common.LogImpl("72228238","Application_Error",0);
+anywheresoftware.b4a.keywords.Common.LogImpl("52228238","Application_Error",0);
  };
  //BA.debugLineNum = 90;BA.debugLine="End Sub";
 return "";
@@ -330,8 +330,6 @@ _locale.InitializeNewInstance("java.util.Locale",new Object[]{(Object)("es")});
 _jo = new anywheresoftware.b4j.object.JavaObject();
  //BA.debugLineNum = 26;BA.debugLine="jo.InitializeStatic(\"java.util.Locale\").RunMethod";
 _jo.InitializeStatic("java.util.Locale").RunMethod("setDefault",new Object[]{(Object)(_locale.getObject())});
- //BA.debugLineNum = 28;BA.debugLine="ActivateSSL";
-_activatessl();
  //BA.debugLineNum = 29;BA.debugLine="End Sub";
 return "";
 }

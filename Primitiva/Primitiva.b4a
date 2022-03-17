@@ -1,39 +1,44 @@
 ﻿Build1=Default,b4a.Primitiva,HU2_ACCEPTALL
 Build2=New_1,b4a.Primitiva,HU2_ACCEPTALL
-File1=caja.jpg
-File10=WebView.bal
-File2=layout.bal
-File3=Layout2.bal
-File4=premiados.bal
-File5=premiados.jpg
-File6=primi.db
-File7=primitiva.jpg
-File8=row_premiados.bal
-File9=ver_rows.bal
+File1=boleto-loteria-primitiva-un-dia.gif
+File10=row_premiados.bal
+File11=ver_rows.bal
+File12=WebView.bal
+File2=caja.jpg
+File3=layout.bal
+File4=Layout2.bal
+File5=manual.bal
+File6=premiados.bal
+File7=premiados.jpg
+File8=primi.db
+File9=primitiva.jpg
 FileGroup1=Default Group
 FileGroup10=Default Group
+FileGroup11=Default Group
+FileGroup12=Default Group
 FileGroup2=Default Group
 FileGroup3=Default Group
 FileGroup4=Default Group
-FileGroup5=Nuevo Grupo
+FileGroup5=Default Group
 FileGroup6=Default Group
 FileGroup7=Nuevo Grupo
 FileGroup8=Default Group
-FileGroup9=Default Group
+FileGroup9=Nuevo Grupo
 Group=Default Group
 Library1=animation
+Library10=wheelviewnew
 Library2=core
 Library3=okhttputils2
-Library4=reflection
-Library5=sql
-Library6=xcustomlistview
-Library7=xui
-Library8=xui views
-Library9=phone
-ManifestCode='This code will be applied to the manifest file during compilation.~\n~'You do not need to modify it in most cases.~\n~'See this link for for more information: https://www.b4x.com/forum/showthread.php?p=78136~\n~AddManifestText(~\n~<uses-sdk android:minSdkVersion="16" android:targetSdkVersion="30"/>~\n~<supports-screens android:largeScreens="true" ~\n~    android:normalScreens="true" ~\n~    android:smallScreens="true" ~\n~    android:anyDensity="true"/>)~\n~SetApplicationAttribute(android:icon, "@drawable/icon")~\n~SetApplicationAttribute(android:label, "$LABEL$")~\n~CreateResourceFromFile(Macro, Themes.LightTheme)~\n~'End of default text.~\n~AddApplicationText(~\n~   <activity android:name="com.google.android.gms.common.api.GoogleApiActivity"~\n~  android:theme="@android:style/Theme.Translucent.NoTitleBar"~\n~  android:exported="false"/>~\n~    <meta-data~\n~  android:name="com.google.android.gms.version"~\n~  android:value="@integer/google_play_services_version" />~\n~)
+Library4=phone
+Library5=reflection
+Library6=sql
+Library7=xcustomlistview
+Library8=xui
+Library9=xui views
+ManifestCode='This code will be applied to the manifest file during compilation.~\n~'You do not need to modify it in most cases.~\n~'See this link for for more information: https://www.b4x.com/forum/showthread.php?p=78136~\n~AddManifestText(~\n~<uses-sdk android:minSdkVersion="16" android:targetSdkVersion="30"/>~\n~<supports-screens android:largeScreens="true" ~\n~    android:normalScreens="true" ~\n~    android:smallScreens="true" ~\n~    android:anyDensity="true"/>)~\n~~\n~SetApplicationAttribute(android:icon, "@drawable/icon")~\n~SetApplicationAttribute(android:label, "$LABEL$")~\n~CreateResourceFromFile(Macro, Themes.LightTheme)~\n~'End of default text.~\n~AddApplicationText(~\n~   <activity android:name="com.google.android.gms.common.api.GoogleApiActivity"~\n~  android:theme="@android:style/Theme.Translucent.NoTitleBar"~\n~  android:exported="false"/>~\n~    <meta-data~\n~  android:name="com.google.android.gms.version"~\n~  android:value="@integer/google_play_services_version" />~\n~)
 Module1=Starter
-NumberOfFiles=10
-NumberOfLibraries=9
+NumberOfFiles=12
+NumberOfLibraries=10
 NumberOfModules=1
 Version=11.2
 @EndOfDesignText@
@@ -57,6 +62,8 @@ Sub Process_Globals
 	'These global variables will be declared once when the application starts.
 	'These variables can be acc
 	Dim sql As SQL
+	Dim nums As List
+	Dim lista As List
 End Sub
 
 Sub Globals
@@ -64,8 +71,6 @@ Sub Globals
 	Private xui As XUI
 	Private Nueva As Button
 	Private WebView1 As WebView
-'	Dim WebViewExtras1 As WebViewExtras
-'	Dim WebViewSetting1 As WebViewSettings
 	Private Guardar As Button
 	Private VerGuardados As Button
 	Private CustomListView1 As CustomListView
@@ -80,29 +85,35 @@ Sub Globals
 	
 	Private CustomListView2 As CustomListView
 	Private Panel1 As Panel
-'	Private ListView1 As ListView
+
 	Private Ganadora As Label
 	Private combi As Label
 	Private acier As Label
 	Private compl As Label
 	Private premio_grid As CustomListView
+	Private manual As Button
+	Private WheelViewNew1 As WheelViewNew
+	Private WheelViewNew2 As WheelViewNew
+	Private WheelViewNew3 As WheelViewNew
+	Private WheelViewNew4 As WheelViewNew
+	Private WheelViewNew5 As WheelViewNew
+	Private WheelViewNew6 As WheelViewNew
+	
 End Sub
 
 Sub Activity_Create(FirstTime As Boolean)
 	Activity.LoadLayout("Layout2")
 	sql.Initialize(File.DirInternal,"primi.db",True)
-	If FirstTime Then
+	If FirstTime Then		
 		lista.Initialize
 		cargar_guardados
 	End If
 	
 End Sub
 
-Sub Activity_Resume
-	'CustomListView1.Add(crea_row(lista),"")
-	Wait For (CheckProviderInstaller) complete (success As Boolean)
-	cargar_guardados
-	
+Sub Activity_Resume	
+	'Wait For (CheckProviderInstaller) complete (success As Boolean)
+	cargar_guardados	
 End Sub
 
 Sub Activity_Pause (UserClosed As Boolean)
@@ -112,11 +123,15 @@ End Sub
 Private Sub Nueva_Click
 	
 	lista=CreateNumbersList(6,1,49,True)
-	CustomListView1.Add(crea_row(lista),"")
+	
+	Dim pk As Int
+	pk=sql.ExecQuerySingleResult("select count(*) as cuantos from apuestas_tmp")
+	pk=pk+1	
+	CustomListView1.Add(crea_row(lista),pk)
 	CustomListView1.ScrollToItem(CustomListView1.Size-1)
 	
 	If lista.Size>0 Then
-		sql.ExecNonQuery("insert into Apuestas_tmp (fecha,n1,n2,n3,n4,n5,n6) values ('"&DateTime.date(DateTime.now)&"','"&lista.get(0)&"','"&lista.get(1)&"','"&lista.get(2)&"','"&lista.get(3)&"','"&lista.get(4)&"','"&lista.get(5)&"')")
+		sql.ExecNonQuery("insert into Apuestas_tmp (apuesta,fecha,n1,n2,n3,n4,n5,n6) values ('"&pk&"','"&DateTime.date(DateTime.now)&"','"&lista.get(0)&"','"&lista.get(1)&"','"&lista.get(2)&"','"&lista.get(3)&"','"&lista.get(4)&"','"&lista.get(5)&"')")
 	End If
 	
 End Sub
@@ -155,13 +170,12 @@ Sub crea_row(listac As List) As B4XView
 	L5.text=listac.Get(4)
 	L6.text=listac.Get(5)
 	
-
 	p.SetLayoutAnimated(100,0,0,100%x,60dip)
 	
 	Dim a As Animation
 	a.InitializeRotateCenter("", 0, 360, L1)
-	a.Duration=500
-	a.RepeatCount=1
+	a.Duration=400
+	a.RepeatCount=0
 	'a.RepeatMode=a.REPEAT_REVERSE
 	a.Start(L1)
 	a.Start(L2)
@@ -199,14 +213,6 @@ Sub crea_row_premiados(c As String,a As String,cmp As String) As B4XView
 
 	p.SetLayoutAnimated(100,0,0,100%x,30dip)
 	
-	'Dim xx As Animation
-	'xx.InitializeRotateCenter("", 0, 360, L1)
-	'xx.Duration=500
-	'xx.RepeatCount=2
-	'xx.RepeatMode=xx.REPEAT_REVERSE
-	'xx.Start(combi)
-	'xx.Start(acier)
-	'xx.Start(compl)
 	Return p
 End Sub
 
@@ -236,7 +242,6 @@ Private Sub VerGuardados_Click
 		rs.Position=i
 		items.initialize
 		primary_key=rs.GetiNT("Apuesta")
-		'items.Add(rs.GetString("Fecha"))
 		items.Add(rs.Getint("n1"))
 		items.Add(rs.Getint("n2"))
 		items.Add(rs.Getint("n3"))
@@ -244,7 +249,6 @@ Private Sub VerGuardados_Click
 		items.Add(rs.Getint("n5"))
 		items.Add(rs.Getint("n6"))
 		CustomListView2.Add(crea_row(items),primary_key)
-		
 	Next
 	If CustomListView2.size>0 Then
 		CustomListView2.ScrollToItem(CustomListView2.Size-1)
@@ -254,7 +258,7 @@ End Sub
 Private Sub Comprobar_Click
 	Activity.LoadLayout("WebView")
 	Dim url As String
-	TryToFix
+	'TryToFix
 	url="https://www.laprimitiva.info/"
 	
 	Dim html As String
@@ -283,6 +287,7 @@ Private Sub Comprobar_Click
 	http.Release
 	
 End Sub
+
 Public Sub TryToFix
 	Dim jo As JavaObject
 	jo.InitializeStatic("com.google.android.gms.security.ProviderInstaller")
@@ -296,6 +301,7 @@ Public Sub TryToFix
 	Log("Installing security provider if needed...")
 	jo.RunMethod("installIfNeededAsync", Array(context, listener))
 End Sub
+
 Private Sub Comprobar2_Click
 	Activity.LoadLayout("premiados")
 	Dim url As String
@@ -395,25 +401,19 @@ Private Sub Comprobar2_Click
 		texto="[ "&texto& " ]   COMP:" & rellena(premiados.Get(6)) & " REINT:"&rellena(premiados.Get(7))
 		For i = 0 To mensaje.Size-1	
 			 premio_grid.Add(crea_row_premiados(lacombi.Get(i),elacierto.Get(i),elcomplem.Get(i)),i)
-			'ListView1.AddSingleLine(mensaje.Get(i))
 		Next
 		Ganadora.Text=texto
 	End If
-	'ListView1.SingleLineLayout.Label.TextSize=12
-	'ListView1.SingleLineLayout.Label.TextColor=xui.Color_Black
-	'ListView1.Padding=Array As Int (0,0,0,10)
-	'''ListView1.SingleLineLayout.Label.Height=20
-	'''ListView1.SingleLineLayout.Label.Background=xui.Color_White
 	
 End Sub
 
 Private Sub CustomListView2_ItemLongClick (Index As Int, Value As Object)
-
 	Dim d As B4XDialog
 	d.initialize(Activity)
 	d.Title="Borrando combinación"
-	d.BackgroundColor=Colors.White
-	d.BodyTextColor=Colors.Blue
+	d.BackgroundColor=0x42F7F7F7
+	d.TitleBarColor=0xFF00891D
+	d.BodyTextColor=Colors.white
 	d.VisibleAnimationDuration=300
 	Dim rs As Object
 	rs=d.Show("Quieres borrar la combinacion ¿?"&CRLF&" Solo se eliminará esta combinación.","Si","No","")
@@ -421,28 +421,24 @@ Private Sub CustomListView2_ItemLongClick (Index As Int, Value As Object)
 	If Result = xui.DialogResponse_Positive Then
 		Dim primary_key As Int
 		primary_key=Value
-		CustomListView1.RemoveAt(Index)
+		CustomListView2.RemoveAt(Index)
 		sql.ExecNonQuery("delete from Apuestas where Apuesta='"&primary_key&"'")
 		ToastMessageShow("Borrada la combinación",True)
 		VerGuardados_Click
-		
 	End If		
 End Sub
 
 Private Sub Resultados_Click
 	Activity.LoadLayout("WebView")
-'	WebView1.LoadURL("https://www.loteriasyapuestas.es/es/resultados/primitiva")
 End Sub
 
 Private Sub volver_Click
-	'ToastMessageShow("Soy 1")
 	Activity.LoadLayout("Layout2")
 	cargar_guardados
 	
 End Sub
 
 Private Sub Volver2_Click
-	'ToastMessageShow("Soy 2")
 	Activity.LoadLayout("layout")
 	VerGuardados_Click
 End Sub
@@ -451,8 +447,9 @@ Private Sub borrar_guardados_Click
 	Dim d As B4XDialog
 	d.initialize(Activity)
 	d.Title="¡¡ATENCIÓN!!"
-	d.BackgroundColor=Colors.White
-	d.BodyTextColor=Colors.Blue
+	d.BackgroundColor=0x42F7F7F7
+	d.TitleBarColor=0xFF00891D
+	d.BodyTextColor=Colors.white
 	d.VisibleAnimationDuration=300
 	Dim rs As Object
 	rs=d.Show("Quieres borrar todos las combinaciones guardadas ¿?"&CRLF&" Se perderán los datos almacenados."&CRLF&"Recuerda que puedes borrar una a una manteniendo pulsado sobre ella.","Si","No","")
@@ -474,6 +471,9 @@ Private Sub guardar_solo_1_Click
 			sql.ExecNonQuery2("insert into Apuestas (fecha,n1,n2,n3,n4,n5,n6) values (?,'9','25','35','38','40','44')",Array As String(DateTime.date(DateTime.now)))
 			sql.ExecNonQuery2("insert into Apuestas (fecha,n1,n2,n3,n4,n5,n6) values (?,'7','12','13','18','30','33')",Array As String(DateTime.date(DateTime.now)))
 			sql.ExecNonQuery2("insert into Apuestas (fecha,n1,n2,n3,n4,n5,n6) values (?,'1','9','12','14','44','48')",Array As String(DateTime.date(DateTime.now)))
+			sql.ExecNonQuery2("insert into Apuestas (fecha,n1,n2,n3,n4,n5,n6) values (?,'1','19','23','30','39','43')",Array As String(DateTime.date(DateTime.now)))
+			sql.ExecNonQuery2("insert into Apuestas (fecha,n1,n2,n3,n4,n5,n6) values (?,'20','22','23','31','36','40')",Array As String(DateTime.date(DateTime.now)))
+			
 			ToastMessageShow("Guardada la combinacion ESPECIAL NOE en la BBDD",True)
 			
 		Else
@@ -482,16 +482,6 @@ Private Sub guardar_solo_1_Click
  	End If
 	CustomListView1.Clear
 	cargar_guardados
-'	If lista.Size>0 Then		
-'		sql.ExecNonQuery2("insert into Apuestas (fecha,n1,n2,n3,n4,n5,n6) values (?,?,?,?,?,?,?)",Array As String(DateTime.date(DateTime.now),lista.get(0),lista.get(1),lista.get(2),lista.get(3),lista.get(4),lista.get(5)))
-'		sql.ExecNonQuery2("delete from Apuestas_tmp where fecha=? and n1=? and n2=? and n3=? and n4=? and n5=? and n6=?",Array As Object(DateTime.date(DateTime.now),lista.get(0),lista.get(1),lista.get(2),lista.get(3),lista.get(4),lista.get(5)))
-'		
-'		CustomListView1.Clear
-'		cargar_guardados
-'		ToastMessageShow("Guardada la combinacion ESPECIAL NOE en la BBDD",True)
-'	Else
-'		ToastMessageShow("Nada que guardar",True)
-'	End If
 End Sub
 
 Sub cargar_guardados
@@ -505,7 +495,6 @@ Sub cargar_guardados
 		rs.Position=i
 		items.initialize
 		primary_key=rs.GetiNT("Apuesta")
-		'items.Add(rs.GetString("Fecha"))
 		items.Add(rs.Getint("n1"))
 		items.Add(rs.Getint("n2"))
 		items.Add(rs.Getint("n3"))
@@ -539,34 +528,39 @@ Sub rellena(dat As Int) As String
 End Sub
 
 Private Sub Volver3_Click
-	'ToastMessageShow("Soy 3")
 	Activity.LoadLayout("layout")
 	VerGuardados_Click
 End Sub
 
 Private Sub volver4_Click
-	'ToastMessageShow("Soy 4")
-	Activity.LoadLayout("layout2")
-	cargar_guardados
+	Activity.LoadLayout("layout")
+	VerGuardados_Click
 End Sub
 
 Private Sub Borra_tmp_Click
- If lista.Size>0 Then
-	Dim d As B4XDialog
-	d.initialize(Activity)
-	d.Title="¡¡ATENCIÓN!!"
-	d.BackgroundColor=Colors.White
-	d.BodyTextColor=Colors.Blue
-	d.VisibleAnimationDuration=300
-	Dim rs As Object
-	rs=d.Show("Quieres borrar todos las combinaciones temporales ¿?","Si","No","")
-	Wait For(rs) complete (Result As Int)
-	If Result = xui.DialogResponse_Positive Then
-		sql.ExecNonQuery("delete from Apuestas_tmp")
-		ToastMessageShow("Borrados todas las combinaciones de memoria.",True)
-	End If
-		cargar_guardados
-	End If
+
+	Dim pk As Int
+	pk=sql.ExecQuerySingleResult("select count(*) as cuantos from apuestas_tmp")
+	If pk>0 Then
+		Dim d As B4XDialog
+		d.initialize(Activity)
+		d.Title="¡¡ATENCIÓN!!"
+		d.BackgroundColor=0x42F7F7F7
+		d.TitleBarColor=0xFF00891D
+		d.BodyTextColor=Colors.white
+		d.VisibleAnimationDuration=300
+		Dim rs As Object
+		rs=d.Show("Quieres borrar todos las combinaciones temporales ¿?","Si","No","")
+		Wait For(rs) complete (Result As Int)
+		If Result = xui.DialogResponse_Positive Then
+			sql.ExecNonQuery("delete from Apuestas_tmp")
+			ToastMessageShow("Borrados todas las combinaciones de memoria.",True)
+		End If
+			cargar_guardados
+ 	Else
+		ToastMessageShow("Nada que borrar.",True)
+ 	End If
+	
 End Sub
 
 
@@ -602,3 +596,170 @@ Sub CheckProviderInstaller As ResumableSub
 	End If
 	Return retVal
 End Sub
+
+
+
+Private Sub manual_Click
+	Activity.LoadLayout("manual")
+	Dim a As Int
+	nums.initialize
+	For a = 1 To 49
+		nums.Add(a)
+	Next
+	WheelViewNew1.addData(nums)
+	WheelViewNew1.Skin = WheelViewNew1.SKIN_TYPE_HOLO
+	WheelViewNew1.WheelClickable = True
+	WheelViewNew1.WheelLoop = True
+	WheelViewNew2.addData(nums)
+	WheelViewNew2.Skin = WheelViewNew1.SKIN_TYPE_HOLO
+	WheelViewNew2.WheelClickable = True
+	WheelViewNew2.WheelLoop = True
+	WheelViewNew3.addData(nums)
+	WheelViewNew3.Skin = WheelViewNew1.SKIN_TYPE_HOLO
+	WheelViewNew3.WheelClickable = True
+	WheelViewNew3.WheelLoop = True
+	WheelViewNew4.addData(nums)
+	WheelViewNew4.Skin = WheelViewNew1.SKIN_TYPE_HOLO
+	WheelViewNew4.WheelClickable = True
+	WheelViewNew4.WheelLoop = True
+	WheelViewNew5.addData(nums)
+	WheelViewNew5.Skin = WheelViewNew1.SKIN_TYPE_HOLO
+	WheelViewNew5.WheelClickable = True
+	WheelViewNew5.WheelLoop = True
+	WheelViewNew6.addData(nums)
+	WheelViewNew6.Skin = WheelViewNew1.SKIN_TYPE_HOLO
+	WheelViewNew6.WheelClickable = True
+	WheelViewNew6.WheelLoop = True
+	WheelViewNew1.SelectedTextColor=0xFF196000
+	WheelViewNew1.NONSelectedTextColor=Colors.Black
+	WheelViewNew2.SelectedTextColor=0xFF196000
+	WheelViewNew2.NONSelectedTextColor=Colors.Black
+	WheelViewNew3.SelectedTextColor=0xFF196000
+	WheelViewNew3.NONSelectedTextColor=Colors.Black
+	WheelViewNew4.SelectedTextColor=0xFF196000
+	WheelViewNew4.NONSelectedTextColor=Colors.Black
+	WheelViewNew5.SelectedTextColor=0xFF196000
+	WheelViewNew5.NONSelectedTextColor=Colors.Black
+	WheelViewNew6.SelectedTextColor=0xFF196000
+	WheelViewNew6.NONSelectedTextColor=Colors.Black
+	WheelViewNew1.WheelBackgroundColor=0x7FDBE7D4
+	WheelViewNew2.WheelBackgroundColor=0x7FDBE7D4
+	WheelViewNew3.WheelBackgroundColor=0x7FDBE7D4
+	WheelViewNew4.WheelBackgroundColor=0x7FDBE7D4
+	WheelViewNew5.WheelBackgroundColor=0x7FDBE7D4
+	WheelViewNew6.WheelBackgroundColor=0x7FDBE7D4
+	
+	
+	WheelViewNew2.Color=Colors.Magenta
+	
+	WheelViewNew1.Tag=-1
+	WheelViewNew2.Tag=-1
+	WheelViewNew3.Tag=-1
+	WheelViewNew4.Tag=-1
+	WheelViewNew5.Tag=-1
+	WheelViewNew6.Tag=-1
+	WheelViewNew1.applyStyle
+	WheelViewNew2.applyStyle
+	WheelViewNew3.applyStyle
+	WheelViewNew4.applyStyle
+	WheelViewNew5.applyStyle
+	WheelViewNew6.applyStyle
+	
+	
+	
+	
+End Sub
+
+
+Private Sub Validar_Click
+		
+	Dim lista2 As List
+	Dim lista_final As List
+	lista_final.Initialize
+	lista2.Initialize2(Array As Int(WheelViewNew1.Tag,WheelViewNew2.Tag,WheelViewNew3.Tag,WheelViewNew4.Tag,WheelViewNew5.Tag,WheelViewNew6.Tag))
+	lista2.Sort(True)
+	Dim a As Int
+	For a=0 To 5
+		If 0>lista2.Get(a) Then
+			ToastMessageShow("Combinación inválida",True)
+			Return
+		End If
+		If lista_final.IndexOf(lista2.Get(a))=-1 Then
+			lista_final.Add(lista2.Get(a))
+		End If
+	Next
+	If lista_final.Size<6 Then
+		ToastMessageShow("Combinación inválida",True)
+		Dim b As Animation
+		b.InitializeRotateCenter("", 0, 360, WheelViewNew1)
+		b.Start(WheelViewNew1)
+		b.Start(WheelViewNew2)
+		b.Start(WheelViewNew3)
+		b.Start(WheelViewNew4)
+		b.Start(WheelViewNew5)
+		b.Start(WheelViewNew6)
+		Return
+	End If
+	Dim pk As Int
+	pk=sql.ExecQuerySingleResult("select count(*) as cuantos from apuestas_tmp")
+	pk=pk+1
+	CustomListView1.Add(crea_row(lista2),pk)
+	CustomListView1.ScrollToItem(CustomListView1.Size-1)
+	
+	If lista2.Size>0 Then
+		sql.ExecNonQuery("insert into Apuestas_tmp (apuesta,fecha,n1,n2,n3,n4,n5,n6) values ('"&pk&"','"&DateTime.date(DateTime.now)&"','"&lista2.get(0)&"','"&lista2.get(1)&"','"&lista2.get(2)&"','"&lista2.get(3)&"','"&lista2.get(4)&"','"&lista2.get(5)&"')")
+	End If
+	Activity.LoadLayout("Layout2")
+	cargar_guardados
+End Sub
+
+Private Sub canc_Click
+	Activity.LoadLayout("Layout2")
+	cargar_guardados
+End Sub
+
+Private Sub WheelViewNew1_item_selected(position As Int)
+	WheelViewNew1.Tag=position+1
+End Sub
+Private Sub WheelViewNew2_item_selected(position As Int)
+	WheelViewNew2.Tag=position+1
+End Sub
+Private Sub WheelViewNew3_item_selected(position As Int)
+	WheelViewNew3.Tag=position+1
+End Sub
+Private Sub WheelViewNew4_item_selected(position As Int)
+	WheelViewNew4.Tag=position+1
+End Sub
+Private Sub WheelViewNew5_item_selected(position As Int)
+	WheelViewNew5.Tag=position+1
+End Sub
+Private Sub WheelViewNew6_item_selected(position As Int)
+	WheelViewNew6.Tag=position+1
+	
+End Sub
+
+
+Private Sub CustomListView1_ItemLongClick (Index As Int, Value As Object)
+	If lista.size>0 Then
+		Dim d As B4XDialog
+		d.initialize(Activity)
+		d.Title="Borrando combinación"
+		d.BackgroundColor=0x42F7F7F7
+		d.TitleBarColor=0xFF00891D
+		d.BodyTextColor=Colors.white
+		d.VisibleAnimationDuration=300
+		Dim rs As Object
+		rs=d.Show("Quieres borrar la combinacion ¿?"&CRLF&" Solo se eliminará esta combinación.","Si","No","")
+		Wait For(rs) complete (Result As Int)
+		If Result = xui.DialogResponse_Positive Then
+			Dim primary_key As Int
+			primary_key=Value
+			CustomListView1.RemoveAt(Index)
+			sql.ExecNonQuery("delete from Apuestas_tmp where Apuesta='"&primary_key&"'")
+			ToastMessageShow("Borrada la combinación",True)
+			cargar_guardados
+			
+		End If		
+	End If
+End Sub
+	

@@ -230,7 +230,7 @@ Private Sub Spinner2_ItemClick (Position As Int, Value As Object)
 '	Log("valor "&valor)
 	
 	If valor.startswith("M") Or valor.startswith("T") Then
-		Horas.Text="7.25"
+		Horas.Text="7.5"
 	End If
 	If valor.startswith("N") Then
 		Horas.Text="9.5"
